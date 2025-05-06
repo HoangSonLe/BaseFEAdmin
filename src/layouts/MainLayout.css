@@ -1,0 +1,155 @@
+/* Custom styles for the user dropdown - Exact match to the image */
+:root {
+    --primary-color: #5b5fc7;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #f0f0f0;
+    --hover-bg: #f5f5f5;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Dropdown container styling */
+.user-dropdown-menu {
+    min-width: 180px;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.user-dropdown-menu .ant-dropdown-menu {
+    padding: 0;
+    border-radius: 8px;
+    background-color: white;
+}
+
+/* Override Ant Design's default styles */
+.user-dropdown-menu .ant-dropdown-menu-item {
+    padding: 0 !important;
+    margin: 0;
+    line-height: 1.5;
+    transition: none;
+}
+
+.user-dropdown-menu .ant-dropdown-menu-item:hover {
+    background-color: transparent;
+}
+
+.user-dropdown-menu .ant-dropdown-menu-item-divider {
+    margin: 0;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+/* User profile section styling */
+.user-profile-item {
+    padding: 0 !important;
+    cursor: default !important;
+    background-color: white !important;
+}
+
+.user-profile-container {
+    padding: 12px 16px;
+}
+
+/* Avatar styling */
+.user-avatar {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+
+.header-avatar {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+}
+
+/* Header dropdown trigger styling */
+.header-user-dropdown {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+.header-user-text {
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Logout item styling */
+.logout-container {
+    padding: 10px 16px;
+    transition: background-color 0.2s ease;
+}
+
+.logout-container:hover {
+    background-color: var(--hover-bg);
+}
+
+.logout-item {
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.logout-icon {
+    color: #9e9e9e;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* Typography styling */
+.username {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 14px;
+    margin-bottom: 1px;
+}
+
+.user-handle {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* Down arrow styling */
+.dropdown-arrow {
+    color: #666;
+    font-size: 10px;
+    margin-left: 4px;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-arrow-open {
+    transform: rotate(180deg);
+}
+
+/* Header styling */
+.app-header {
+    background-color: white;
+    padding: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    height: 64px;
+    line-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Fix for Ant Design's default padding */
+.ant-dropdown-menu-item-only-child {
+    padding: 0 !important;
+}

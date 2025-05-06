@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="300" fill="white"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="20" fill="#F0F7FF"/>
+  <circle cx="250" cy="70" r="30" fill="#F0F7FF"/>
+  <circle cx="70" cy="230" r="25" fill="#F0F7FF"/>
+  <circle cx="230" cy="250" r="15" fill="#F0F7FF"/>
+  
+  <!-- Main 404 text -->
+  <text x="150" y="150" font-family="Arial" font-size="80" font-weight="bold" text-anchor="middle" fill="#1677FF">404</text>
+  
+  <!-- Broken page icon -->
+  <path d="M120 80 L180 80 L180 200 L120 200 Z" fill="white" stroke="#1677FF" stroke-width="3"/>
+  <path d="M120 80 L180 80 L180 110 L165 95 L150 110 L135 95 L120 110 Z" fill="#F0F7FF" stroke="#1677FF" stroke-width="3"/>
+  <path d="M150 110 L150 200" stroke="#1677FF" stroke-width="2" stroke-dasharray="5 5"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="100" cy="150" r="5" fill="#1677FF"/>
+  <circle cx="200" cy="150" r="5" fill="#1677FF"/>
+  <circle cx="100" cy="170" r="5" fill="#1677FF"/>
+  <circle cx="200" cy="170" r="5" fill="#1677FF"/>
+  
+  <!-- Compass/direction icon -->
+  <circle cx="230" cy="100" r="25" fill="white" stroke="#1677FF" stroke-width="2"/>
+  <path d="M230 85 L230 115" stroke="#1677FF" stroke-width="2"/>
+  <path d="M215 100 L245 100" stroke="#1677FF" stroke-width="2"/>
+  <circle cx="230" cy="100" r="5" fill="#1677FF"/>
+  
+  <!-- Question mark -->
+  <circle cx="70" cy="100" r="20" fill="#1677FF"/>
+  <text x="70" y="108" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="white">?</text>
+</svg>

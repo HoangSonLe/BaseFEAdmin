@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="150" cy="150" r="120" fill="#F0F7FF"/>
+  
+  <!-- 404 Text -->
+  <text x="150" y="160" font-family="Arial" font-size="60" font-weight="bold" text-anchor="middle" fill="#1677FF">404</text>
+  
+  <!-- Magnifying glass -->
+  <circle cx="120" cy="120" r="40" fill="white" stroke="#1677FF" stroke-width="4"/>
+  <line x1="148" y1="148" x2="180" y2="180" stroke="#1677FF" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Document icon -->
+  <rect x="190" y="100" width="40" height="50" rx="4" fill="white" stroke="#1677FF" stroke-width="2"/>
+  <line x1="200" y1="115" x2="220" y2="115" stroke="#1677FF" stroke-width="2"/>
+  <line x1="200" y1="125" x2="220" y2="125" stroke="#1677FF" stroke-width="2"/>
+  <line x1="200" y1="135" x2="220" y2="135" stroke="#1677FF" stroke-width="2"/>
+  
+  <!-- Question mark -->
+  <circle cx="220" cy="80" r="20" fill="#1677FF"/>
+  <text x="220" y="88" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="white">?</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="90" cy="200" r="5" fill="#1677FF" opacity="0.5"/>
+  <circle cx="210" cy="220" r="8" fill="#1677FF" opacity="0.3"/>
+  <circle cx="70" cy="100" r="6" fill="#1677FF" opacity="0.4"/>
+  <circle cx="230" cy="160" r="4" fill="#1677FF" opacity="0.6"/>
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <circle cx="150" cy="150" r="120" fill="#F0F7FF" opacity="0.5"/>
+  
+  <!-- Character body -->
+  <ellipse cx="150" cy="170" rx="60" ry="70" fill="#1677FF"/>
+  
+  <!-- Character face -->
+  <circle cx="150" cy="120" r="40" fill="#FFFFFF"/>
+  <circle cx="135" cy="110" r="5" fill="#333333"/> <!-- Left eye -->
+  <circle cx="165" cy="110" r="5" fill="#333333"/> <!-- Right eye -->
+  
+  <!-- Surprised expression -->
+  <circle cx="150" cy="130" r="8" fill="#333333"/> <!-- Open mouth -->
+  
+  <!-- Arms -->
+  <path d="M100 160 Q80 180 70 170" stroke="#1677FF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M200 160 Q220 180 230 170" stroke="#1677FF" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- Server with smoke -->
+  <rect x="120" y="180" width="60" height="40" rx="5" fill="white"/>
+  <rect x="130" y="190" width="40" height="5" rx="2" fill="#1677FF"/>
+  <rect x="130" y="200" width="40" height="5" rx="2" fill="#1677FF"/>
+  <path d="M140 180 Q135 170 140 160 Q145 150 140 140" stroke="#999999" stroke-width="3"/>
+  <path d="M150 180 Q155 170 150 160 Q145 150 150 140" stroke="#999999" stroke-width="3"/>
+  <path d="M160 180 Q165 170 160 160 Q155 150 160 140" stroke="#999999" stroke-width="3"/>
+  
+  <!-- Lightning bolts -->
+  <path d="M90 100 L80 115 L90 115 L80 130" stroke="#FAAD14" stroke-width="3" stroke-linecap="round"/>
+  <path d="M210 100 L200 115 L210 115 L200 130" stroke="#FAAD14" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="90" cy="70" r="5" fill="#1677FF"/>
+  <circle cx="210" cy="70" r="5" fill="#1677FF"/>
+  <circle cx="90" cy="230" r="5" fill="#1677FF"/>
+  <circle cx="210" cy="230" r="5" fill="#1677FF"/>
+</svg>
