@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { Typography, Card, Divider, Space, Button, Input, Tag, Table } from "antd";
-import {
-    SearchOutlined,
-    FilterOutlined,
-    PlusOutlined,
-    ReloadOutlined,
-} from "@ant-design/icons";
+import { Typography, Card, Divider, Input, Tag } from "antd";
+import { SearchOutlined, PlusOutlined } from "@ant-design/icons";
 import {
     CommonTable,
     Dropdown,
@@ -38,8 +33,6 @@ const ComponentLibrary: React.FC = () => {
 
     // State for examples
     const [selectedValue, setSelectedValue] = useState<string | number | null>(null);
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
 
     // Dropdown options
     const categoryOptions: DropdownOption[] = [
@@ -120,7 +113,7 @@ const ComponentLibrary: React.FC = () => {
 
     // Example API request
     const apiRequest: ApiRequest<ExampleItem> = {
-        fetchData: async (params) => {
+        fetchData: async () => {
             // Simulate API call
             await new Promise((resolve) => setTimeout(resolve, 500));
             return {
@@ -137,15 +130,16 @@ const ComponentLibrary: React.FC = () => {
         <div className="component-library">
             <Title level={2}>Component Library</Title>
             <Paragraph>
-                This page showcases the common components used throughout the application.
-                Each component includes a description and example usage.
+                This page showcases the common components used throughout the application. Each
+                component includes a description and example usage.
             </Paragraph>
 
             <Divider orientation="left">Common Table</Divider>
             <Card variant="outlined" className="mb-8">
                 <Title level={4}>CommonTable</Title>
                 <Paragraph>
-                    A versatile table component that supports pagination, filtering, and API integration.
+                    A versatile table component that supports pagination, filtering, and API
+                    integration.
                 </Paragraph>
 
                 <CommonTable<ExampleItem>
@@ -163,7 +157,9 @@ const ComponentLibrary: React.FC = () => {
                     className="mb-4"
                 />
 
-                <Title level={5} className="mt-4">API-Powered Table</Title>
+                <Title level={5} className="mt-4">
+                    API-Powered Table
+                </Title>
                 <CommonTable<ExampleItem>
                     title="API Table Example"
                     description="This table fetches data from an API"
@@ -177,9 +173,7 @@ const ComponentLibrary: React.FC = () => {
             <Divider orientation="left">Form Components</Divider>
             <Card variant="outlined" className="mb-8">
                 <Title level={4}>Dropdown</Title>
-                <Paragraph>
-                    A dropdown component for selecting from a list of options.
-                </Paragraph>
+                <Paragraph>A dropdown component for selecting from a list of options.</Paragraph>
                 <Dropdown
                     label="Category"
                     placeholder="Select category"
@@ -190,29 +184,21 @@ const ComponentLibrary: React.FC = () => {
                 />
 
                 <Title level={4}>DatePicker</Title>
-                <Paragraph>
-                    A component for selecting a date.
-                </Paragraph>
+                <Paragraph>A component for selecting a date.</Paragraph>
                 <DatePicker
                     label="Date"
                     placeholder="Select date"
-                    onChange={(date) => setSelectedDate(date ? date.toDate() : null)}
+                    onChange={(date) => console.log("Date selected:", date)}
                     className="mb-4"
                 />
 
                 <Title level={4}>DateRangePicker</Title>
-                <Paragraph>
-                    A component for selecting a date range.
-                </Paragraph>
+                <Paragraph>A component for selecting a date range.</Paragraph>
                 <DateRangePicker
                     label="Date Range"
                     placeholder={["Start date", "End date"]}
                     onChange={(dates) => {
-                        if (dates && dates[0] && dates[1]) {
-                            setDateRange([dates[0].toDate(), dates[1].toDate()]);
-                        } else {
-                            setDateRange(null);
-                        }
+                        console.log("Date range selected:", dates);
                     }}
                     className="mb-4"
                 />
@@ -221,9 +207,7 @@ const ComponentLibrary: React.FC = () => {
             <Divider orientation="left">Filter Components</Divider>
             <Card variant="outlined" className="mb-8">
                 <Title level={4}>FilterPanel</Title>
-                <Paragraph>
-                    A collapsible panel for containing filter controls.
-                </Paragraph>
+                <Paragraph>A collapsible panel for containing filter controls.</Paragraph>
                 <FilterPanel
                     title="Filter Example"
                     onReset={() => console.log("Reset filters")}
@@ -241,7 +225,7 @@ const ComponentLibrary: React.FC = () => {
                         <DatePicker
                             label="Date"
                             placeholder="Select date"
-                            onChange={(date) => setSelectedDate(date ? date.toDate() : null)}
+                            onChange={(date) => console.log("Date selected:", date)}
                         />
                     </div>
                 </FilterPanel>
@@ -262,9 +246,7 @@ const ComponentLibrary: React.FC = () => {
             <Divider orientation="left">UI Components</Divider>
             <Card variant="outlined" className="mb-8">
                 <Title level={4}>ThemeToggle</Title>
-                <Paragraph>
-                    A toggle switch for changing between light and dark themes.
-                </Paragraph>
+                <Paragraph>A toggle switch for changing between light and dark themes.</Paragraph>
                 <div className="flex items-center">
                     <Text className="mr-2">Theme:</Text>
                     <ThemeToggle />
