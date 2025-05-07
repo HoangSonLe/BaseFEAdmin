@@ -1,0 +1,34 @@
+/* Simple theme toggle switch that matches the design */
+.theme-toggle-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Basic switch styling */
+.simple-theme-switch {
+    width: 36px !important;
+    height: 18px !important;
+    min-width: 36px !important;
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.simple-theme-switch.ant-switch-checked {
+    background-color: #1677ff !important;
+}
+
+/* Handle styling */
+.simple-theme-switch .ant-switch-handle {
+    width: 16px !important;
+    height: 16px !important;
+    top: 2px !important;
+    left: 2px !important;
+}
+
+.simple-theme-switch.ant-switch-checked .ant-switch-handle {
+    left: calc(100% - 16px - 2px) !important;
+}
+
+/* Remove inner content */
+.simple-theme-switch .ant-switch-inner {
+    display: none !important;
+}

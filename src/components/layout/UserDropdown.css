@@ -1,0 +1,169 @@
+/* Enhanced styles for the user dropdown */
+
+/* Dropdown container styling */
+.user-dropdown-menu {
+    min-width: 220px !important;
+    padding: 0;
+    border-radius: 10px !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+    border: 1px solid var(--border-color) !important;
+    overflow: hidden;
+    margin-top: 8px !important;
+}
+
+.dark .user-dropdown-menu {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* User profile section styling */
+.user-profile-container {
+    padding: 16px !important;
+}
+
+.user-profile-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+    color: var(--text-primary);
+}
+
+.user-handle {
+    color: var(--text-secondary);
+    font-size: 13px !important;
+    font-weight: 400;
+}
+
+/* Avatar styling */
+.user-avatar {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    box-shadow: 0 2px 8px rgba(91, 95, 199, 0.25) !important;
+}
+
+.header-avatar {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    box-shadow: 0 2px 6px rgba(91, 95, 199, 0.2) !important;
+}
+
+/* Theme toggle section styling */
+.theme-toggle-container {
+    padding: 12px 16px !important;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-container:hover {
+    background-color: var(--hover-bg);
+}
+
+.theme-toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-toggle-icon {
+    color: var(--text-secondary);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.theme-toggle-switch {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Logout section styling */
+.logout-container {
+    padding: 12px 16px !important;
+    transition: background-color 0.2s ease;
+}
+
+.logout-container:hover {
+    background-color: var(--hover-bg);
+}
+
+.logout-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logout-icon {
+    color: var(--text-secondary);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.logout-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Header dropdown trigger styling */
+.header-user-dropdown {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+}
+
+.header-user-dropdown:hover {
+    background-color: var(--hover-bg);
+}
+
+.header-user-text {
+    margin-left: 10px;
+    margin-right: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Down arrow styling */
+.dropdown-arrow {
+    color: var(--text-secondary);
+    font-size: 10px;
+    margin-left: 2px;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-arrow-open {
+    transform: rotate(180deg);
+}
+
+/* Divider styling */
+.user-dropdown-menu .ant-dropdown-menu-item-divider {
+    margin: 0 !important;
+    height: 1px !important;
+    background-color: var(--border-color) !important;
+}

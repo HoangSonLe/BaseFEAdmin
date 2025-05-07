@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ConfigProvider } from "antd";
+
+// Theme Provider
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 // Layouts
 import MainLayout from "./layouts/MainLayout";
@@ -8,6 +10,7 @@ import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Products from "./pages/Products";
+import SimpleTable from "./pages/SimpleTable";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import ErrorPage from "./pages/ErrorPage";
@@ -22,14 +25,7 @@ import ProductInventory from "./pages/products/ProductInventory";
 
 function App() {
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: "#1677ff",
-                    borderRadius: 6,
-                },
-            }}
-        >
+        <ThemeProvider>
             <Router>
                 <Routes>
                     <Route path="/" element={<MainLayout />}>
@@ -44,6 +40,7 @@ function App() {
                         <Route path="products" element={<Products />} />
                         <Route path="products/categories" element={<ProductCategories />} />
                         <Route path="products/inventory" element={<ProductInventory />} />
+                        <Route path="simple-table" element={<SimpleTable />} />
 
                         {/* Settings route */}
                         <Route path="settings" element={<Settings />} />
@@ -76,7 +73,7 @@ function App() {
                     </Route>
                 </Routes>
             </Router>
-        </ConfigProvider>
+        </ThemeProvider>
     );
 }
 

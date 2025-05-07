@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../../contexts/ThemeContext";
 import {
     DashboardOutlined,
     TeamOutlined,
@@ -11,11 +12,14 @@ import {
     DatabaseOutlined,
     UserSwitchOutlined,
     SafetyCertificateOutlined,
+    TableOutlined,
 } from "@ant-design/icons";
 
 const SidebarMenu: React.FC = () => {
     const location = useLocation();
     const currentPath = location.pathname;
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
 
     // Determine which keys should be open based on the current path
     const getOpenKeys = () => {
@@ -33,6 +37,7 @@ const SidebarMenu: React.FC = () => {
         if (currentPath === "/products") return "3";
         if (currentPath === "/products/categories") return "3-1";
         if (currentPath === "/products/inventory") return "3-2";
+        if (currentPath === "/simple-table") return "6";
         if (currentPath === "/settings") return "4";
         return "";
     };
@@ -40,6 +45,7 @@ const SidebarMenu: React.FC = () => {
     return (
         <Menu
             mode="inline"
+            theme={isDark ? "dark" : "light"}
             defaultOpenKeys={getOpenKeys()}
             selectedKeys={[getSelectedKey()]}
             items={[
@@ -89,6 +95,11 @@ const SidebarMenu: React.FC = () => {
                             label: <Link to="/products/inventory">Inventory</Link>,
                         },
                     ],
+                },
+                {
+                    key: "6",
+                    icon: <TableOutlined />,
+                    label: <Link to="/simple-table">Simple Table</Link>,
                 },
                 {
                     key: "4",

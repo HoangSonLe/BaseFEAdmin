@@ -8,11 +8,14 @@ import {
     SidebarMenu,
     UserDropdown,
 } from "../components/layout";
+import { useTheme } from "../contexts/ThemeContext";
 
 const { Header, Sider } = Layout;
 
 const MainLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
 
     const handleToggleCollapse = () => {
         setCollapsed(!collapsed);
@@ -24,16 +27,18 @@ const MainLayout: React.FC = () => {
                 trigger={null}
                 collapsible
                 collapsed={collapsed}
-                theme="light"
+                theme={isDark ? "dark" : "light"}
                 style={{
-                    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+                    boxShadow: isDark
+                        ? "0 2px 8px rgba(0, 0, 0, 0.3)"
+                        : "0 2px 8px rgba(0, 0, 0, 0.15)",
                 }}
             >
                 <SidebarLogo collapsed={collapsed} />
                 <SidebarMenu />
             </Sider>
             <Layout>
-                <Header className="app-header">
+                <Header className={`app-header ${isDark ? "app-header-dark" : ""}`}>
                     <HeaderToggle collapsed={collapsed} onToggle={handleToggleCollapse} />
                     <UserDropdown />
                 </Header>
