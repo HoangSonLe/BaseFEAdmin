@@ -69,11 +69,10 @@ const UserDropdown: React.FC = () => {
             }}
             placement="bottomRight"
             getPopupContainer={(trigger) => trigger.parentElement || document.body}
-            overlayStyle={{ position: "fixed" }}
+            overlayClassName={"user-dropdown-menu"}
             trigger={["click"]}
             onOpenChange={(open) => setDropdownOpen(open)}
             open={dropdownOpen}
-            dropdownRender={(menu) => <div className="user-dropdown-menu">{menu}</div>}
         >
             <div className="cursor-pointer header-user-dropdown">
                 <Avatar size={28} className="header-avatar">

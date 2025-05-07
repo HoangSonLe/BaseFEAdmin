@@ -15,6 +15,7 @@ import {
     SafetyCertificateOutlined,
     TableOutlined,
     AppstoreOutlined,
+    TagOutlined,
 } from "@ant-design/icons";
 
 interface SidebarMenuProps {
@@ -25,7 +26,6 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
     const location = useLocation();
     const currentPath = location.pathname;
     const { theme } = useTheme();
-    const isDark = theme === "dark";
 
     // Determine which keys should be open based on the current path
     const getOpenKeys = () => {
@@ -45,6 +45,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         if (currentPath === "/products/inventory") return "3-2";
         if (currentPath === "/simple-table") return "6";
         if (currentPath === "/components") return "7";
+        if (currentPath === "/status-example") return "8";
         if (currentPath === "/settings") return "4";
         return "";
     };
@@ -52,7 +53,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
     return (
         <Menu
             mode="inline"
-            theme={isDark ? "dark" : "light"}
+            theme={theme}
             defaultOpenKeys={getOpenKeys()}
             selectedKeys={[getSelectedKey()]}
             className={`sidebar-menu ${collapsed ? "menu-collapsed" : ""}`}
@@ -113,6 +114,11 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
                     key: "7",
                     icon: <AppstoreOutlined />,
                     label: <Link to="/components">Component Library</Link>,
+                },
+                {
+                    key: "8",
+                    icon: <TagOutlined />,
+                    label: <Link to="/status-example">Status Component</Link>,
                 },
                 {
                     key: "4",

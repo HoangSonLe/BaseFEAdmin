@@ -55,33 +55,40 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         setThemeState(newTheme);
     };
 
+    // Get CSS variables for current theme
+    const getCssVar = (name: string) => {
+        return getComputedStyle(document.documentElement).getPropertyValue(`--${name}`).trim();
+    };
+
     // Define Ant Design theme based on current theme mode
     const antdThemeConfig = {
         algorithm: theme === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
         token: {
-            colorPrimary: "#1677ff",
+            colorPrimary: getCssVar("primary-color"),
             borderRadius: 6,
             // Add more token overrides as needed
         },
         components: {
             // Component-specific theme overrides
             Layout: {
-                siderBg: theme === "dark" ? "#141414" : "#ffffff",
-                headerBg: theme === "dark" ? "#141414" : "#ffffff",
-                bodyBg: theme === "dark" ? "#141414" : "#f0f0f0",
+                siderBg: theme === "dark" ? "var(--dark-bg-primary)" : "var(--light-bg-primary)",
+                headerBg: theme === "dark" ? "var(--dark-bg-primary)" : "var(--light-bg-primary)",
+                bodyBg: theme === "dark" ? "var(--dark-bg-secondary)" : "var(--light-bg-secondary)",
+                colorBgLayout:
+                    theme === "dark" ? "var(--dark-bg-secondary)" : "var(--light-bg-secondary)",
             },
             Menu: {
-                darkItemBg: "#141414",
-                darkItemColor: "rgba(255, 255, 255, 0.85)",
-                darkItemHoverBg: "#1f1f1f",
-                darkItemSelectedBg: "#1677ff",
+                darkItemBg: getCssVar("dark-bg-primary"),
+                darkItemColor: getCssVar("dark-text-primary"),
+                darkItemHoverBg: getCssVar("dark-hover-bg"),
+                darkItemSelectedBg: getCssVar("primary-color"),
             },
             Card: {
-                colorBorderSecondary: theme === "dark" ? "#303030" : "#f0f0f0",
+                colorBorderSecondary: getCssVar("border-light"),
             },
             Button: {
                 colorBgTextHover:
-                    theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "rgba(0, 0, 0, 0.03)",
+                    theme === "dark" ? "var(--dark-hover-bg)" : "var(--light-hover-bg)",
             },
         },
     };

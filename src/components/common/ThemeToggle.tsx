@@ -10,20 +10,19 @@ interface ThemeToggleProps {
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "", showLabel = false }) => {
     const { theme, toggleTheme } = useTheme();
-    const isDark = theme === "dark";
 
     return (
         <div className={`theme-toggle-wrapper flex items-center ${className}`}>
             {showLabel && (
-                <span
-                    className={`mr-3 text-sm font-medium ${
-                        isDark ? "text-dark-text-secondary" : "text-light-text-secondary"
-                    }`}
-                >
-                    {isDark ? "Dark Mode" : "Light Mode"}
+                <span className="theme-toggle-label mr-3 text-sm font-medium">
+                    {theme === "dark" ? "Dark Mode" : "Light Mode"}
                 </span>
             )}
-            <Switch checked={isDark} onChange={toggleTheme} className="simple-theme-switch" />
+            <Switch
+                checked={theme === "dark"}
+                onChange={toggleTheme}
+                className="simple-theme-switch"
+            />
         </div>
     );
 };

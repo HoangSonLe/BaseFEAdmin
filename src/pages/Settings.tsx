@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Card, Form, Input, Button, Switch, Tabs, Typography, Select, Divider } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 import { useTheme } from "../contexts/ThemeContext";
+import "./Settings.css";
 
 const { Title } = Typography;
 const { TabPane } = Tabs;
@@ -103,7 +104,7 @@ const Settings: React.FC = () => {
                             >
                                 <Switch
                                     onChange={(checked) => setTheme(checked ? "dark" : "light")}
-                                    className={theme === "dark" ? "bg-primary-600" : ""}
+                                    className="theme-mode-switch"
                                 />
                             </Form.Item>
 

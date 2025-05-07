@@ -1,0 +1,49 @@
+/* Layout component styles */
+
+/* Base layout */
+.ant-layout {
+    background-color: var(--bg-secondary);
+}
+
+/* Sider */
+.ant-layout-sider {
+    background-color: var(--bg-primary);
+}
+
+/* Header */
+.ant-layout-header {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Content */
+.ant-layout-content {
+    background-color: var(--bg-secondary);
+}
+
+/* Footer */
+.ant-layout-footer {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Dark mode adjustments */
+.dark .ant-layout {
+    background-color: var(--bg-secondary);
+}
+
+.dark .ant-layout-sider {
+    background-color: var(--bg-primary);
+}
+
+.dark .ant-layout-header {
+    background-color: var(--bg-primary);
+}
+
+.dark .ant-layout-content {
+    background-color: var(--bg-secondary);
+}
+
+.dark .ant-layout-footer {
+    background-color: var(--bg-primary);
+}

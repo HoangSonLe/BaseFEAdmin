@@ -1,40 +1,16 @@
-/* Custom styles for the user dropdown - Exact match to the image */
-:root {
-    --primary-color: #5b5fc7;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --border-color: #f0f0f0;
-    --hover-bg: #f5f5f5;
-    --shadow-color: rgba(0, 0, 0, 0.08);
+/* Layout component styles */
 
-    /* Background colors */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f5;
-    --bg-tertiary: #f0f0f0;
+/* Main layout styling */
+.main-layout {
+    background-color: var(--bg-secondary);
 }
-
-/* Dark mode variables */
-.dark {
-    --text-primary: #ffffffd9;
-    --text-secondary: #ffffff73;
-    --border-color: #303030;
-    --hover-bg: #1f1f1f;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-
-    /* Background colors */
-    --bg-primary: #141414;
-    --bg-secondary: #1f1f1f;
-    --bg-tertiary: #2a2a2a;
-}
-
-/* User dropdown styles have been moved to UserDropdown.css */
 
 /* Header styling */
 .app-header {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     padding: 0;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 4px var(--shadow-color);
     height: 64px;
     line-height: 64px;
     display: flex;
@@ -43,8 +19,9 @@
     transition: all 0.3s ease;
 }
 
-.app-header-dark {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+/* Sider styling */
+.app-sider {
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 /* Fix for Ant Design's default padding */
@@ -61,12 +38,18 @@
 /* Ensure content area has proper scrolling behavior */
 .ant-layout {
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    background-color: var(--bg-secondary);
 }
 
 /* Enhanced animation for main content area */
 .main-content-layout {
     transition: margin-left 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
     will-change: margin-left;
+}
+
+/* Nested layout styling */
+.nested-layout {
+    background-color: var(--bg-secondary);
 }
 
 /* Improve menu animation */

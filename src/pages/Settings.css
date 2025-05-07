@@ -1,0 +1,4 @@
+/* Settings page styles */
+.theme-mode-switch.ant-switch-checked {
+    background-color: var(--primary-color) !important;
+}

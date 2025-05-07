@@ -1,0 +1,6 @@
+/* Main content styles */
+.main-content {
+    background-color: var(--bg-primary);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+}

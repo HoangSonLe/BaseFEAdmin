@@ -1,28 +1,21 @@
 import React from "react";
-import { Layout, theme } from "antd";
+import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
-import { useTheme } from "../../contexts/ThemeContext";
+import "./MainContent.css";
 
 const { Content } = Layout;
 
 const MainContent: React.FC = () => {
-    const { token } = theme.useToken();
-    const { theme: appTheme } = useTheme();
-    const isDark = appTheme === "dark";
-
     return (
         <Content
+            className="main-content"
             style={{
                 margin: "24px 16px",
                 padding: 24,
                 minHeight: 280,
-                background: token.colorBgContainer,
-                borderRadius: token.borderRadiusLG,
+                borderRadius: 8,
                 display: "flex",
                 flexDirection: "column",
-                boxShadow: isDark
-                    ? "0 2px 8px rgba(0, 0, 0, 0.3)"
-                    : "0 2px 8px rgba(0, 0, 0, 0.05)",
             }}
         >
             <Outlet />

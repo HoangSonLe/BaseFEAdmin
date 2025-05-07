@@ -15,8 +15,8 @@ export interface DropdownProps extends Omit<SelectProps, "options"> {
     label?: string;
     options?: DropdownOption[];
     placeholder?: string;
-    value?: string | number | null;
-    onChange?: (value: string | number | null) => void;
+    value?: string | number | string[] | number[] | null;
+    onChange?: (value: string | number | string[] | number[] | null) => void;
     allowClear?: boolean;
     className?: string;
     style?: React.CSSProperties;
@@ -24,6 +24,7 @@ export interface DropdownProps extends Omit<SelectProps, "options"> {
     fetchOptions?: () => Promise<DropdownOption[]>;
     debounceTimeout?: number;
     searchable?: boolean;
+    mode?: "multiple" | "tags" | undefined;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -38,6 +39,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     fetchOptions,
     debounceTimeout = 300,
     searchable = false,
+    mode,
     ...rest
 }) => {
     const [options, setOptions] = useState<DropdownOption[]>(propOptions || []);
@@ -85,7 +87,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         }
     }, [searchValue, debounceTimeout, isApiMode]);
 
-    const handleChange = (newValue: string | number | null) => {
+    const handleChange = (newValue: string | number | string[] | number[] | null) => {
         if (onChange) {
             onChange(newValue);
         }
@@ -106,6 +108,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 placeholder={placeholder}
                 allowClear={allowClear}
                 options={options}
+                mode={mode}
                 suffixIcon={
                     loading ? <Spin size="small" /> : <DownOutlined className="dropdown-icon" />
                 }

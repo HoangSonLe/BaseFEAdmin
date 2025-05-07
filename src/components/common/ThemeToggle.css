@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.theme-toggle-label {
+    color: var(--text-secondary);
+}
+
 /* Basic switch styling */
 .simple-theme-switch {
     width: 36px !important;

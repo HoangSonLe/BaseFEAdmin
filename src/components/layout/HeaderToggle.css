@@ -6,12 +6,12 @@
     overflow: hidden;
 }
 
-.header-toggle-btn:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+.header-toggle-btn {
+    color: var(--text-primary);
 }
 
-.dark .header-toggle-btn:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+.header-toggle-btn:hover {
+    background-color: var(--hover-bg);
 }
 
 .toggle-icon {

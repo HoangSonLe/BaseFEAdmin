@@ -15,23 +15,20 @@ const { Header, Sider } = Layout;
 const MainLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const { theme } = useTheme();
-    const isDark = theme === "dark";
 
     const handleToggleCollapse = () => {
         setCollapsed(!collapsed);
     };
 
     return (
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout className="main-layout" style={{ minHeight: "100vh" }}>
             <Sider
                 trigger={null}
                 collapsible
                 collapsed={collapsed}
-                theme={isDark ? "dark" : "light"}
+                theme={theme}
+                className="app-sider"
                 style={{
-                    boxShadow: isDark
-                        ? "0 2px 8px rgba(0, 0, 0, 0.3)"
-                        : "0 2px 8px rgba(0, 0, 0, 0.15)",
                     position: "fixed",
                     height: "100vh",
                     zIndex: 10,
@@ -43,9 +40,12 @@ const MainLayout: React.FC = () => {
                 <SidebarLogo collapsed={collapsed} />
                 <SidebarMenu collapsed={collapsed} />
             </Sider>
-            <Layout className="main-content-layout" style={{ marginLeft: collapsed ? 80 : 200 }}>
+            <Layout
+                className="main-content-layout nested-layout"
+                style={{ marginLeft: collapsed ? 80 : 200 }}
+            >
                 <Header
-                    className={`app-header ${isDark ? "app-header-dark" : ""}`}
+                    className="app-header"
                     style={{
                         position: "sticky",
                         top: 0,

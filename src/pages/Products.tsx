@@ -408,7 +408,12 @@ const Products: React.FC = () => {
 
             rowIndex: 0,
             renderFormItem: () => (
-                <Dropdown placeholder="All Statuses" options={statusOptions} allowClear={true} />
+                <Dropdown
+                    placeholder="All Statuses"
+                    mode="multiple"
+                    options={statusOptions}
+                    allowClear={true}
+                />
             ),
         },
         {
