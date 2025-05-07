@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Select, Typography, Spin } from "antd";
 import type { SelectProps } from "antd/es/select";
 import { DownOutlined } from "@ant-design/icons";
-import "./ComponentStyles.css";
 
 const { Text } = Typography;
 

@@ -1,0 +1,190 @@
+/* Card component styles */
+
+/* Base card styles */
+.ant-card {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px var(--shadow-color);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.ant-card:hover {
+    box-shadow: 0 3px 6px var(--shadow-color);
+}
+
+/* Card variants */
+.ant-card-bordered {
+    border: 1px solid var(--border-light);
+}
+
+.ant-card[variant="outlined"] {
+    border: 1px solid var(--border-light);
+    box-shadow: none;
+}
+
+.ant-card[variant="outlined"]:hover {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+/* Card head */
+.ant-card-head {
+    border-bottom: 1px solid var(--border-light);
+    padding: 16px;
+    min-height: 48px;
+}
+
+.ant-card-head-title {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.ant-card-head-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ant-card-extra {
+    color: var(--text-secondary);
+}
+
+/* Card body */
+.ant-card-body {
+    padding: 16px;
+    color: var(--text-primary);
+}
+
+/* Card actions */
+.ant-card-actions {
+    border-top: 1px solid var(--border-light);
+    background-color: var(--bg-secondary);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.ant-card-actions > li {
+    margin: 0;
+}
+
+/* Card cover */
+.ant-card-cover {
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.ant-card-cover img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Card grid */
+.ant-card-grid {
+    border: 0;
+    box-shadow: 1px 0 0 0 var(--border-light), 0 1px 0 0 var(--border-light), 1px 1px 0 0 var(--border-light), 1px 0 0 0 var(--border-light) inset, 0 1px 0 0 var(--border-light) inset;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.ant-card-grid:hover {
+    box-shadow: 0 3px 6px var(--shadow-color);
+    z-index: 1;
+}
+
+/* Card loading */
+.ant-card-loading-content {
+    padding: 16px;
+}
+
+.ant-card-loading-block {
+    background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 37%, var(--bg-tertiary) 63%);
+    background-size: 400% 100%;
+    animation: ant-card-loading 1.4s ease infinite;
+    border-radius: 4px;
+}
+
+@keyframes ant-card-loading {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+/* Card sizes */
+.ant-card-small .ant-card-head {
+    min-height: 36px;
+    padding: 8px 12px;
+}
+
+.ant-card-small .ant-card-head-title {
+    font-size: 14px;
+}
+
+.ant-card-small .ant-card-body {
+    padding: 12px;
+}
+
+/* Card tabs */
+.ant-card-head .ant-tabs {
+    margin-bottom: -16px;
+}
+
+.ant-card-head .ant-tabs-nav {
+    margin: 0;
+}
+
+.ant-card-head .ant-tabs-tab {
+    padding: 12px 16px;
+}
+
+/* Card meta */
+.ant-card-meta {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.ant-card-meta-avatar {
+    margin-right: 16px;
+}
+
+.ant-card-meta-title {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.ant-card-meta-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Dark mode adjustments */
+.dark .ant-card {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+.dark .ant-card-head {
+    border-bottom-color: var(--border-light);
+}
+
+.dark .ant-card-actions {
+    background-color: var(--bg-secondary);
+    border-top-color: var(--border-light);
+}
+
+.dark .ant-card-grid {
+    box-shadow: 1px 0 0 0 var(--border-light), 0 1px 0 0 var(--border-light), 1px 1px 0 0 var(--border-light), 1px 0 0 0 var(--border-light) inset, 0 1px 0 0 var(--border-light) inset;
+}
+
+.dark .ant-card-loading-block {
+    background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 37%, var(--bg-tertiary) 63%);
+}

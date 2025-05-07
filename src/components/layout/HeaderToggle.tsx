@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { useTheme } from "../../contexts/ThemeContext";
+import "./HeaderToggle.css";
 
 interface HeaderToggleProps {
     collapsed: boolean;
@@ -15,7 +16,7 @@ const HeaderToggle: React.FC<HeaderToggleProps> = ({ collapsed, onToggle }) => {
     return (
         <Button
             type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            className={`header-toggle-btn ${isDark ? "dark" : ""}`}
             onClick={onToggle}
             style={{
                 fontSize: "16px",
@@ -23,7 +24,11 @@ const HeaderToggle: React.FC<HeaderToggleProps> = ({ collapsed, onToggle }) => {
                 height: 64,
                 color: isDark ? "rgba(255, 255, 255, 0.85)" : undefined,
             }}
-        />
+        >
+            <span className={`toggle-icon ${collapsed ? "toggle-icon-rotate" : ""}`}>
+                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            </span>
+        </Button>
     );
 };
 

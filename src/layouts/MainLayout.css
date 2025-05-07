@@ -51,3 +51,47 @@
 .ant-dropdown-menu-item-only-child {
     padding: 0 !important;
 }
+
+/* Sticky sidebar styles */
+.ant-layout-sider {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    will-change: width, transform;
+}
+
+/* Ensure content area has proper scrolling behavior */
+.ant-layout {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Enhanced animation for main content area */
+.main-content-layout {
+    transition: margin-left 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    will-change: margin-left;
+}
+
+/* Improve menu animation */
+.ant-menu-inline-collapsed {
+    width: 80px !important;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Smooth animation for menu items */
+.ant-menu-item,
+.ant-menu-submenu-title {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Smooth animation for menu icons */
+.anticon {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Ensure the main content area scrolls properly */
+.ant-layout-content {
+    overflow-y: auto;
+}
+
+/* Ensure the app has proper overflow handling */
+body {
+    overflow-x: hidden;
+}

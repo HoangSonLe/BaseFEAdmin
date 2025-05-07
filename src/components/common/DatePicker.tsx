@@ -2,7 +2,6 @@ import React from "react";
 import { DatePicker as AntDatePicker, Typography } from "antd";
 import type { DatePickerProps as AntDatePickerProps } from "antd/es/date-picker";
 import { CalendarOutlined } from "@ant-design/icons";
-import "./ComponentStyles.css";
 
 const { Text } = Typography;
 

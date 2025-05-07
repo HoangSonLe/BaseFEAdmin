@@ -3,8 +3,6 @@ import {
     EditOutlined,
     EyeOutlined,
     PlusOutlined,
-    SortAscendingOutlined,
-    SortDescendingOutlined,
     SearchOutlined,
     FilterOutlined,
     DownloadOutlined,
@@ -12,7 +10,6 @@ import {
     ReloadOutlined,
 } from "@ant-design/icons";
 import { Button, Image, Space, Tag, Tooltip, Input } from "antd";
-import type { MenuProps } from "antd/es/menu";
 import type { ColumnType } from "antd/es/table";
 
 import React, { useState } from "react";
@@ -209,8 +206,7 @@ const Products: React.FC = () => {
                 { text: "Home Appliances", value: "Home Appliances" },
                 { text: "Wearables", value: "Wearables" },
             ],
-            // @ts-expect-error - Type issue with onFilter
-            onFilter: (value, record: Product) => record.category === value.toString(),
+            onFilter: (value: any, record: Product) => record.category === value.toString(),
             render: (category: string) => <Tag color="blue">{category}</Tag>,
         },
         {
@@ -235,8 +231,7 @@ const Products: React.FC = () => {
                 { text: "Low Stock", value: "Low Stock" },
                 { text: "Out of Stock", value: "Out of Stock" },
             ],
-            // @ts-expect-error - Type issue with onFilter
-            onFilter: (value, record: Product) => record.status === value.toString(),
+            onFilter: (value: any, record: Product) => record.status === value.toString(),
             render: (status: string) => {
                 let color = "green";
                 if (status === "Low Stock") color = "orange";
@@ -284,23 +279,6 @@ const Products: React.FC = () => {
                 </Space>
             ),
         },
-    ];
-
-    // Filter options for the table
-    const filterItems: MenuProps["items"] = [
-        { key: "1", label: "All Categories" },
-        { key: "2", label: "Electronics" },
-        { key: "3", label: "Home Appliances" },
-        { key: "4", label: "Wearables" },
-    ];
-
-    // Sort options for the table
-    const sortItems: MenuProps["items"] = [
-        { key: "1", label: "Name (A-Z)", icon: <SortAscendingOutlined /> },
-        { key: "2", label: "Name (Z-A)", icon: <SortDescendingOutlined /> },
-        { key: "3", label: "Price (Low to High)", icon: <SortAscendingOutlined /> },
-        { key: "4", label: "Price (High to Low)", icon: <SortDescendingOutlined /> },
-        { key: "5", label: "Rating (High to Low)", icon: <SortDescendingOutlined /> },
     ];
 
     // Handle search functionality
@@ -386,13 +364,6 @@ const Products: React.FC = () => {
 
     // Toggle between local data and API mode
     const [useApiMode, setUseApiMode] = useState(false);
-
-    // Filter states
-    const [categoryFilter, setCategoryFilter] = useState<string | number | null>(null);
-    const [statusFilter, setStatusFilter] = useState<string | number | null>(null);
-    const [priceRangeFilter, setPriceRangeFilter] = useState<[number, number] | null>(null);
-    const [dateFilter, setDateFilter] = useState<Date | null>(null);
-    const [dateRangeFilter, setDateRangeFilter] = useState<[Date, Date] | null>(null);
 
     // Search form items for the CommonTable
     const searchFormItems: SearchFormItemProps[] = [
@@ -519,46 +490,6 @@ const Products: React.FC = () => {
         { label: "Low Stock", value: "Low Stock" },
         { label: "Out of Stock", value: "Out of Stock" },
     ];
-
-    // Mock API fetch for dropdown options
-    const fetchCategoryOptions = async (): Promise<DropdownOption[]> => {
-        // Simulate API delay
-        await new Promise((resolve) => setTimeout(resolve, 500));
-
-        // Return mock data
-        return [
-            { label: "All Categories", value: "" },
-            { label: "Electronics", value: "Electronics" },
-            { label: "Home Appliances", value: "Home Appliances" },
-            { label: "Wearables", value: "Wearables" },
-            { label: "Kitchen", value: "Kitchen" },
-            { label: "Outdoor", value: "Outdoor" },
-            { label: "Furniture", value: "Furniture" },
-        ];
-    };
-
-    // Handle filter reset
-    const handleFilterReset = () => {
-        setCategoryFilter(null);
-        setStatusFilter(null);
-        setPriceRangeFilter(null);
-        setDateFilter(null);
-        setDateRangeFilter(null);
-    };
-
-    // Handle filter apply
-    const handleFilterApply = () => {
-        console.log("Applied filters:", {
-            category: categoryFilter,
-            status: statusFilter,
-            priceRange: priceRangeFilter,
-            date: dateFilter,
-            dateRange: dateRangeFilter,
-        });
-
-        // Here you would typically update your data based on filters
-        // For this example, we'll just log the filters
-    };
 
     // Custom toolbar buttons
     const customToolbar = [

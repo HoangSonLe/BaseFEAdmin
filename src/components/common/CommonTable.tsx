@@ -4,7 +4,6 @@ import { Table, Button, Input, Space, Card, Dropdown, Pagination } from "antd";
 import type { MenuProps } from "antd/es/menu";
 import type { TableProps } from "antd/es/table";
 import { SearchOutlined, FilterOutlined, MoreOutlined } from "@ant-design/icons";
-import "./ComponentStyles.css";
 import SearchForm from "./SearchForm";
 import type { SearchFormItemProps } from "./SearchForm";
 
@@ -109,12 +108,10 @@ const CommonTable = <T extends Record<string, any>>({
     // State for API data
     const [loading, setLoading] = useState(false);
     const [apiData, setApiData] = useState<T[]>([]);
-    const [filters, setFilters] = useState<Record<string, any>>(
-        request?.initialParams?.filters || {}
+    const [filters] = useState<Record<string, any>>(request?.initialParams?.filters || {});
+    const [sorter] = useState<{ field: string; order: "ascend" | "descend" } | undefined>(
+        request?.initialParams?.sorter
     );
-    const [sorter, setSorter] = useState<
-        { field: string; order: "ascend" | "descend" } | undefined
-    >(request?.initialParams?.sorter);
 
     // Determine if we're using API or local data
     const isApiMode = !!request;

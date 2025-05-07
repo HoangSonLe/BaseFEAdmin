@@ -2,7 +2,6 @@ import React from "react";
 import { DatePicker, Typography } from "antd";
 import type { RangePickerProps } from "antd/es/date-picker";
 import { CalendarOutlined } from "@ant-design/icons";
-import "./ComponentStyles.css";
 
 const { RangePicker } = DatePicker;
 const { Text } = Typography;

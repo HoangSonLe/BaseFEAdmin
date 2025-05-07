@@ -1,0 +1,210 @@
+/* Button component styles */
+
+/* Base button styles */
+.ant-btn {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 36px;
+    font-weight: 500;
+}
+
+.ant-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Primary button */
+.ant-btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.ant-btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    opacity: 0.9;
+    box-shadow: 0 2px 8px rgba(22, 119, 255, 0.3);
+}
+
+/* Default button */
+.ant-btn-default {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.ant-btn-default:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Dashed button */
+.ant-btn-dashed {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    border-style: dashed;
+    color: var(--text-primary);
+}
+
+.ant-btn-dashed:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Text button */
+.ant-btn-text {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--text-primary);
+}
+
+.ant-btn-text:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+/* Link button */
+.ant-btn-link {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--primary-color);
+    padding: 0;
+}
+
+.ant-btn-link:hover {
+    color: var(--primary-color);
+    opacity: 0.8;
+    background-color: transparent;
+}
+
+/* Danger button */
+.ant-btn-dangerous {
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+.ant-btn-dangerous.ant-btn-primary {
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+    color: white;
+}
+
+.ant-btn-dangerous:hover {
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+    color: white;
+    opacity: 0.9;
+}
+
+/* Button sizes */
+.ant-btn-lg {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.ant-btn-sm {
+    height: 28px;
+    padding: 0 12px;
+    font-size: 12px;
+}
+
+/* Button with icon */
+.ant-btn > .anticon + span,
+.ant-btn > span + .anticon {
+    margin-left: 6px;
+}
+
+/* Button loading state */
+.ant-btn-loading {
+    opacity: 0.8;
+    cursor: default;
+}
+
+.ant-btn-loading:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Button disabled state */
+.ant-btn-disabled,
+.ant-btn-disabled:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Button group */
+.ant-btn-group {
+    display: inline-flex;
+}
+
+.ant-btn-group .ant-btn {
+    border-radius: 0;
+}
+
+.ant-btn-group .ant-btn:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.ant-btn-group .ant-btn:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Custom button styles */
+.primary-action-button {
+    border-radius: 6px;
+    padding: 0 16px;
+    height: 36px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.primary-action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+/* Dark mode adjustments */
+.dark .ant-btn-default,
+.dark .ant-btn-dashed {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .ant-btn-default:hover,
+.dark .ant-btn-dashed:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.dark .ant-btn-text {
+    color: var(--text-primary);
+}
+
+.dark .ant-btn-text:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+.dark .primary-action-button:hover {
+    box-shadow: 0 4px 6px var(--shadow-color);
+}

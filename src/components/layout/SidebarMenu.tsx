@@ -2,6 +2,7 @@ import React from "react";
 import { Menu } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../../contexts/ThemeContext";
+import "./SidebarMenu.css";
 import {
     DashboardOutlined,
     TeamOutlined,
@@ -13,9 +14,14 @@ import {
     UserSwitchOutlined,
     SafetyCertificateOutlined,
     TableOutlined,
+    AppstoreOutlined,
 } from "@ant-design/icons";
 
-const SidebarMenu: React.FC = () => {
+interface SidebarMenuProps {
+    collapsed?: boolean;
+}
+
+const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
     const location = useLocation();
     const currentPath = location.pathname;
     const { theme } = useTheme();
@@ -38,6 +44,7 @@ const SidebarMenu: React.FC = () => {
         if (currentPath === "/products/categories") return "3-1";
         if (currentPath === "/products/inventory") return "3-2";
         if (currentPath === "/simple-table") return "6";
+        if (currentPath === "/components") return "7";
         if (currentPath === "/settings") return "4";
         return "";
     };
@@ -48,6 +55,7 @@ const SidebarMenu: React.FC = () => {
             theme={isDark ? "dark" : "light"}
             defaultOpenKeys={getOpenKeys()}
             selectedKeys={[getSelectedKey()]}
+            className={`sidebar-menu ${collapsed ? "menu-collapsed" : ""}`}
             items={[
                 {
                     key: "1",
@@ -100,6 +108,11 @@ const SidebarMenu: React.FC = () => {
                     key: "6",
                     icon: <TableOutlined />,
                     label: <Link to="/simple-table">Simple Table</Link>,
+                },
+                {
+                    key: "7",
+                    icon: <AppstoreOutlined />,
+                    label: <Link to="/components">Component Library</Link>,
                 },
                 {
                     key: "4",

@@ -1,0 +1,203 @@
+/* Input component styles */
+
+/* Base input styles */
+.ant-input {
+    height: 36px;
+    padding: 4px 11px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.ant-input:hover {
+    border-color: var(--primary-color);
+}
+
+.ant-input:focus,
+.ant-input-focused {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+    outline: none;
+}
+
+/* Input placeholder */
+.ant-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Input disabled */
+.ant-input[disabled] {
+    background-color: var(--bg-tertiary);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+}
+
+/* Input sizes */
+.ant-input-lg {
+    height: 40px;
+    padding: 6px 11px;
+    font-size: 16px;
+}
+
+.ant-input-sm {
+    height: 28px;
+    padding: 0 7px;
+    font-size: 12px;
+}
+
+/* Input with prefix/suffix */
+.ant-input-affix-wrapper {
+    padding: 0 11px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ant-input-affix-wrapper:hover {
+    border-color: var(--primary-color);
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+    outline: none;
+}
+
+.ant-input-affix-wrapper > input.ant-input {
+    border: none;
+    outline: none;
+    padding: 0;
+    background: transparent;
+    height: 34px;
+}
+
+.ant-input-affix-wrapper > input.ant-input:focus {
+    box-shadow: none;
+}
+
+.ant-input-prefix,
+.ant-input-suffix {
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+}
+
+.ant-input-prefix {
+    margin-right: 8px;
+}
+
+.ant-input-suffix {
+    margin-left: 8px;
+}
+
+/* Input search */
+.ant-input-search .ant-input {
+    border-radius: 6px 0 0 6px;
+}
+
+.ant-input-search .ant-input-search-button {
+    border-radius: 0 6px 6px 0;
+    height: 36px;
+}
+
+.ant-input-search-button {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.ant-input-search-button:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    opacity: 0.9;
+}
+
+/* Input with clear icon */
+.ant-input-clear-icon {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.ant-input-clear-icon:hover {
+    color: var(--text-secondary);
+}
+
+/* Input number */
+.ant-input-number {
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.ant-input-number:hover {
+    border-color: var(--primary-color);
+}
+
+.ant-input-number:focus,
+.ant-input-number-focused {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+    outline: none;
+}
+
+.ant-input-number-handler-wrap {
+    border-left: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.ant-input-number-handler {
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.ant-input-number-handler:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+/* Textarea */
+.ant-input.ant-input-textarea {
+    height: auto;
+    min-height: 80px;
+    padding: 8px 11px;
+    line-height: 1.5;
+}
+
+/* Dark mode adjustments */
+.dark .ant-input {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .ant-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.dark .ant-input-affix-wrapper {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.dark .ant-input-number {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.dark .ant-input-number-handler-wrap {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}

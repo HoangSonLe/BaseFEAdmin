@@ -14,6 +14,7 @@ import SimpleTable from "./pages/SimpleTable";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import ErrorPage from "./pages/ErrorPage";
+import ComponentLibrary from "./pages/ComponentLibrary";
 
 // User Pages
 import UserRoles from "./pages/users/UserRoles";
@@ -41,6 +42,9 @@ function App() {
                         <Route path="products/categories" element={<ProductCategories />} />
                         <Route path="products/inventory" element={<ProductInventory />} />
                         <Route path="simple-table" element={<SimpleTable />} />
+
+                        {/* Component Library route */}
+                        <Route path="components" element={<ComponentLibrary />} />
 
                         {/* Settings route */}
                         <Route path="settings" element={<Settings />} />

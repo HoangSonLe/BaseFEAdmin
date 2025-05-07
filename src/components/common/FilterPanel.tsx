@@ -1,7 +1,7 @@
-import React, { useState, ReactNode } from "react";
+import React, { useState } from "react";
+import type { ReactNode } from "react";
 import { Button, Space, Typography, Divider } from "antd";
 import { FilterOutlined, DownOutlined, ReloadOutlined, ClearOutlined } from "@ant-design/icons";
-import "./ComponentStyles.css";
 
 const { Text } = Typography;
 

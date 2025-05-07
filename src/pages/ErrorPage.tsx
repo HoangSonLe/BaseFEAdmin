@@ -1,9 +1,7 @@
 import React from "react";
-import { Button, Typography, Result } from "antd";
+import { Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./ErrorPage.css";
-
-const { Text } = Typography;
 
 interface ErrorPageProps {
     code?: "403" | "500" | "error" | "404";

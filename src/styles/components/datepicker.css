@@ -1,0 +1,292 @@
+/* DatePicker component styles */
+
+/* Base DatePicker styles */
+.ant-picker {
+    padding: 4px 11px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ant-picker:hover {
+    border-color: var(--primary-color);
+}
+
+.ant-picker-focused,
+.ant-picker:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+    outline: none;
+}
+
+/* DatePicker input */
+.ant-picker-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.ant-picker-input > input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0;
+    background: transparent;
+    color: var(--text-primary);
+}
+
+.ant-picker-input > input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* DatePicker suffix icon */
+.ant-picker-suffix {
+    color: var(--text-tertiary);
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+/* DatePicker clear icon */
+.ant-picker-clear {
+    color: var(--text-tertiary);
+    background-color: var(--bg-primary);
+    right: 11px;
+}
+
+.ant-picker-clear:hover {
+    color: var(--text-secondary);
+}
+
+/* DatePicker dropdown */
+.ant-picker-dropdown {
+    border-radius: 8px;
+    box-shadow: 0 6px 16px var(--shadow-color);
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-primary);
+}
+
+/* DatePicker panel */
+.ant-picker-panel {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* DatePicker header */
+.ant-picker-header {
+    border-bottom: 1px solid var(--border-light);
+    padding: 12px;
+    color: var(--text-primary);
+}
+
+.ant-picker-header-view {
+    font-weight: 500;
+}
+
+.ant-picker-header button {
+    color: var(--text-secondary);
+}
+
+.ant-picker-header button:hover {
+    color: var(--primary-color);
+}
+
+/* DatePicker content */
+.ant-picker-content {
+    padding: 8px;
+}
+
+/* DatePicker cell */
+.ant-picker-cell {
+    padding: 4px 0;
+    color: var(--text-primary);
+}
+
+.ant-picker-cell-inner {
+    height: 28px;
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.ant-picker-cell:hover:not(.ant-picker-cell-selected):not(.ant-picker-cell-disabled)
+    .ant-picker-cell-inner {
+    background-color: var(--hover-bg);
+}
+
+/* DatePicker selected cell */
+.ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* DatePicker today cell */
+.ant-picker-cell-today .ant-picker-cell-inner {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* DatePicker disabled cell */
+.ant-picker-cell-disabled {
+    color: var(--text-disabled);
+    cursor: not-allowed;
+}
+
+/* DatePicker footer */
+.ant-picker-footer {
+    border-top: 1px solid var(--border-light);
+    padding: 8px;
+}
+
+/* DatePicker range */
+.ant-picker-range {
+    padding: 4px 11px;
+}
+
+.ant-picker-range .ant-picker-active-bar {
+    background-color: var(--primary-color);
+}
+
+.ant-picker-range-separator {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+/* DatePicker time panel */
+.ant-picker-time-panel {
+    border-left: 1px solid var(--border-light);
+}
+
+.ant-picker-time-panel-column {
+    border-right: 1px solid var(--border-light);
+}
+
+.ant-picker-time-panel-column:last-child {
+    border-right: none;
+}
+
+.ant-picker-time-panel-cell {
+    padding: 4px 0;
+    color: var(--text-primary);
+}
+
+.ant-picker-time-panel-cell-inner {
+    padding: 0 16px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.ant-picker-time-panel-cell:hover:not(.ant-picker-time-panel-cell-selected):not(
+        .ant-picker-time-panel-cell-disabled
+    )
+    .ant-picker-time-panel-cell-inner {
+    background-color: var(--hover-bg);
+}
+
+.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+    background-color: var(--bg-tertiary);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Custom DatePicker styles */
+.filter-datepicker {
+    min-width: 180px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.filter-datepicker:hover {
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.filter-datepicker-popup {
+    border-radius: 6px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* DateRangePicker styles */
+.filter-daterange {
+    min-width: 240px;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.filter-daterange:hover {
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.filter-daterange-popup {
+    border-radius: 6px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.calendar-icon {
+    color: var(--text-tertiary);
+    font-size: 14px;
+}
+
+/* Dark mode adjustments */
+.dark .ant-picker {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .ant-picker-dropdown {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+.dark .ant-picker-clear {
+    background-color: var(--bg-primary);
+}
+
+.dark .ant-picker-header {
+    border-bottom-color: var(--border-light);
+}
+
+.dark .ant-picker-time-panel {
+    border-left-color: var(--border-light);
+}
+
+.dark .ant-picker-time-panel-column {
+    border-right-color: var(--border-light);
+}
+
+.dark .filter-datepicker,
+.dark .filter-daterange {
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.dark .filter-datepicker:hover,
+.dark .filter-daterange:hover {
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.dark .filter-datepicker-popup,
+.dark .filter-daterange-popup {
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.dark .calendar-icon {
+    color: var(--text-tertiary);
+}

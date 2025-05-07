@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col, Space, Typography, Divider } from "antd";
+import { Form, Button, Space, Typography, Divider } from "antd";
 import { SearchOutlined, ReloadOutlined, DownOutlined, FilterOutlined } from "@ant-design/icons";
-import "./ComponentStyles.css";
 
 const { Text } = Typography;
 

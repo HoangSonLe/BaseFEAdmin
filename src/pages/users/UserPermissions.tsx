@@ -1,17 +1,6 @@
 import React, { useState } from "react";
-import {
-    Typography,
-    Card,
-    Table,
-    Button,
-    Space,
-    Input,
-    Select,
-    Checkbox,
-    Form,
-    Divider,
-} from "antd";
-import { SearchOutlined, SaveOutlined } from "@ant-design/icons";
+import { Typography, Card, Button, Select, Checkbox, Form, Divider } from "antd";
+import { SaveOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 const { Option } = Select;

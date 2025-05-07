@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Table, Button, Space, Tag, Modal, Form, Select, Typography, Input } from "antd";
-import { SearchOutlined, PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import "../components/common/CommonStyles.css";
+import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import {
     Dropdown,
     DatePicker,
@@ -152,7 +151,7 @@ const Users: React.FC = () => {
                 { text: "Editor", value: "Editor" },
                 { text: "Viewer", value: "Viewer" },
             ],
-            onFilter: (value: string, record: User) => record.role === value,
+            onFilter: (value: any, record: User) => record.role === value,
             render: (role: string) => {
                 let color = "blue";
                 if (role === "Admin") color = "purple";
@@ -168,7 +167,7 @@ const Users: React.FC = () => {
                 { text: "Active", value: "Active" },
                 { text: "Inactive", value: "Inactive" },
             ],
-            onFilter: (value: string, record: User) => record.status === value,
+            onFilter: (value: any, record: User) => record.status === value,
             render: (status: string) => {
                 const color = status === "Active" ? "green" : "red";
                 return <Tag color={color}>{status}</Tag>;

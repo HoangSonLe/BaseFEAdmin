@@ -32,13 +32,27 @@ const MainLayout: React.FC = () => {
                     boxShadow: isDark
                         ? "0 2px 8px rgba(0, 0, 0, 0.3)"
                         : "0 2px 8px rgba(0, 0, 0, 0.15)",
+                    position: "fixed",
+                    height: "100vh",
+                    zIndex: 10,
+                    left: 0,
+                    top: 0,
+                    overflow: "auto",
                 }}
             >
                 <SidebarLogo collapsed={collapsed} />
-                <SidebarMenu />
+                <SidebarMenu collapsed={collapsed} />
             </Sider>
-            <Layout>
-                <Header className={`app-header ${isDark ? "app-header-dark" : ""}`}>
+            <Layout className="main-content-layout" style={{ marginLeft: collapsed ? 80 : 200 }}>
+                <Header
+                    className={`app-header ${isDark ? "app-header-dark" : ""}`}
+                    style={{
+                        position: "sticky",
+                        top: 0,
+                        zIndex: 9,
+                        width: "100%",
+                    }}
+                >
                     <HeaderToggle collapsed={collapsed} onToggle={handleToggleCollapse} />
                     <UserDropdown />
                 </Header>

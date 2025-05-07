@@ -1,0 +1,227 @@
+/* Form component styles */
+
+/* Form container */
+.ant-form {
+    color: var(--text-primary);
+}
+
+/* Form item */
+.ant-form-item {
+    margin-bottom: 16px;
+}
+
+/* Form item label */
+.ant-form-item-label {
+    padding-bottom: 4px;
+}
+
+.ant-form-item-label > label {
+    color: var(--text-secondary);
+    font-size: 13px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.ant-form-item-label > label.ant-form-item-required::before {
+    color: var(--error-color);
+    margin-right: 4px;
+}
+
+/* Form item control */
+.ant-form-item-control {
+    line-height: 1.5;
+}
+
+/* Form item explain (error message) */
+.ant-form-item-explain {
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.ant-form-item-explain-error {
+    color: var(--error-color);
+}
+
+.ant-form-item-explain-success {
+    color: var(--success-color);
+}
+
+/* Form item with error */
+.ant-form-item-has-error .ant-input,
+.ant-form-item-has-error .ant-input-affix-wrapper,
+.ant-form-item-has-error .ant-input-number,
+.ant-form-item-has-error .ant-picker,
+.ant-form-item-has-error .ant-select-selector {
+    border-color: var(--error-color);
+}
+
+.ant-form-item-has-error .ant-input:hover,
+.ant-form-item-has-error .ant-input-affix-wrapper:hover,
+.ant-form-item-has-error .ant-input-number:hover,
+.ant-form-item-has-error .ant-picker:hover,
+.ant-form-item-has-error .ant-select-selector:hover {
+    border-color: var(--error-color);
+}
+
+.ant-form-item-has-error .ant-input:focus,
+.ant-form-item-has-error .ant-input-affix-wrapper:focus,
+.ant-form-item-has-error .ant-input-number:focus,
+.ant-form-item-has-error .ant-picker:focus,
+.ant-form-item-has-error .ant-select-selector:focus {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+}
+
+/* Form item with warning */
+.ant-form-item-has-warning .ant-input,
+.ant-form-item-has-warning .ant-input-affix-wrapper,
+.ant-form-item-has-warning .ant-input-number,
+.ant-form-item-has-warning .ant-picker,
+.ant-form-item-has-warning .ant-select-selector {
+    border-color: var(--warning-color);
+}
+
+.ant-form-item-has-warning .ant-input:hover,
+.ant-form-item-has-warning .ant-input-affix-wrapper:hover,
+.ant-form-item-has-warning .ant-input-number:hover,
+.ant-form-item-has-warning .ant-picker:hover,
+.ant-form-item-has-warning .ant-select-selector:hover {
+    border-color: var(--warning-color);
+}
+
+.ant-form-item-has-warning .ant-input:focus,
+.ant-form-item-has-warning .ant-input-affix-wrapper:focus,
+.ant-form-item-has-warning .ant-input-number:focus,
+.ant-form-item-has-warning .ant-picker:focus,
+.ant-form-item-has-warning .ant-select-selector:focus {
+    border-color: var(--warning-color);
+    box-shadow: 0 0 0 2px rgba(250, 173, 20, 0.2);
+}
+
+/* Form layouts */
+.ant-form-horizontal .ant-form-item-label {
+    text-align: right;
+}
+
+.ant-form-vertical .ant-form-item-label {
+    padding: 0 0 4px;
+}
+
+.ant-form-vertical .ant-form-item {
+    flex-direction: column;
+}
+
+.ant-form-inline .ant-form-item {
+    margin-right: 16px;
+    margin-bottom: 0;
+}
+
+/* Form item extra */
+.ant-form-item-extra {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* Form item feedback icon */
+.ant-form-item-feedback-icon {
+    margin-left: 4px;
+}
+
+.ant-form-item-feedback-icon-success {
+    color: var(--success-color);
+}
+
+.ant-form-item-feedback-icon-error {
+    color: var(--error-color);
+}
+
+.ant-form-item-feedback-icon-warning {
+    color: var(--warning-color);
+}
+
+.ant-form-item-feedback-icon-validating {
+    color: var(--primary-color);
+}
+
+/* Form item required mark */
+.ant-form-item-required-mark {
+    color: var(--error-color);
+    margin-right: 4px;
+}
+
+/* Form item optional mark */
+.ant-form-item-optional {
+    color: var(--text-tertiary);
+}
+
+/* Form item tooltip icon */
+.ant-form-item-tooltip {
+    color: var(--text-tertiary);
+    margin-left: 4px;
+}
+
+/* Form item with help */
+.ant-form-item-with-help {
+    margin-bottom: 0;
+}
+
+/* Form item control with feedback */
+.ant-form-item-control-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+}
+
+/* Form item control input content */
+.ant-form-item-control-input-content {
+    flex: auto;
+}
+
+/* Dark mode adjustments */
+.dark .ant-form-item-label > label {
+    color: var(--text-secondary);
+}
+
+.dark .ant-form-item-explain-error {
+    color: var(--error-color);
+}
+
+.dark .ant-form-item-explain-success {
+    color: var(--success-color);
+}
+
+.dark .ant-form-item-extra {
+    color: var(--text-tertiary);
+}
+
+/* Filter component styles */
+.filter-dropdown-container,
+.filter-datepicker-container,
+.filter-daterange-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.filter-dropdown-label,
+.filter-datepicker-label,
+.filter-daterange-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+/* Filter search input */
+.filter-search-input {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.filter-search-input:hover,
+.filter-search-input:focus {
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-color: var(--primary-color);
+}

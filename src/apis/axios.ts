@@ -1,8 +1,8 @@
-import { IApiResponse, IApiService } from "./interface";
-import axios, { AxiosResponse } from "axios";
+import type { IApiResponse, IApiService } from "./interface";
+import axios from "axios";
+import type { AxiosResponse } from "axios";
 import queryString from "query-string";
 import env from "../constants/env";
-import { useCallback } from "react";
 import { toast } from "react-toastify";
 // Create an Axios instance
 const axiosInstance = axios.create({

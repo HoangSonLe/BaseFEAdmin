@@ -97,7 +97,7 @@ const ProductInventory: React.FC = () => {
         {
             title: "Stock Level",
             key: "stockLevel",
-            render: (_, record: InventoryItem) => {
+            render: (_: any, record: InventoryItem) => {
                 let percent = (record.inStock / record.reorderLevel) * 100;
                 if (percent > 100) percent = 100;
 

@@ -1,0 +1,63 @@
+/* Sidebar Menu Animation Styles */
+
+/* Smooth animation for the entire menu */
+.sidebar-menu {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Enhance menu item animations */
+.sidebar-menu .ant-menu-item {
+    transition: padding 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                background 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                color 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Enhance submenu animations */
+.sidebar-menu .ant-menu-submenu-title {
+    transition: padding 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                background 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                color 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Smooth animation for submenu expansion/collapse */
+.sidebar-menu .ant-menu-sub {
+    transition: height 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                opacity 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Enhance icon animations */
+.sidebar-menu .anticon {
+    transition: margin-right 0.3s cubic-bezier(0.2, 0, 0, 1), 
+                font-size 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Smooth animation for menu item text */
+.sidebar-menu .ant-menu-title-content {
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1),
+                transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Special animation for collapsed state */
+.menu-collapsed .ant-menu-item,
+.menu-collapsed .ant-menu-submenu-title {
+    padding: 0 24px !important;
+}
+
+/* Enhance submenu arrow animation */
+.sidebar-menu .ant-menu-submenu-arrow {
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1),
+                opacity 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Improve hover effects */
+.sidebar-menu .ant-menu-item:hover,
+.sidebar-menu .ant-menu-submenu-title:hover {
+    transform: translateX(4px);
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* Reset transform on active items */
+.sidebar-menu .ant-menu-item-selected:hover {
+    transform: translateX(0);
+}

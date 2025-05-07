@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import { Avatar, Dropdown } from "antd";
 import { DownOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import ThemeToggle from "../common/ThemeToggle";
-import { useTheme } from "../../contexts/ThemeContext";
+
 import "./UserDropdown.css";
 
 const UserDropdown: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const { theme } = useTheme();
-    const isDark = theme === "dark";
 
     return (
         <Dropdown

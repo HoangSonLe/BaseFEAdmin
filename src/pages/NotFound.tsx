@@ -1,9 +1,7 @@
 import React from "react";
-import { Button, Typography } from "antd";
+import { Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./NotFound.css";
-
-const { Text } = Typography;
 
 const NotFound: React.FC = () => {
     const navigate = useNavigate();

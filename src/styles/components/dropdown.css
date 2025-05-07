@@ -1,0 +1,278 @@
+/* Dropdown and Select component styles */
+
+/* Dropdown */
+.ant-dropdown {
+    border-radius: 8px;
+    box-shadow: 0 6px 16px var(--shadow-color);
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-primary);
+    padding: 4px 0;
+}
+
+.ant-dropdown-menu {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+}
+
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-submenu-title {
+    padding: 8px 12px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-submenu-title:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+.ant-dropdown-menu-item-active,
+.ant-dropdown-menu-submenu-title-active {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+.ant-dropdown-menu-item-selected {
+    background-color: rgba(22, 119, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.ant-dropdown-menu-item-disabled,
+.ant-dropdown-menu-submenu-title-disabled {
+    color: var(--text-disabled);
+    cursor: not-allowed;
+}
+
+.ant-dropdown-menu-item-disabled:hover,
+.ant-dropdown-menu-submenu-title-disabled:hover {
+    background-color: transparent;
+    color: var(--text-disabled);
+}
+
+.ant-dropdown-menu-item-divider,
+.ant-dropdown-menu-submenu-title-divider {
+    height: 1px;
+    background-color: var(--border-light);
+    margin: 4px 0;
+}
+
+/* Dropdown arrow */
+.ant-dropdown-arrow {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light) transparent transparent var(--border-light);
+}
+
+/* Select */
+.ant-select {
+    width: 100%;
+}
+
+.ant-select-selector {
+    height: 36px;
+    padding: 0 11px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.ant-select:hover .ant-select-selector {
+    border-color: var(--primary-color);
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+    outline: none;
+}
+
+/* Select placeholder */
+.ant-select-selection-placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Select arrow */
+.ant-select-arrow {
+    color: var(--text-tertiary);
+    transition: transform 0.3s ease;
+}
+
+.ant-select-open .ant-select-arrow {
+    transform: rotate(180deg);
+}
+
+/* Select clear icon */
+.ant-select-clear {
+    color: var(--text-tertiary);
+    background-color: var(--bg-primary);
+    right: 11px;
+}
+
+.ant-select-clear:hover {
+    color: var(--text-secondary);
+}
+
+/* Select dropdown */
+.ant-select-dropdown {
+    border-radius: 8px;
+    box-shadow: 0 6px 16px var(--shadow-color);
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-primary);
+    padding: 4px 0;
+}
+
+/* Select option */
+.ant-select-item {
+    padding: 8px 12px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.ant-select-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.ant-select-item-option-active {
+    background-color: var(--hover-bg);
+}
+
+.ant-select-item-option-selected {
+    background-color: rgba(22, 119, 255, 0.1);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.ant-select-item-option-disabled {
+    color: var(--text-disabled);
+    cursor: not-allowed;
+}
+
+.ant-select-item-option-disabled:hover {
+    background-color: transparent;
+    color: var(--text-disabled);
+}
+
+/* Select multiple */
+.ant-select-multiple .ant-select-selector {
+    padding: 2px 4px;
+    height: auto;
+    min-height: 36px;
+}
+
+.ant-select-multiple .ant-select-selection-item {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 0 8px;
+    margin: 2px;
+    height: 24px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.ant-select-multiple .ant-select-selection-item-remove {
+    color: var(--text-tertiary);
+    margin-left: 4px;
+}
+
+.ant-select-multiple .ant-select-selection-item-remove:hover {
+    color: var(--text-secondary);
+}
+
+/* Select sizes */
+.ant-select-lg .ant-select-selector {
+    height: 40px;
+    font-size: 16px;
+}
+
+.ant-select-sm .ant-select-selector {
+    height: 28px;
+    font-size: 12px;
+}
+
+/* Custom dropdown styles */
+.filter-dropdown {
+    min-width: 180px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.filter-dropdown:hover {
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.filter-dropdown-popup {
+    border-radius: 6px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 4px;
+}
+
+.dropdown-icon {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.ant-select-open .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* Dark mode adjustments */
+.dark .ant-dropdown {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+.dark .ant-dropdown-menu {
+    background-color: var(--bg-primary);
+}
+
+.dark .ant-dropdown-arrow {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light) transparent transparent var(--border-light);
+}
+
+.dark .ant-select-selector {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .ant-select-clear {
+    background-color: var(--bg-primary);
+}
+
+.dark .ant-select-dropdown {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+.dark .ant-select-multiple .ant-select-selection-item {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-light);
+}
+
+.dark .filter-dropdown {
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.dark .filter-dropdown:hover {
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.dark .filter-dropdown-popup {
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.dark .dropdown-icon {
+    color: var(--text-tertiary);
+}

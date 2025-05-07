@@ -1,20 +1,20 @@
-/* Component-specific styles */
+/* Panel component styles */
 
 /* Filter panel styles */
 .filter-panel {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--bg-primary);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px var(--shadow-color);
     padding: 16px;
     margin-bottom: 16px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--border-light);
     transition: all 0.3s ease;
 }
 
 .filter-panel:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 16px var(--shadow-color);
 }
 
 .filter-panel-header {
@@ -22,12 +22,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .filter-panel-title {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .filter-panel-content {
@@ -54,7 +55,7 @@
 
 .filter-panel-collapse-icon {
     font-size: 12px;
-    color: #999;
+    color: var(--text-secondary);
     transition: transform 0.3s ease;
 }
 
@@ -62,23 +63,21 @@
     transform: rotate(180deg);
 }
 
-/* These styles have been moved to CommonStyles.css */
-
 /* Search Form Styles */
 .search-form-container {
     margin-bottom: 16px;
     padding: 16px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--bg-primary);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border: 1px solid var(--border-light);
     transition: all 0.3s ease;
 }
 
 .search-form-container:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 16px var(--shadow-color);
 }
 
 .search-form-header {
@@ -92,12 +91,12 @@
 .search-form-title {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .search-form-collapse-icon {
     font-size: 12px;
-    color: #999;
+    color: var(--text-secondary);
     transition: transform 0.3s ease;
 }
 
@@ -155,7 +154,7 @@
 
 .search-form-container .ant-form-item-label > label {
     font-size: 13px;
-    color: #666;
+    color: var(--text-secondary);
     height: 22px;
     line-height: 22px;
     margin-bottom: 0;
@@ -180,62 +179,11 @@
     margin-bottom: 4px;
 }
 
-.search-form-container .ant-input,
-.search-form-container .ant-picker,
-.search-form-container .ant-select .ant-select-selector {
-    height: 36px;
-}
-
-.search-form-container .ant-input-affix-wrapper {
-    padding: 0 11px;
-}
-
-.search-form-container .ant-input-affix-wrapper > input.ant-input {
-    height: 34px;
-}
-
-.search-form-container .ant-picker {
-    width: 100%;
-    padding: 4px 11px;
-}
-
-.search-form-container .ant-picker-range {
-    width: 100%;
-    padding: 4px 11px;
-}
-
-.search-form-container .ant-picker-range .ant-picker-input {
-    height: 28px;
-}
-
-.search-form-container .ant-picker-range .ant-picker-input > input {
-    height: 28px;
-    font-size: 14px;
-}
-
-.search-form-container .ant-select-single .ant-select-selector {
-    padding: 0 11px;
-    height: 36px;
-}
-
-.search-form-container .ant-select-single .ant-select-selector .ant-select-selection-search {
-    height: 34px;
-    line-height: 34px;
-}
-
-.search-form-container .ant-select-single .ant-select-selector .ant-select-selection-item {
-    line-height: 34px;
-}
-
-.search-form-container .ant-select-single .ant-select-selector .ant-select-selection-placeholder {
-    line-height: 34px;
-}
-
 .search-form-buttons-wrapper {
     display: flex;
     justify-content: flex-end;
     margin-top: 16px;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--border-light);
     padding-top: 16px;
 }
 
@@ -263,31 +211,48 @@
 
 .search-form-button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .search-button {
-    background-color: #f39c12;
+    background-color: var(--warning-color);
     color: white;
-    border-color: #f39c12;
+    border-color: var(--warning-color);
 }
 
 .search-button:hover {
-    background-color: #e67e22;
+    background-color: var(--warning-color);
+    opacity: 0.9;
     color: white;
-    border-color: #e67e22;
 }
 
 .reset-button {
-    background-color: #2c3e50;
-    border-color: #2c3e50;
+    background-color: var(--text-secondary);
+    border-color: var(--text-secondary);
     color: white;
 }
 
 .reset-button:hover {
-    background-color: #34495e;
-    border-color: #34495e;
+    background-color: var(--text-secondary);
+    opacity: 0.9;
     color: white;
+}
+
+/* Filter section styling with CSS filters */
+.filter-section {
+    background-color: var(--bg-primary);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.filter-section:hover {
+    box-shadow: 0 6px 16px var(--shadow-color);
 }
 
 /* Toolbar styles */
@@ -302,4 +267,16 @@
 .toolbar-item {
     display: flex;
     align-items: center;
+}
+
+/* Dark mode adjustments */
+.dark .filter-panel,
+.dark .search-form-container,
+.dark .filter-section {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light);
+}
+
+.dark .search-form-buttons-wrapper {
+    border-top-color: var(--border-light);
 }
