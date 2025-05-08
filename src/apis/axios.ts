@@ -4,6 +4,19 @@ import type { AxiosResponse } from "axios";
 import queryString from "query-string";
 import env from "../constants/env";
 import { toast } from "react-toastify";
+// We'll initialize this later when the LoadingProvider is available
+let loadingController: {
+    incrementPendingRequests: () => void;
+    decrementPendingRequests: () => void;
+} | null = null;
+
+// Function to set the loading controller from outside
+export const setLoadingController = (controller: {
+    incrementPendingRequests: () => void;
+    decrementPendingRequests: () => void;
+}) => {
+    loadingController = controller;
+};
 // Create an Axios instance
 const axiosInstance = axios.create({
     baseURL: env.API_URL, // Change this to your API URL
@@ -13,6 +26,11 @@ const axiosInstance = axios.create({
 // Request interceptor
 axiosInstance.interceptors.request.use(
     (config) => {
+        // Increment pending requests counter
+        if (loadingController) {
+            loadingController.incrementPendingRequests();
+        }
+
         const token = localStorage.getItem("authToken"); // or from context/redux
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
@@ -20,6 +38,10 @@ axiosInstance.interceptors.request.use(
         return config;
     },
     (error) => {
+        // Decrement pending requests counter even if there's an error
+        if (loadingController) {
+            loadingController.decrementPendingRequests();
+        }
         return Promise.reject(error);
     }
 );
@@ -57,8 +79,20 @@ const handleSuccessResponse = (response: AxiosResponse<any, any>) => {
 
 // Response interceptor
 axiosInstance.interceptors.response.use(
-    (response) => handleSuccessResponse(response),
-    (error) => handleErrorResponse(error)
+    (response) => {
+        // Decrement pending requests counter on successful response
+        if (loadingController) {
+            loadingController.decrementPendingRequests();
+        }
+        return handleSuccessResponse(response);
+    },
+    (error) => {
+        // Decrement pending requests counter on error response
+        if (loadingController) {
+            loadingController.decrementPendingRequests();
+        }
+        return handleErrorResponse(error);
+    }
 );
 export const apiService = ({
     url,

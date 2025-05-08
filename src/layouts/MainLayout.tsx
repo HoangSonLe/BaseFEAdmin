@@ -9,6 +9,7 @@ import {
     UserDropdown,
 } from "../components/layout";
 import { useTheme } from "../contexts/ThemeContext";
+import TopProgressBar from "../components/common/TopProgressBar";
 
 const { Header, Sider } = Layout;
 
@@ -83,6 +84,9 @@ const MainLayout: React.FC = () => {
 
     return (
         <Layout className="main-layout" style={{ minHeight: "100vh" }}>
+            {/* Top Progress Bar for API loading */}
+            <TopProgressBar height={3} />
+
             {/* Desktop Sidebar */}
             {!isMobile && (
                 <Sider

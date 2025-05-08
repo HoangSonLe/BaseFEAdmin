@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
-// Theme Provider
+// Providers
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
+import { setLoadingController } from "./apis/axios";
 
 // Layouts
 import MainLayout from "./layouts/MainLayout";
@@ -24,59 +27,77 @@ import UserPermissions from "./pages/users/UserPermissions";
 import ProductCategories from "./pages/products/ProductCategories";
 import ProductInventory from "./pages/products/ProductInventory";
 
+// Component to initialize loading controller
+const LoadingInitializer = () => {
+    const loading = useLoading();
+
+    useEffect(() => {
+        // Set the loading controller for axios to use
+        setLoadingController({
+            incrementPendingRequests: loading.incrementPendingRequests,
+            decrementPendingRequests: loading.decrementPendingRequests,
+        });
+    }, [loading]);
+
+    return null;
+};
+
 function App() {
     return (
         <ThemeProvider>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<MainLayout />}>
-                        <Route index element={<Dashboard />} />
+            <LoadingProvider>
+                <LoadingInitializer />
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<MainLayout />}>
+                            <Route index element={<Dashboard />} />
 
-                        {/* User routes */}
-                        <Route path="users" element={<Users />} />
-                        <Route path="users/roles" element={<UserRoles />} />
-                        <Route path="users/permissions" element={<UserPermissions />} />
+                            {/* User routes */}
+                            <Route path="users" element={<Users />} />
+                            <Route path="users/roles" element={<UserRoles />} />
+                            <Route path="users/permissions" element={<UserPermissions />} />
 
-                        {/* Product routes */}
-                        <Route path="products" element={<Products />} />
-                        <Route path="products/categories" element={<ProductCategories />} />
-                        <Route path="products/inventory" element={<ProductInventory />} />
-                        <Route path="simple-table" element={<SimpleTable />} />
+                            {/* Product routes */}
+                            <Route path="products" element={<Products />} />
+                            <Route path="products/categories" element={<ProductCategories />} />
+                            <Route path="products/inventory" element={<ProductInventory />} />
+                            <Route path="simple-table" element={<SimpleTable />} />
 
-                        {/* Component Library route */}
-                        <Route path="components" element={<ComponentLibrary />} />
+                            {/* Component Library route */}
+                            <Route path="components" element={<ComponentLibrary />} />
 
-                        {/* Settings route */}
-                        <Route path="settings" element={<Settings />} />
+                            {/* Settings route */}
+                            <Route path="settings" element={<Settings />} />
 
-                        {/* Error routes */}
-                        <Route path="error" element={<ErrorPage />} />
-                        <Route
-                            path="403"
-                            element={
-                                <ErrorPage
-                                    code="403"
-                                    title="403"
-                                    subTitle="Sorry, you are not authorized to access this page."
-                                />
-                            }
-                        />
-                        <Route
-                            path="500"
-                            element={
-                                <ErrorPage
-                                    code="500"
-                                    title="500"
-                                    subTitle="Sorry, the server is reporting an error."
-                                />
-                            }
-                        />
+                            {/* Error routes */}
+                            <Route path="error" element={<ErrorPage />} />
+                            <Route
+                                path="403"
+                                element={
+                                    <ErrorPage
+                                        code="403"
+                                        title="403"
+                                        subTitle="Sorry, you are not authorized to access this page."
+                                    />
+                                }
+                            />
+                            <Route
+                                path="500"
+                                element={
+                                    <ErrorPage
+                                        code="500"
+                                        title="500"
+                                        subTitle="Sorry, the server is reporting an error."
+                                    />
+                                }
+                            />
 
-                        {/* 404 route */}
-                        <Route path="*" element={<NotFound />} />
-                    </Route>
-                </Routes>
-            </Router>
+                            {/* 404 route */}
+                            <Route path="*" element={<NotFound />} />
+                        </Route>
+                    </Routes>
+                </Router>
+            </LoadingProvider>
         </ThemeProvider>
     );
 }

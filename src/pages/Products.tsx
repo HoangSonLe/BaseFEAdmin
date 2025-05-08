@@ -8,11 +8,13 @@ import {
     DownloadOutlined,
     UploadOutlined,
     ReloadOutlined,
+    LoadingOutlined,
 } from "@ant-design/icons";
-import { Button, Image, Space, Tag, Tooltip, Input } from "antd";
+import { Button, Image, Space, Tag, Tooltip, Input, message } from "antd";
 import type { ColumnType } from "antd/es/table";
 
 import React, { useState } from "react";
+import axios from "../apis/axios";
 import {
     CommonTable,
     DatePicker,
@@ -398,6 +400,44 @@ const Products: React.FC = () => {
     // Toggle between local data and API mode
     const [useApiMode, setUseApiMode] = useState(false);
 
+    // State for test loading
+    const [testLoading, setTestLoading] = useState(false);
+
+    // Function to test the loading progress bar
+    const testLoadingProgressBar = async () => {
+        setTestLoading(true);
+        message.info("Testing progress bar with multiple API calls...");
+
+        try {
+            // Make multiple API calls with different delays to simulate real-world scenario
+            const promises = [
+                axios({
+                    method: "get",
+                    url: "https://jsonplaceholder.typicode.com/posts",
+                    timeout: 2000, // 2 seconds
+                }),
+                axios({
+                    method: "get",
+                    url: "https://jsonplaceholder.typicode.com/users",
+                    timeout: 3000, // 3 seconds
+                }),
+                axios({
+                    method: "get",
+                    url: "https://jsonplaceholder.typicode.com/comments",
+                    timeout: 5000, // 5 seconds
+                }),
+            ];
+
+            await Promise.all(promises);
+            message.success("All API calls completed successfully!");
+        } catch (error) {
+            message.error("Error during API calls");
+            console.error("API call error:", error);
+        } finally {
+            setTestLoading(false);
+        }
+    };
+
     // Search form items for the CommonTable
     const searchFormItems: SearchFormItemProps[] = [
         {
@@ -567,7 +607,7 @@ const Products: React.FC = () => {
 
     return (
         <div>
-            <div className="mb-4">
+            <div className="mb-4 flex items-center gap-4">
                 <Button
                     onClick={() => setUseApiMode(!useApiMode)}
                     type={useApiMode ? "primary" : "default"}
@@ -575,8 +615,20 @@ const Products: React.FC = () => {
                 >
                     {useApiMode ? "Using API Mode" : "Using Local Data Mode"}
                 </Button>
-                <span className="ml-2 text-gray-500">
+                <span className="text-gray-500">
                     (Click to toggle between local data and simulated API)
+                </span>
+
+                <Button
+                    onClick={testLoadingProgressBar}
+                    type="primary"
+                    loading={testLoading}
+                    className="primary-action-button"
+                >
+                    Test Progress Bar
+                </Button>
+                <span className="text-gray-500">
+                    (Click to test the top progress bar with multiple API calls)
                 </span>
             </div>
 
