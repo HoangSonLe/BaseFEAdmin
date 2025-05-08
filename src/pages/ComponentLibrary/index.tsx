@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Card, Divider, Button } from "antd";
+import { Typography, Card, Divider, Button, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import {
     TableOutlined,
@@ -64,28 +64,33 @@ const ComponentLibrary: React.FC = () => {
 
             <Divider orientation="left">Component Categories</Divider>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Row gutter={[24, 24]}>
                 {componentCategories.map((category, index) => (
-                    <Card
-                        key={index}
-                        variant="outlined"
-                        className="mb-4 hover:shadow-md transition-shadow"
-                        title={
-                            <div className="flex items-center">
-                                <span className="mr-2">{category.icon}</span>
-                                {category.title}
+                    <Col xs={24} md={12} lg={8} key={index}>
+                        <Card
+                            variant="outlined"
+                            className="hover:shadow-md transition-shadow"
+                            style={{ height: "100%", display: "flex", flexDirection: "column" }}
+                            title={
+                                <div style={{ display: "flex", alignItems: "center" }}>
+                                    <span style={{ marginRight: "8px" }}>{category.icon}</span>
+                                    {category.title}
+                                </div>
+                            }
+                            styles={{ body: { flex: 1, display: "flex", flexDirection: "column" } }}
+                            actions={[
+                                <Link to={category.path} key="view">
+                                    <Button type="primary">View Components</Button>
+                                </Link>,
+                            ]}
+                        >
+                            <div style={{ flex: 1 }}>
+                                <Paragraph>{category.description}</Paragraph>
                             </div>
-                        }
-                        actions={[
-                            <Link to={category.path} key="view">
-                                <Button type="primary">View Components</Button>
-                            </Link>,
-                        ]}
-                    >
-                        <Paragraph>{category.description}</Paragraph>
-                    </Card>
+                        </Card>
+                    </Col>
                 ))}
-            </div>
+            </Row>
         </div>
     );
 };
