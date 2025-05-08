@@ -202,12 +202,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
+    padding: 16px;
+    border-top: 1px solid var(--border-light);
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .pagination-button {
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    border-radius: 6px;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -217,6 +220,43 @@
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+}
+
+/* Ant Design pagination overrides */
+.ant-pagination-item {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.ant-pagination-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.ant-pagination-item-active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.ant-pagination-item-active a {
+    color: white;
+}
+
+.ant-pagination-prev button,
+.ant-pagination-next button {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.ant-pagination-prev button:hover,
+.ant-pagination-next button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 /* Table card styling */
@@ -230,6 +270,48 @@
     box-shadow: 0 3px 6px var(--shadow-color);
 }
 
+/* Table toolbar section */
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-light);
+    background-color: var(--bg-primary);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Toolbar container */
+.toolbar-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Toolbar items */
+.toolbar-item {
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+/* Search input in filter section */
+.filter-search-input {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px var(--shadow-color);
+    border: 1px solid var(--border-light);
+}
+
+.filter-search-input:hover,
+.filter-search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.1);
+}
+
 /* Filter and sort buttons for tables */
 .filter-button {
     border-radius: 6px;
@@ -240,12 +322,14 @@
     transition: all 0.3s ease;
     background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
     border: 1px solid var(--border-color);
+    height: 32px;
 }
 
 .filter-button:hover {
     background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
     border-color: var(--border-color);
     transform: translateY(-1px);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .filter-button.active {
@@ -264,12 +348,14 @@
     transition: all 0.3s ease;
     background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
     border: 1px solid var(--border-color);
+    height: 32px;
 }
 
 .sort-button:hover {
     background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
     border-color: var(--border-color);
     transform: translateY(-1px);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .sort-button.active {
@@ -315,21 +401,97 @@
     color: var(--error-color);
 }
 
+.dark .filter-section {
+    background-color: var(--bg-primary);
+    border-bottom-color: var(--border-light);
+}
+
+.dark .toolbar-container {
+    background-color: transparent;
+}
+
+.dark .filter-search-input {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .filter-search-input:hover,
+.dark .filter-search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+}
+
 .dark .filter-button,
 .dark .sort-button {
     background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
     border-color: var(--border-color);
+    color: var(--text-primary);
 }
 
 .dark .filter-button:hover,
 .dark .sort-button:hover {
     background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-tertiary));
     border-color: var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .dark .filter-button.active,
 .dark .sort-button.active {
-    background: linear-gradient(to bottom, rgba(22, 119, 255, 0.1), rgba(22, 119, 255, 0.2));
+    background: linear-gradient(to bottom, rgba(22, 119, 255, 0.2), rgba(22, 119, 255, 0.3));
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+/* Dark mode pagination styles */
+.dark .table-pagination {
+    border-top-color: var(--border-light);
+    background-color: var(--bg-primary);
+}
+
+.dark .ant-pagination-item {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.dark .ant-pagination-item a {
+    color: var(--text-primary);
+}
+
+.dark .ant-pagination-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .ant-pagination-item-active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.dark .ant-pagination-item-active a {
+    color: white;
+}
+
+.dark .ant-pagination-prev button,
+.dark .ant-pagination-next button,
+.dark .ant-pagination-jump-prev button,
+.dark .ant-pagination-jump-next button {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.dark .ant-pagination-prev:hover button,
+.dark .ant-pagination-next:hover button,
+.dark .ant-pagination-jump-prev:hover button,
+.dark .ant-pagination-jump-next:hover button {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .ant-pagination-disabled button {
+    color: var(--text-disabled);
+    border-color: var(--border-color);
+    background-color: var(--bg-tertiary);
 }

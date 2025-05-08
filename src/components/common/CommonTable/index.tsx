@@ -240,7 +240,7 @@ const CommonTable = <T extends Record<string, unknown>>({
                     onSearch ||
                     filterOptions?.dropdownItems ||
                     sortOptions?.dropdownItems) && (
-                    <div className="filter-section flex justify-between items-center">
+                    <div className="filter-section">
                         {toolbar ? (
                             <div className="toolbar-container">
                                 {toolbar.map((item, index) => (
@@ -250,21 +250,26 @@ const CommonTable = <T extends Record<string, unknown>>({
                                 ))}
                             </div>
                         ) : (
-                            <>
-                                {onSearch && (
-                                    <Input
-                                        placeholder={filterOptions?.placeholder || "Search..."}
-                                        prefix={<SearchOutlined />}
-                                        className="filter-search-input w-64"
-                                        value={searchValue}
-                                        onChange={handleSearchChange}
-                                    />
-                                )}
-                                <Space>
+                            <div className="flex justify-between items-center w-full">
+                                <div className="flex-1">
+                                    {onSearch && (
+                                        <Input
+                                            placeholder={filterOptions?.placeholder || "Search..."}
+                                            prefix={<SearchOutlined />}
+                                            className="filter-search-input"
+                                            style={{ maxWidth: "320px" }}
+                                            value={searchValue}
+                                            onChange={handleSearchChange}
+                                            allowClear
+                                        />
+                                    )}
+                                </div>
+                                <Space size="small">
                                     {filterOptions?.dropdownItems && (
                                         <Dropdown
                                             menu={{ items: filterOptions.dropdownItems }}
                                             trigger={["click"]}
+                                            placement="bottomRight"
                                         >
                                             <Button
                                                 className="filter-button"
@@ -278,6 +283,7 @@ const CommonTable = <T extends Record<string, unknown>>({
                                         <Dropdown
                                             menu={{ items: sortOptions.dropdownItems }}
                                             trigger={["click"]}
+                                            placement="bottomRight"
                                         >
                                             <Button className="sort-button" icon={<MoreOutlined />}>
                                                 Sort
@@ -285,7 +291,7 @@ const CommonTable = <T extends Record<string, unknown>>({
                                         </Dropdown>
                                     )}
                                 </Space>
-                            </>
+                            </div>
                         )}
                     </div>
                 )}
@@ -314,12 +320,19 @@ const CommonTable = <T extends Record<string, unknown>>({
                 />
 
                 {/* Pagination controls */}
-                <div className="table-pagination flex justify-between items-center">
-                    <div className="text-gray-500">
+                <div className="table-pagination">
+                    <div className="text-gray-500 text-sm">
                         {total > 0 ? (
                             <>
-                                Showing {(currentPage - 1) * pageSize + 1} to{" "}
-                                {Math.min(currentPage * pageSize, total)} of {total} items
+                                Showing{" "}
+                                <span className="font-medium">
+                                    {(currentPage - 1) * pageSize + 1}
+                                </span>{" "}
+                                to{" "}
+                                <span className="font-medium">
+                                    {Math.min(currentPage * pageSize, total)}
+                                </span>{" "}
+                                of <span className="font-medium">{total}</span> items
                             </>
                         ) : (
                             "No data"
@@ -331,9 +344,10 @@ const CommonTable = <T extends Record<string, unknown>>({
                         total={total}
                         onChange={handlePaginationChange}
                         showSizeChanger
-                        pageSizeOptions={["5", "10", "20"]}
+                        pageSizeOptions={["5", "10", "20", "50"]}
                         showTotal={(total) => `Total ${total} items`}
-                        className="pagination-button"
+                        size="default"
+                        className="pagination-controls"
                     />
                 </div>
             </Card>

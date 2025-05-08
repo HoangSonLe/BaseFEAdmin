@@ -1,14 +1,16 @@
 import React from "react";
-import { Card, Row, Col, Statistic, Table, Typography, Button } from "antd";
+import { Card, Row, Col, Statistic, Table, Typography, Button, Avatar } from "antd";
 import {
     ArrowUpOutlined,
     ArrowDownOutlined,
     UserOutlined,
     ShoppingOutlined,
     DollarOutlined,
+    RightOutlined,
 } from "@ant-design/icons";
+import "./Dashboard.css";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Dashboard: React.FC = () => {
     // Sample data for statistics
@@ -76,77 +78,115 @@ const Dashboard: React.FC = () => {
             title: "User",
             dataIndex: "user",
             key: "user",
+            render: (text: string) => (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <Avatar
+                        style={{
+                            backgroundColor: `hsl(${text.length * 10}, 70%, 50%)`,
+                            marginRight: "8px",
+                        }}
+                    >
+                        {text.charAt(0)}
+                    </Avatar>
+                    <Text strong>{text}</Text>
+                </div>
+            ),
         },
         {
             title: "Action",
             dataIndex: "action",
             key: "action",
+            render: (text: string) => <Text>{text}</Text>,
         },
         {
             title: "Time",
             dataIndex: "time",
             key: "time",
+            render: (text: string) => (
+                <Text type="secondary" style={{ fontSize: "13px" }}>
+                    {text}
+                </Text>
+            ),
         },
     ];
 
     return (
-        <div>
-            <div className="mb-6">
-                <Title level={2}>Dashboard</Title>
-                <p className="text-gray-500">Welcome to your admin dashboard</p>
+        <div className="dashboard-container">
+            <div className="dashboard-header">
+                <Title level={2} className="dashboard-title">
+                    Dashboard
+                </Title>
+                <p className="dashboard-subtitle">Welcome to your admin dashboard</p>
             </div>
 
-            <Row gutter={[16, 16]} className="mb-6">
+            <Row gutter={[24, 24]} className="stats-container">
                 {stats.map((stat, index) => (
                     <Col xs={24} sm={12} md={8} key={index}>
-                        <Card variant="outlined" className="h-full">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <p className="text-gray-500 mb-1">{stat.title}</p>
-                                    <Statistic
-                                        value={stat.value}
-                                        precision={0}
-                                        prefix={stat.prefix}
-                                        valueStyle={{ color: stat.color, fontWeight: "bold" }}
-                                    />
+                        <Card
+                            variant="borderless"
+                            className="stat-card"
+                            style={{ "--card-accent-color": stat.color } as React.CSSProperties}
+                        >
+                            <div className="stat-card-content">
+                                <div className="stat-card-header">
+                                    <div>
+                                        <h4 className="stat-title">{stat.title}</h4>
+                                        <Statistic
+                                            value={stat.value}
+                                            precision={0}
+                                            prefix={stat.prefix}
+                                            className="stat-value"
+                                            valueStyle={{ color: stat.color, fontWeight: "bold" }}
+                                        />
+                                    </div>
+                                    <div
+                                        className="stat-icon-container"
+                                        style={{ backgroundColor: `${stat.color}15` }}
+                                    >
+                                        <span className="stat-icon" style={{ color: stat.color }}>
+                                            {stat.icon}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div
-                                    className="flex items-center justify-center w-12 h-12 rounded-full"
-                                    style={{ backgroundColor: `${stat.color}20` }}
-                                >
-                                    <span style={{ color: stat.color, fontSize: "24px" }}>
-                                        {stat.icon}
-                                    </span>
+                                <div className="stat-footer">
+                                    <div
+                                        className={`stat-trend ${
+                                            stat.increase >= 0 ? "trend-up" : "trend-down"
+                                        }`}
+                                    >
+                                        <span className="trend-icon">
+                                            {stat.increase >= 0 ? (
+                                                <ArrowUpOutlined />
+                                            ) : (
+                                                <ArrowDownOutlined />
+                                            )}
+                                        </span>
+                                        {Math.abs(stat.increase)}%
+                                    </div>
+                                    <span className="trend-period">Since last month</span>
                                 </div>
-                            </div>
-                            <div className="mt-4">
-                                <span
-                                    className={
-                                        stat.increase >= 0 ? "text-green-500" : "text-red-500"
-                                    }
-                                >
-                                    {stat.increase >= 0 ? (
-                                        <ArrowUpOutlined />
-                                    ) : (
-                                        <ArrowDownOutlined />
-                                    )}
-                                    {Math.abs(stat.increase)}%
-                                </span>
-                                <span className="text-gray-500 ml-2">Since last month</span>
                             </div>
                         </Card>
                     </Col>
                 ))}
             </Row>
 
-            <Row gutter={[16, 16]}>
+            <Row gutter={[24, 24]}>
                 <Col xs={24}>
-                    <Card
-                        title="Recent Activities"
-                        variant="outlined"
-                        extra={<Button type="link">View All</Button>}
-                    >
-                        <Table dataSource={recentActivities} columns={columns} pagination={false} />
+                    <Card className="activities-card" variant="borderless">
+                        <div className="activities-header">
+                            <h3 className="activities-title">Recent Activities</h3>
+                            <Button type="link" className="view-all-btn">
+                                View All <RightOutlined />
+                            </Button>
+                        </div>
+                        <Table
+                            dataSource={recentActivities}
+                            columns={columns}
+                            pagination={false}
+                            className="activities-table"
+                            rowKey="key"
+                        />
                     </Card>
                 </Col>
             </Row>

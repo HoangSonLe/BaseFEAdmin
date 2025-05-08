@@ -4,14 +4,19 @@
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
     position: relative;
     overflow: hidden;
-}
-
-.header-toggle-btn {
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-toggle-btn:hover {
     background-color: var(--hover-bg);
+}
+
+.header-toggle-btn:active {
+    background-color: var(--hover-bg);
+    transform: scale(0.95);
 }
 
 .toggle-icon {
@@ -21,4 +26,22 @@
 
 .toggle-icon-rotate {
     transform: rotate(180deg);
+}
+
+/* Responsive styles for toggle button */
+@media (max-width: 767px) {
+    .header-toggle-btn {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 18px !important;
+    }
+
+    .toggle-icon {
+        font-size: 18px;
+    }
+}
+
+/* Ensure the toggle button is always visible and clickable */
+.header-toggle-btn:focus {
+    outline: none;
 }

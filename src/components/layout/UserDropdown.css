@@ -149,6 +149,32 @@
     color: var(--text-primary);
 }
 
+/* Responsive styles for user dropdown */
+@media (max-width: 767px) {
+    .header-user-dropdown {
+        padding: 0 8px;
+        height: 48px;
+    }
+
+    .header-user-text {
+        display: none;
+    }
+
+    .dropdown-arrow {
+        display: none;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .header-user-text {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
 /* Down arrow styling */
 .dropdown-arrow {
     color: var(--text-secondary);
@@ -166,4 +192,5 @@
     margin: 0 !important;
     height: 1px !important;
     background-color: var(--border-color) !important;
+    padding: 0 !important;
 }

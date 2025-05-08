@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "antd";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { MenuFoldOutlined, MenuUnfoldOutlined, MenuOutlined } from "@ant-design/icons";
 import "./HeaderToggle.css";
 
 interface HeaderToggleProps {
@@ -9,6 +9,22 @@ interface HeaderToggleProps {
 }
 
 const HeaderToggle: React.FC<HeaderToggleProps> = ({ collapsed, onToggle }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check if the screen is mobile size
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+        };
+    }, []);
+
     return (
         <Button
             type="text"
@@ -16,12 +32,18 @@ const HeaderToggle: React.FC<HeaderToggleProps> = ({ collapsed, onToggle }) => {
             onClick={onToggle}
             style={{
                 fontSize: "16px",
-                width: 64,
-                height: 64,
+                width: isMobile ? 48 : 64,
+                height: isMobile ? 48 : 64,
             }}
         >
             <span className={`toggle-icon ${collapsed ? "toggle-icon-rotate" : ""}`}>
-                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                {isMobile ? (
+                    <MenuOutlined />
+                ) : collapsed ? (
+                    <MenuUnfoldOutlined />
+                ) : (
+                    <MenuFoldOutlined />
+                )}
             </span>
         </Button>
     );

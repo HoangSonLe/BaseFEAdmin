@@ -24,6 +24,24 @@
     box-shadow: 0 2px 8px var(--shadow-color);
 }
 
+/* Desktop sider specific styles */
+.desktop-sider {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Mobile drawer sidebar styles */
+.mobile-sidebar-drawer .ant-drawer-content-wrapper {
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+.mobile-sidebar-drawer .ant-drawer-content {
+    background-color: var(--bg-primary);
+}
+
+.mobile-sidebar-drawer .ant-drawer-body {
+    padding: 0;
+}
+
 /* Fix for Ant Design's default padding */
 .ant-dropdown-menu-item-only-child {
     padding: 0 !important;
@@ -77,4 +95,41 @@
 /* Ensure the app has proper overflow handling */
 body {
     overflow-x: hidden;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+    .app-header {
+        padding: 0 16px;
+    }
+
+    .header-toggle-btn {
+        width: 48px !important;
+        height: 48px !important;
+        margin-left: -16px;
+    }
+
+    .main-content-layout {
+        margin-left: 0 !important;
+    }
+
+    .ant-drawer-content-wrapper {
+        width: 250px !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .app-header {
+        padding: 0 24px;
+    }
+}
+
+/* Dark mode adjustments for mobile */
+.dark .mobile-sidebar-drawer .ant-drawer-content {
+    background-color: var(--bg-primary);
+}
+
+.dark .mobile-sidebar-drawer .ant-drawer-wrapper-body {
+    background-color: var(--bg-primary);
 }

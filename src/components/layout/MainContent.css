@@ -3,4 +3,22 @@
     background-color: var(--bg-primary);
     box-shadow: 0 2px 8px var(--shadow-color);
     transition: all 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Responsive styles for main content */
+@media (max-width: 767px) {
+    .main-content {
+        margin: 16px 8px !important;
+        padding: 16px !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-content {
+        margin: 20px 12px !important;
+        padding: 20px !important;
+    }
 }

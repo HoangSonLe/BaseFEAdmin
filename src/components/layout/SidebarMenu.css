@@ -7,35 +7,31 @@
 
 /* Enhance menu item animations */
 .sidebar-menu .ant-menu-item {
-    transition: padding 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                background 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                color 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    transition: padding 0.3s cubic-bezier(0.2, 0, 0, 1), background 0.3s cubic-bezier(0.2, 0, 0, 1),
+        color 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
 }
 
 /* Enhance submenu animations */
 .sidebar-menu .ant-menu-submenu-title {
-    transition: padding 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                background 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                color 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    transition: padding 0.3s cubic-bezier(0.2, 0, 0, 1), background 0.3s cubic-bezier(0.2, 0, 0, 1),
+        color 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
 }
 
 /* Smooth animation for submenu expansion/collapse */
 .sidebar-menu .ant-menu-sub {
-    transition: height 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                opacity 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    transition: height 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s cubic-bezier(0.2, 0, 0, 1),
+        transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
 }
 
 /* Enhance icon animations */
 .sidebar-menu .anticon {
-    transition: margin-right 0.3s cubic-bezier(0.2, 0, 0, 1), 
-                font-size 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    transition: margin-right 0.3s cubic-bezier(0.2, 0, 0, 1),
+        font-size 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
 }
 
 /* Smooth animation for menu item text */
 .sidebar-menu .ant-menu-title-content {
-    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1),
-                transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1), transform 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
 }
 
 /* Special animation for collapsed state */
@@ -46,8 +42,7 @@
 
 /* Enhance submenu arrow animation */
 .sidebar-menu .ant-menu-submenu-arrow {
-    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1),
-                opacity 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.3s cubic-bezier(0.2, 0, 0, 1) !important;
 }
 
 /* Improve hover effects */
@@ -60,4 +55,42 @@
 /* Reset transform on active items */
 .sidebar-menu .ant-menu-item-selected:hover {
     transform: translateX(0);
+}
+
+/* Mobile menu styles */
+.mobile-sidebar-drawer .sidebar-menu {
+    border-right: none !important;
+}
+
+.mobile-sidebar-drawer .ant-menu-inline {
+    border-right: none !important;
+}
+
+/* Responsive styles for menu */
+@media (max-width: 767px) {
+    .sidebar-menu .ant-menu-item,
+    .sidebar-menu .ant-menu-submenu-title {
+        height: 50px !important;
+        line-height: 50px !important;
+        font-size: 14px !important;
+    }
+
+    .sidebar-menu .ant-menu-item .anticon,
+    .sidebar-menu .ant-menu-submenu-title .anticon {
+        font-size: 18px !important;
+    }
+
+    .sidebar-menu .ant-menu-sub .ant-menu-item {
+        height: 40px !important;
+        line-height: 40px !important;
+        padding-left: 48px !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .sidebar-menu .ant-menu-item,
+    .sidebar-menu .ant-menu-submenu-title {
+        font-size: 14px !important;
+    }
 }

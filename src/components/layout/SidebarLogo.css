@@ -1,4 +1,34 @@
 /* Sidebar logo styles */
 .sidebar-logo {
     background-color: var(--primary-color);
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.sidebar-logo h1 {
+    color: white;
+    margin: 0;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1), transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.sidebar-logo span {
+    color: white;
+    transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1), transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Responsive styles for logo */
+@media (max-width: 767px) {
+    .sidebar-logo {
+        height: 56px;
+        padding: 0 16px;
+        justify-content: flex-start;
+    }
+
+    .mobile-sidebar-drawer .sidebar-logo {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }
