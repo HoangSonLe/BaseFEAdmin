@@ -4,7 +4,7 @@ import type { ColumnType } from "antd/es/table";
 import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { CommonTable } from "../../components/common";
 
-interface Category {
+interface Category extends Record<string, unknown> {
     id: number;
     name: string;
     slug: string;

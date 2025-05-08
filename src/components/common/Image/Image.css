@@ -1,0 +1,170 @@
+/* Image component styles */
+
+/* Base image styles */
+.custom-image-wrapper {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+}
+
+.custom-image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    max-width: 100%;
+    /* Border radius will be applied via inline style */
+}
+
+.custom-image {
+    display: block;
+    max-width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Ensure all Ant Design Image components inherit border radius */
+.ant-image {
+    border-radius: inherit !important;
+}
+
+/* Ensure the image itself inherits border radius */
+.ant-image-img {
+    border-radius: inherit !important;
+}
+
+/* Hover effect for clickable images */
+.custom-image-hoverable {
+    cursor: pointer;
+}
+
+.custom-image-hoverable:hover {
+    opacity: 0.9;
+}
+
+/* Shadow effect */
+.custom-image-shadow {
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Border effect */
+.custom-image-bordered {
+    border: 1px solid var(--border-light);
+}
+
+/* Circular effect */
+.custom-image-circular {
+    border-radius: 50%;
+}
+
+/* Zoom effect */
+.custom-image-zoom-container {
+    overflow: hidden;
+}
+
+.custom-image-zoom {
+    transition: transform 0.3s ease;
+}
+
+.custom-image-zoom:hover {
+    transform: scale(1.05);
+}
+
+/* Caption styles */
+.custom-image-caption {
+    margin-top: 8px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Preview mask styles */
+.custom-image-preview-mask {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+    overflow: hidden; /* Ensure mask respects border radius */
+    border-radius: unset !important;
+}
+
+.custom-image-preview-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.custom-image-preview-text {
+    font-size: 14px;
+}
+
+/* Dark mode adjustments */
+.dark .custom-image-bordered {
+    border-color: var(--border-color);
+}
+
+.dark .custom-image-caption {
+    color: var(--text-secondary);
+}
+
+/* Ant Image overrides */
+.ant-image-preview-operations {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.ant-image-preview-img {
+    transition: transform 0.3s ease;
+}
+
+.ant-image-preview-mask {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Fix for Ant Design Image mask */
+.ant-image-mask {
+    /* Inherit border radius from parent */
+    border-radius: inherit !important;
+}
+
+/* Ensure all divs inside Ant Image respect border radius */
+.ant-image > div {
+    border-radius: inherit !important;
+}
+
+/* Ensure the mask content also respects border radius */
+.ant-image-mask-info {
+    border-radius: inherit !important;
+}
+
+/* Wrapper for custom masks to ensure they inherit border radius */
+.custom-image-mask-wrapper {
+    border-radius: inherit !important;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure all children of custom mask wrapper inherit border radius */
+.custom-image-mask-wrapper > * {
+    border-radius: inherit !important;
+}
+
+.ant-image-preview-operations-operation {
+    margin-left: 12px;
+}
+
+.ant-image-preview-switch-left,
+.ant-image-preview-switch-right {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: white;
+    border-radius: 50%;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.ant-image-preview-switch-left:hover,
+.ant-image-preview-switch-right:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}

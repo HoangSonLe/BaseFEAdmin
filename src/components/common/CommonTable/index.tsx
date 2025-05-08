@@ -4,8 +4,9 @@ import { Table, Button, Input, Space, Card, Dropdown, Pagination } from "antd";
 import type { MenuProps } from "antd/es/menu";
 import type { TableProps } from "antd/es/table";
 import { SearchOutlined, FilterOutlined, MoreOutlined } from "@ant-design/icons";
-import SearchForm from "./SearchForm";
-import type { SearchFormItemProps } from "./SearchForm";
+import SearchForm from "../SearchForm";
+import type { SearchFormItemProps } from "../SearchForm";
+import "./CommonTable.css";
 
 // Define API request interface
 export interface ApiRequest<T> {
@@ -14,7 +15,7 @@ export interface ApiRequest<T> {
         page: number;
         pageSize: number;
         search?: string;
-        filters?: Record<string, any>;
+        filters?: Record<string, unknown>;
         sorter?: { field: string; order: "ascend" | "descend" };
     }) => Promise<{
         data: T[];
@@ -22,7 +23,7 @@ export interface ApiRequest<T> {
     }>;
     // Initial params
     initialParams?: {
-        filters?: Record<string, any>;
+        filters?: Record<string, unknown>;
         sorter?: { field: string; order: "ascend" | "descend" };
     };
 }
@@ -72,12 +73,15 @@ export interface CommonTableProps<T> {
     searchFormTitle?: string;
     searchFormDefaultExpanded?: boolean;
 
+    // Table scroll configuration
+    height?: number | string;
+
     // Custom class names
     className?: string;
     cardClassName?: string;
 }
 
-const CommonTable = <T extends Record<string, any>>({
+const CommonTable = <T extends Record<string, unknown>>({
     dataSource: propDataSource,
     columns,
     rowKey,
@@ -96,6 +100,7 @@ const CommonTable = <T extends Record<string, any>>({
     searchFormTitle,
     searchFormDefaultExpanded,
     toolbar,
+    height,
 }: CommonTableProps<T>) => {
     // State for pagination
     const [currentPage, setCurrentPage] = useState(1);
@@ -108,7 +113,7 @@ const CommonTable = <T extends Record<string, any>>({
     // State for API data
     const [loading, setLoading] = useState(false);
     const [apiData, setApiData] = useState<T[]>([]);
-    const [filters] = useState<Record<string, any>>(request?.initialParams?.filters || {});
+    const [filters] = useState<Record<string, unknown>>(request?.initialParams?.filters || {});
     const [sorter] = useState<{ field: string; order: "ascend" | "descend" } | undefined>(
         request?.initialParams?.sorter
     );
@@ -154,6 +159,7 @@ const CommonTable = <T extends Record<string, any>>({
         } else {
             setTotal(propDataSource?.length || 0);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isApiMode, currentPage, pageSize, searchValue, filters, sorter]);
 
     // Handle pagination change
@@ -301,6 +307,10 @@ const CommonTable = <T extends Record<string, any>>({
                             : ""
                     }`}
                     loading={loading}
+                    scroll={{
+                        x: true,
+                        y: height,
+                    }}
                 />
 
                 {/* Pagination controls */}

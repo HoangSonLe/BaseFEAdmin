@@ -26,8 +26,12 @@ const Users: React.FC = () => {
     const [editingKey, setEditingKey] = useState<string | null>(null);
 
     // Filter states
-    const [roleFilter, setRoleFilter] = useState<string | number | null>(null);
-    const [statusFilter, setStatusFilter] = useState<string | number | null>(null);
+    const [roleFilter, setRoleFilter] = useState<string | number | string[] | number[] | null>(
+        null
+    );
+    const [statusFilter, setStatusFilter] = useState<string | number | string[] | number[] | null>(
+        null
+    );
     const [dateFilter, setDateFilter] = useState<Date | null>(null);
     const [dateRangeFilter, setDateRangeFilter] = useState<[Date, Date] | null>(null);
 
@@ -176,7 +180,7 @@ const Users: React.FC = () => {
         {
             title: "Actions",
             key: "actions",
-            render: (_: any, record: User) => (
+            render: (_: unknown, record: User) => (
                 <Space>
                     <Button
                         type="text"

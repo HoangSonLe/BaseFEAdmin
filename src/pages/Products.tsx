@@ -21,10 +21,10 @@ import {
     type DropdownOption,
     type SearchFormItemProps,
 } from "../components/common";
-import type { ApiRequest } from "../components/common/CommonTable";
+import type { ApiRequest } from "../components/common/CommonTable/index";
 
 // Define the Product interface
-interface Product {
+interface Product extends Record<string, unknown> {
     id: number;
     name: string;
     category: string;
@@ -318,8 +318,7 @@ const Products: React.FC = () => {
                 Object.entries(params.filters).forEach(([key, value]) => {
                     if (value) {
                         filteredData = filteredData.filter((item) => {
-                            // @ts-expect-error - Dynamic property access
-                            const itemValue = item[key];
+                            const itemValue = item[key as keyof Product];
                             return String(itemValue) === String(value);
                         });
                     }
@@ -330,18 +329,20 @@ const Products: React.FC = () => {
             if (params.sorter) {
                 const { field, order } = params.sorter;
                 filteredData.sort((a, b) => {
-                    // @ts-expect-error - Dynamic property access
-                    const aValue = a[field];
-                    // @ts-expect-error - Dynamic property access
-                    const bValue = b[field];
+                    const aValue = a[field as keyof Product];
+                    const bValue = b[field as keyof Product];
 
-                    if (typeof aValue === "string") {
+                    if (typeof aValue === "string" && typeof bValue === "string") {
                         return order === "ascend"
                             ? aValue.localeCompare(bValue)
                             : bValue.localeCompare(aValue);
                     }
 
-                    return order === "ascend" ? aValue - bValue : bValue - aValue;
+                    if (typeof aValue === "number" && typeof bValue === "number") {
+                        return order === "ascend" ? aValue - bValue : bValue - aValue;
+                    }
+
+                    return 0;
                 });
             }
 

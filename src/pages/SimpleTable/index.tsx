@@ -1,11 +1,11 @@
 import React from "react";
 import { Tag, Space, Button, Tooltip } from "antd";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { CommonTable } from "../components/common";
+import { CommonTable } from "../../components/common";
 import type { ColumnType } from "antd/es/table";
 
 // Define the Product interface
-interface Product {
+interface Product extends Record<string, unknown> {
     id: number;
     name: string;
     category: string;

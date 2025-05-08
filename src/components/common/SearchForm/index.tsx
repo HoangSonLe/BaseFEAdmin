@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Space, Typography, Divider } from "antd";
 import { SearchOutlined, ReloadOutlined, DownOutlined, FilterOutlined } from "@ant-design/icons";
+import "./SearchForm.css";
 
 const { Text } = Typography;
 

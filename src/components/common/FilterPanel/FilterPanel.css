@@ -1,0 +1,68 @@
+/* Filter panel styles */
+.filter-panel {
+    background-color: var(--bg-primary);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.filter-panel:hover {
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.filter-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.filter-panel-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.filter-panel-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-panel-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+    gap: 8px;
+}
+
+.filter-panel-button {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.filter-panel-button:hover {
+    transform: translateY(-1px);
+}
+
+.filter-panel-collapse-icon {
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.filter-panel-collapse-icon.expanded {
+    transform: rotate(180deg);
+}
+
+/* Dark mode adjustments */
+.dark .filter-panel {
+    background-color: var(--bg-primary);
+    border-color: var(--border-light);
+}

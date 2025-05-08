@@ -1,0 +1,239 @@
+/* ImageSlider component styles */
+.image-slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.image-slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Carousel styles */
+.image-slider-carousel {
+    width: 100%;
+    height: 100%;
+}
+
+/* Fix for Ant Design Carousel */
+.image-slider-carousel .ant-carousel,
+.image-slider-carousel .ant-carousel .slick-slider,
+.image-slider-carousel .slick-list,
+.image-slider-carousel .slick-track,
+.image-slider-carousel .slick-slide > div {
+    height: 100%;
+}
+
+.image-slider-carousel .slick-slide {
+    overflow: hidden;
+}
+
+.image-slider-slide {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.image-slider-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Navigation arrows */
+.image-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.image-slider-arrow:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.image-slider-arrow-left {
+    left: 16px;
+}
+
+.image-slider-arrow-right {
+    right: 16px;
+}
+
+/* Navigation dots */
+.image-slider-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.image-slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-slider-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.image-slider-dot-active {
+    background-color: var(--primary-color);
+    width: 12px;
+    height: 12px;
+}
+
+/* Thumbnails */
+.image-slider-thumbnails-container {
+    margin-top: 16px;
+    padding: 0 20px;
+}
+
+.image-slider-thumbnails {
+    margin: 0 -8px;
+}
+
+.image-slider-thumbnails .ant-carousel,
+.image-slider-thumbnails .ant-carousel .slick-slider {
+    width: 100%;
+}
+
+.image-slider-thumbnails .slick-track {
+    display: flex;
+    gap: 8px;
+    margin-left: 0;
+}
+
+.image-slider-thumbnails .slick-slide {
+    padding: 0 8px;
+    height: auto;
+}
+
+.image-slider-thumbnail {
+    width: 100%;
+    height: 70px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.image-slider-thumbnail:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.image-slider-thumbnail-active {
+    border-color: var(--primary-color);
+    opacity: 1;
+}
+
+.image-slider-thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fade effect for thumbnails */
+.fade-thumb .slick-slide {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.fade-thumb .slick-current {
+    opacity: 1;
+}
+
+/* Thumbnail navigation arrows */
+.image-slider-thumbnails .slick-prev,
+.image-slider-thumbnails .slick-next {
+    width: 24px;
+    height: 24px;
+    z-index: 10;
+}
+
+.image-slider-thumbnails .slick-prev {
+    left: -20px;
+}
+
+.image-slider-thumbnails .slick-next {
+    right: -20px;
+}
+
+/* Dark mode adjustments */
+.dark .image-slider-arrow {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .image-slider-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dark .image-slider-dot {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark .image-slider-dot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-slider-arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .image-slider-arrow-left {
+        left: 8px;
+    }
+
+    .image-slider-arrow-right {
+        right: 8px;
+    }
+
+    .image-slider-thumbnail {
+        width: 60px;
+        height: 45px;
+    }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch } from "antd";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useTheme } from "../../../contexts/ThemeContext";
 import "./ThemeToggle.css";
 
 interface ThemeToggleProps {

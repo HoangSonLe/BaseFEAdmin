@@ -8,15 +8,17 @@ import {
     DateRangePicker,
     FilterPanel,
     SearchForm,
+    Image,
+    ImageSlider,
+    ThemeToggle,
     type DropdownOption,
     type SearchFormItemProps,
-} from "../components/common";
-import type { ApiRequest } from "../components/common/CommonTable";
-import ThemeToggle from "../components/common/ThemeToggle";
+} from "../../components/common";
+import type { ApiRequest } from "../../components/common/CommonTable/index";
 
 const { Title, Text, Paragraph } = Typography;
 
-interface ExampleItem {
+interface ExampleItem extends Record<string, unknown> {
     id: number;
     name: string;
     category: string;
@@ -32,7 +34,9 @@ const ComponentLibrary: React.FC = () => {
     ];
 
     // State for examples
-    const [selectedValue, setSelectedValue] = useState<string | number | null>(null);
+    const [selectedValue, setSelectedValue] = useState<
+        string | number | string[] | number[] | null
+    >(null);
 
     // Dropdown options
     const categoryOptions: DropdownOption[] = [
@@ -168,6 +172,36 @@ const ComponentLibrary: React.FC = () => {
                     rowKey="id"
                     className="mb-4"
                 />
+
+                <Title level={5} className="mt-4">
+                    Table with Fixed Height and Scrolling
+                </Title>
+                <Paragraph>
+                    This table has a fixed height and will scroll both horizontally and vertically
+                    when content exceeds the container.
+                </Paragraph>
+                <CommonTable<ExampleItem>
+                    title="Scrollable Table Example"
+                    description="This table has a fixed height with horizontal and vertical scrolling"
+                    columns={[
+                        ...columns,
+                        ...Array.from({ length: 10 }, (_, i) => ({
+                            title: `Extra Column ${i + 1}`,
+                            dataIndex: `extraColumn${i + 1}`,
+                            key: `extraColumn${i + 1}`,
+                            render: () => `Extra data ${i + 1}`,
+                        })),
+                    ]}
+                    dataSource={Array.from({ length: 20 }, (_, i) => ({
+                        id: i + 1,
+                        name: `Item ${i + 1}`,
+                        category: i % 2 === 0 ? "Category A" : "Category B",
+                        status: i % 3 === 0 ? "Active" : "Inactive",
+                    }))}
+                    rowKey="id"
+                    height={300}
+                    className="mb-4"
+                />
             </Card>
 
             <Divider orientation="left">Form Components</Divider>
@@ -251,6 +285,94 @@ const ComponentLibrary: React.FC = () => {
                     <Text className="mr-2">Theme:</Text>
                     <ThemeToggle />
                 </div>
+            </Card>
+
+            <Divider orientation="left">Image Component</Divider>
+            <Card variant="outlined" className="mb-8">
+                <Title level={4}>Image</Title>
+                <Paragraph>
+                    A versatile image component with preview functionality and various styling
+                    options.
+                </Paragraph>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div>
+                        <Title level={5}>Basic Image with Preview</Title>
+                        <Image
+                            src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=300&h=300&auto=format&fit=crop"
+                            alt="Sample image"
+                            width={200}
+                        />
+                    </div>
+
+                    <div>
+                        <Title level={5}>Bordered Image</Title>
+                        <Image
+                            src="https://images.unsplash.com/photo-1618588507085-c79565432917?q=80&w=300&h=300&auto=format&fit=crop"
+                            alt="Sample image"
+                            width={200}
+                            bordered
+                            borderRadius="8px"
+                        />
+                    </div>
+
+                    <div>
+                        <Title level={5}>Circular Image</Title>
+                        <Image
+                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=300&h=300&auto=format&fit=crop"
+                            alt="Sample image"
+                            width={200}
+                            circular
+                            shadow
+                        />
+                    </div>
+
+                    <div>
+                        <Title level={5}>Image with Zoom Effect</Title>
+                        <Image
+                            src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=300&h=300&auto=format&fit=crop"
+                            alt="Sample image"
+                            width={200}
+                            zoomEffect
+                            borderRadius="8px"
+                        />
+                    </div>
+                </div>
+            </Card>
+
+            <Divider orientation="left">Image Slider</Divider>
+            <Card variant="outlined" className="mb-8">
+                <Title level={4}>ImageSlider</Title>
+                <Paragraph>
+                    A versatile image slider component with various display options.
+                </Paragraph>
+
+                <Title level={5}>Basic Image Slider</Title>
+                <ImageSlider
+                    images={[
+                        {
+                            src: "https://images.unsplash.com/photo-1682687982501-1e58ab814714?q=80&w=600&h=400&auto=format&fit=crop",
+                            alt: "Landscape 1",
+                            caption: "Beautiful mountain landscape",
+                        },
+                        {
+                            src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600&h=400&auto=format&fit=crop",
+                            alt: "Landscape 2",
+                            caption: "Foggy forest scene",
+                        },
+                        {
+                            src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=600&h=400&auto=format&fit=crop",
+                            alt: "Landscape 3",
+                            caption: "Sunset over the mountains",
+                        },
+                    ]}
+                    height={400}
+                    className="mb-8"
+                    imageProps={{
+                        borderRadius: "8px",
+                        shadow: true,
+                    }}
+                />
             </Card>
         </div>
     );
