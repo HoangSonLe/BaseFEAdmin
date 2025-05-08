@@ -112,7 +112,7 @@ const MainLayout: React.FC = () => {
                 open={drawerVisible && isMobile}
                 className="mobile-sidebar-drawer"
                 width={250}
-                bodyStyle={{ padding: 0, overflow: "auto" }}
+                styles={{ body: { padding: 0, overflow: "auto" } }}
                 maskClosable={true}
             >
                 <SidebarContent />

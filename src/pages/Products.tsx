@@ -22,21 +22,53 @@ import {
     type SearchFormItemProps,
 } from "../components/common";
 import type { ApiRequest } from "../components/common/CommonTable/index";
-
-// Define the Product interface
-interface Product extends Record<string, unknown> {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    stock: number;
-    status: "In Stock" | "Low Stock" | "Out of Stock";
-    rating: number;
-    image: string;
-    createdAt: string;
-}
+import { CreateProductModal, UpdateProductModal, type Product } from "../components/products";
 
 const Products: React.FC = () => {
+    // State for modal visibility and editing product
+    const [createModalVisible, setCreateModalVisible] = useState(false);
+    const [updateModalVisible, setUpdateModalVisible] = useState(false);
+    const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+
+    // Handle showing create modal
+    const showCreateModal = () => {
+        setCreateModalVisible(true);
+    };
+
+    // Handle showing update modal
+    const showUpdateModal = (product: Product) => {
+        setEditingProduct(product);
+        setUpdateModalVisible(true);
+    };
+
+    // Handle create modal cancel
+    const handleCreateCancel = () => {
+        setCreateModalVisible(false);
+    };
+
+    // Handle update modal cancel
+    const handleUpdateCancel = () => {
+        setUpdateModalVisible(false);
+        setEditingProduct(null);
+    };
+
+    // Handle create form submission
+    const handleCreateSubmit = (values: any) => {
+        console.log("Creating new product with:", values);
+        // Here you would typically save the data to your backend
+        setCreateModalVisible(false);
+    };
+
+    // Handle update form submission
+    const handleUpdateSubmit = (values: any) => {
+        if (editingProduct) {
+            console.log(`Updating product ${editingProduct.id} with:`, values);
+            // Here you would typically update the data in your backend
+        }
+        setUpdateModalVisible(false);
+        setEditingProduct(null);
+    };
+
     // Sample product data
     const productData: Product[] = [
         {
@@ -263,7 +295,7 @@ const Products: React.FC = () => {
                         <Button
                             type="text"
                             icon={<EditOutlined />}
-                            onClick={() => console.log("Edit product:", record.id)}
+                            onClick={() => showUpdateModal(record)}
                             className="table-action-button"
                         />
                     </Tooltip>
@@ -404,7 +436,7 @@ const Products: React.FC = () => {
             formItemProps: {
                 name: "status",
                 label: "Status",
-                initialValue: "",
+                initialValue: [],
             },
 
             rowIndex: 0,
@@ -559,7 +591,7 @@ const Products: React.FC = () => {
                 actionButton={{
                     text: "Add Product",
                     icon: <PlusOutlined />,
-                    onClick: () => console.log("Add new product"),
+                    onClick: () => showCreateModal(),
                 }}
                 onSearch={handleSearch}
                 searchFormItems={searchFormItems}
@@ -568,6 +600,22 @@ const Products: React.FC = () => {
                 searchFormDefaultExpanded={true}
                 className="mb-6"
             />
+
+            {/* Product Modals */}
+            <CreateProductModal
+                visible={createModalVisible}
+                onCancel={handleCreateCancel}
+                onSubmit={handleCreateSubmit}
+            />
+
+            {editingProduct && (
+                <UpdateProductModal
+                    visible={updateModalVisible}
+                    product={editingProduct}
+                    onCancel={handleUpdateCancel}
+                    onSubmit={handleUpdateSubmit}
+                />
+            )}
         </div>
     );
 };
