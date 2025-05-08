@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Avatar, Dropdown } from "antd";
 import { DownOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import ThemeToggle from "../common/ThemeToggle";
+import { useAuth } from "../../contexts/AuthContext";
 
 import "./UserDropdown.css";
 
 const UserDropdown: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const { user, logout } = useAuth();
 
     return (
         <Dropdown
@@ -21,8 +23,12 @@ const UserDropdown: React.FC = () => {
                                         AU
                                     </Avatar>
                                     <div className="user-info">
-                                        <div className="username">Default User</div>
-                                        <div className="user-handle">@uxuidesigner</div>
+                                        <div className="username">
+                                            {user?.name || "Default User"}
+                                        </div>
+                                        <div className="user-handle">
+                                            {user?.email || "@uxuidesigner"}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +69,7 @@ const UserDropdown: React.FC = () => {
                                 </div>
                             </div>
                         ),
-                        onClick: () => console.log("Logout clicked"),
+                        onClick: () => logout(),
                     },
                 ],
             }}
@@ -78,7 +84,7 @@ const UserDropdown: React.FC = () => {
                 <Avatar size={28} className="header-avatar">
                     AU
                 </Avatar>
-                <span className="header-user-text">Admin User</span>
+                <span className="header-user-text">{user?.name || "Admin User"}</span>
                 <DownOutlined
                     className={`dropdown-arrow ${dropdownOpen ? "dropdown-arrow-open" : ""}`}
                 />

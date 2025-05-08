@@ -16,6 +16,11 @@ import {
     TableOutlined,
     AppstoreOutlined,
     TagOutlined,
+    WarningOutlined,
+    FileExclamationOutlined,
+    LoginOutlined,
+    KeyOutlined,
+    LockOutlined,
 } from "@ant-design/icons";
 
 interface SidebarMenuProps {
@@ -32,6 +37,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         if (currentPath.startsWith("/users/")) return ["users-submenu"];
         if (currentPath.startsWith("/products/")) return ["products-submenu"];
         if (currentPath.startsWith("/components/")) return ["components-submenu"];
+        if (currentPath.startsWith("/pages/")) return ["pages-submenu"];
         return [];
     };
 
@@ -54,6 +60,15 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         if (currentPath === "/components/image-sliders") return "7-6";
         if (currentPath === "/status-example") return "8";
         if (currentPath === "/settings") return "4";
+
+        // Pages submenu
+        if (currentPath === "/pages/404") return "9-1";
+        if (currentPath === "/pages/500") return "9-2";
+        if (currentPath === "/pages/403") return "9-3";
+        if (currentPath === "/pages/login") return "9-4";
+        if (currentPath === "/pages/forgot-password") return "9-5";
+        if (currentPath === "/pages/reset-password") return "9-6";
+
         return "";
     };
 
@@ -156,6 +171,43 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
                     key: "8",
                     icon: <TagOutlined />,
                     label: <Link to="/status-example">Status Component</Link>,
+                },
+                {
+                    key: "pages-submenu",
+                    icon: <FileExclamationOutlined />,
+                    label: "Pages",
+                    children: [
+                        {
+                            key: "9-1",
+                            icon: <WarningOutlined />,
+                            label: <Link to="/pages/404">404 Page</Link>,
+                        },
+                        {
+                            key: "9-2",
+                            icon: <WarningOutlined />,
+                            label: <Link to="/pages/500">500 Error</Link>,
+                        },
+                        {
+                            key: "9-3",
+                            icon: <WarningOutlined />,
+                            label: <Link to="/pages/403">403 Forbidden</Link>,
+                        },
+                        {
+                            key: "9-4",
+                            icon: <LoginOutlined />,
+                            label: <Link to="/pages/login">Login</Link>,
+                        },
+                        {
+                            key: "9-5",
+                            icon: <KeyOutlined />,
+                            label: <Link to="/pages/forgot-password">Forgot Password</Link>,
+                        },
+                        {
+                            key: "9-6",
+                            icon: <LockOutlined />,
+                            label: <Link to="/pages/reset-password">Reset Password</Link>,
+                        },
+                    ],
                 },
                 {
                     key: "4",

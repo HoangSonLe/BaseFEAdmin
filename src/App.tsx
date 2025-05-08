@@ -4,6 +4,7 @@ import { useEffect, lazy, Suspense } from "react";
 // Providers
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { setLoadingController } from "./apis/axios";
 
 // Layouts
@@ -18,6 +19,17 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import ErrorPage from "./pages/ErrorPage";
 import ComponentLibrary from "./pages/ComponentLibrary";
+
+// Auth Pages
+import Login from "./pages/auth/Login";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
+import LoginPage from "./pages/auth/LoginPage";
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
+
+// Auth Components
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 // Lazy-loaded Component Library pages
 const TableComponents = lazy(() => import("./pages/ComponentLibrary/TableComponents"));
@@ -56,102 +68,149 @@ function App() {
             <LoadingProvider>
                 <LoadingInitializer />
                 <Router>
-                    <Routes>
-                        <Route path="/" element={<MainLayout />}>
-                            <Route index element={<Dashboard />} />
+                    <AuthProvider>
+                        <Routes>
+                            {/* Auth routes (public) */}
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/forgot-password" element={<ForgotPassword />} />
+                            <Route path="/reset-password" element={<ResetPassword />} />
 
-                            {/* User routes */}
-                            <Route path="users" element={<Users />} />
-                            <Route path="users/roles" element={<UserRoles />} />
-                            <Route path="users/permissions" element={<UserPermissions />} />
+                            {/* Protected routes */}
+                            <Route element={<ProtectedRoute />}>
+                                <Route path="/" element={<MainLayout />}>
+                                    <Route index element={<Dashboard />} />
 
-                            {/* Product routes */}
-                            <Route path="products" element={<Products />} />
-                            <Route path="products/categories" element={<ProductCategories />} />
-                            <Route path="products/inventory" element={<ProductInventory />} />
-                            <Route path="simple-table" element={<SimpleTable />} />
+                                    {/* User routes */}
+                                    <Route path="users" element={<Users />} />
+                                    <Route path="users/roles" element={<UserRoles />} />
+                                    <Route path="users/permissions" element={<UserPermissions />} />
 
-                            {/* Component Library routes */}
-                            <Route path="components" element={<ComponentLibrary />} />
-                            <Route
-                                path="components/tables"
-                                element={
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        <TableComponents />
-                                    </Suspense>
-                                }
-                            />
-                            <Route
-                                path="components/forms"
-                                element={
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        <FormComponents />
-                                    </Suspense>
-                                }
-                            />
-                            <Route
-                                path="components/filters"
-                                element={
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        <FilterComponents />
-                                    </Suspense>
-                                }
-                            />
-                            <Route
-                                path="components/ui"
-                                element={
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        <UIComponents />
-                                    </Suspense>
-                                }
-                            />
-                            <Route
-                                path="components/images"
-                                element={
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        <ImageComponents />
-                                    </Suspense>
-                                }
-                            />
-                            <Route
-                                path="components/image-sliders"
-                                element={
-                                    <Suspense fallback={<div>Loading...</div>}>
-                                        <ImageSliderComponents />
-                                    </Suspense>
-                                }
-                            />
-
-                            {/* Settings route */}
-                            <Route path="settings" element={<Settings />} />
-
-                            {/* Error routes */}
-                            <Route path="error" element={<ErrorPage />} />
-                            <Route
-                                path="403"
-                                element={
-                                    <ErrorPage
-                                        code="403"
-                                        title="403"
-                                        subTitle="Sorry, you are not authorized to access this page."
+                                    {/* Product routes */}
+                                    <Route path="products" element={<Products />} />
+                                    <Route
+                                        path="products/categories"
+                                        element={<ProductCategories />}
                                     />
-                                }
-                            />
-                            <Route
-                                path="500"
-                                element={
-                                    <ErrorPage
-                                        code="500"
-                                        title="500"
-                                        subTitle="Sorry, the server is reporting an error."
+                                    <Route
+                                        path="products/inventory"
+                                        element={<ProductInventory />}
                                     />
-                                }
-                            />
+                                    <Route path="simple-table" element={<SimpleTable />} />
 
-                            {/* 404 route */}
-                            <Route path="*" element={<NotFound />} />
-                        </Route>
-                    </Routes>
+                                    {/* Component Library routes */}
+                                    <Route path="components" element={<ComponentLibrary />} />
+                                    <Route
+                                        path="components/tables"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <TableComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/forms"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <FormComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/filters"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <FilterComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/ui"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <UIComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/images"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <ImageComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/image-sliders"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <ImageSliderComponents />
+                                            </Suspense>
+                                        }
+                                    />
+
+                                    {/* Settings route */}
+                                    <Route path="settings" element={<Settings />} />
+
+                                    {/* Error routes */}
+                                    <Route path="error" element={<ErrorPage />} />
+                                    <Route
+                                        path="403"
+                                        element={
+                                            <ErrorPage
+                                                code="403"
+                                                title="403"
+                                                subTitle="Sorry, you are not authorized to access this page."
+                                            />
+                                        }
+                                    />
+                                    <Route
+                                        path="500"
+                                        element={
+                                            <ErrorPage
+                                                code="500"
+                                                title="500"
+                                                subTitle="Sorry, the server is reporting an error."
+                                            />
+                                        }
+                                    />
+
+                                    {/* Pages routes */}
+                                    <Route path="pages">
+                                        <Route path="404" element={<NotFound />} />
+                                        <Route
+                                            path="500"
+                                            element={
+                                                <ErrorPage
+                                                    code="500"
+                                                    title="500"
+                                                    subTitle="Sorry, the server is reporting an error."
+                                                />
+                                            }
+                                        />
+                                        <Route
+                                            path="403"
+                                            element={
+                                                <ErrorPage
+                                                    code="403"
+                                                    title="403"
+                                                    subTitle="Sorry, you are not authorized to access this page."
+                                                />
+                                            }
+                                        />
+                                        <Route path="login" element={<Login />} />
+                                        <Route
+                                            path="forgot-password"
+                                            element={<ForgotPassword />}
+                                        />
+                                        <Route path="reset-password" element={<ResetPassword />} />
+                                    </Route>
+
+                                    {/* 404 route */}
+                                    <Route path="*" element={<NotFound />} />
+                                </Route>
+                            </Route>
+                        </Routes>
+                    </AuthProvider>
                 </Router>
             </LoadingProvider>
         </ThemeProvider>
