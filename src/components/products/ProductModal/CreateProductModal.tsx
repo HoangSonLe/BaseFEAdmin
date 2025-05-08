@@ -1,6 +1,5 @@
 import React from "react";
 import ProductDetailModal from "./ProductDetailModal";
-import type { Product } from "./ProductDetailModal";
 
 interface CreateProductModalProps {
     /**

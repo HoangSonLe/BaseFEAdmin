@@ -8,7 +8,6 @@ import {
     DownloadOutlined,
     UploadOutlined,
     ReloadOutlined,
-    LoadingOutlined,
 } from "@ant-design/icons";
 import { Button, Image, Space, Tag, Tooltip, Input, message } from "antd";
 import type { ColumnType } from "antd/es/table";
@@ -24,7 +23,14 @@ import {
     type SearchFormItemProps,
 } from "../components/common";
 import type { ApiRequest } from "../components/common/CommonTable/index";
-import { CreateProductModal, UpdateProductModal, type Product } from "../components/products";
+import {
+    CreateProductModal,
+    UpdateProductModal,
+    type Product as ProductType,
+} from "../components/products";
+
+// Extend Product to satisfy Record<string, unknown>
+interface Product extends ProductType, Record<string, unknown> {}
 
 const Products: React.FC = () => {
     // State for modal visibility and editing product

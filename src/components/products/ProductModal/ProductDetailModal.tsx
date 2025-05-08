@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Input, Select, InputNumber, Upload, Button, Row, Col } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import type { UploadProps } from "antd";
+
 import type { UploadFile } from "antd/es/upload/interface";
 
 // Define the Product interface

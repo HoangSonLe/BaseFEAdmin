@@ -6,9 +6,11 @@ import "./TopProgressBar.css";
 export interface TopProgressBarProps {
     height?: number;
     className?: string;
-    // Gradient colors
+    // Color options
     startColor?: string;
     endColor?: string;
+    // Ant Design style strokeColor property (can be string or object with from/to)
+    strokeColor?: string | { from: string; to: string };
 }
 
 const TopProgressBar: React.FC<TopProgressBarProps> = ({
@@ -16,13 +18,14 @@ const TopProgressBar: React.FC<TopProgressBarProps> = ({
     className = "",
     startColor = "#108ee9",
     endColor = "#87d068",
+    strokeColor,
 }) => {
     const { isLoading } = useLoading();
     const { theme } = useTheme();
     const [progress, setProgress] = useState(0);
     const [visible, setVisible] = useState(false);
-    const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
-    const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const progressIntervalRef = useRef<number | null>(null);
+    const hideTimeoutRef = useRef<number | null>(null);
 
     // Clear all timeouts and intervals when component unmounts
     useEffect(() => {
@@ -109,7 +112,11 @@ const TopProgressBar: React.FC<TopProgressBarProps> = ({
                 className="top-progress-bar-inner"
                 style={{
                     width: `${progress}%`,
-                    background: `linear-gradient(to right, ${startColor}, ${endColor})`,
+                    background: strokeColor
+                        ? typeof strokeColor === "string"
+                            ? strokeColor
+                            : `linear-gradient(to right, ${strokeColor.from}, ${strokeColor.to})`
+                        : `linear-gradient(to right, ${startColor}, ${endColor})`,
                     transition: isLoading
                         ? "width 0.2s ease-in-out"
                         : "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease-out",
