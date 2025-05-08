@@ -1,32 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 // Providers
-import { ThemeProvider } from "./contexts/ThemeContext";
-import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
-import { AuthProvider } from "./contexts/AuthContext";
 import { setLoadingController } from "./apis/axios";
+import { AuthProvider } from "./contexts/AuthContext";
+import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 // Layouts
 import MainLayout from "./layouts/MainLayout";
 
 // Pages
-import Dashboard from "./pages/Dashboard";
-import Users from "./pages/Users";
-import Products from "./pages/Products";
-import SimpleTable from "./pages/SimpleTable";
-import Settings from "./pages/Settings";
-import NotFound from "./pages/NotFound";
-import ErrorPage from "./pages/ErrorPage";
 import ComponentLibrary from "./pages/ComponentLibrary";
+import Dashboard from "./pages/Dashboard";
+import ErrorPage from "./pages/ErrorPage";
+import NotFound from "./pages/NotFound";
+import Products from "./pages/Products";
+import Settings from "./pages/Settings";
+import SimpleTable from "./pages/SimpleTable";
+import Users from "./pages/Users";
 
 // Auth Pages
-import Login from "./pages/auth/Login";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import Login from "./pages/auth/Login";
 import ResetPassword from "./pages/auth/ResetPassword";
-import LoginPage from "./pages/auth/LoginPage";
-import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
-import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
 
 // Auth Components
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -40,8 +37,8 @@ const ImageComponents = lazy(() => import("./pages/ComponentLibrary/ImageCompone
 const ImageSliderComponents = lazy(() => import("./pages/ComponentLibrary/ImageSliderComponents"));
 
 // User Pages
-import UserRoles from "./pages/users/UserRoles";
 import UserPermissions from "./pages/users/UserPermissions";
+import UserRoles from "./pages/users/UserRoles";
 
 // Product Pages
 import ProductCategories from "./pages/products/ProductCategories";
