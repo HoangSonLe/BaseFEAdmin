@@ -26,9 +26,23 @@
     border-radius: inherit !important;
 }
 
-/* Ensure the image itself inherits border radius */
+/* Ensure the image itself inherits border radius and respects object-fit */
 .ant-image-img {
     border-radius: inherit !important;
+}
+
+/* When object-fit is specified in style, make sure it's applied to the img element */
+.custom-image-component[style*="object-fit"] .ant-image-img {
+    object-fit: inherit !important;
+}
+
+/* Ensure width and height are properly inherited */
+.custom-image-component[style*="width"] .ant-image-img {
+    width: 100% !important;
+}
+
+.custom-image-component[style*="height"] .ant-image-img {
+    height: 100% !important;
 }
 
 /* Hover effect for clickable images */

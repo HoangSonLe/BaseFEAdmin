@@ -155,7 +155,7 @@ const Image: React.FC<ImageProps> = ({
         <div className="custom-image-wrapper">
             <div className={containerClasses} style={containerStyleWithBorderRadius}>
                 <AntImage
-                    className={imageClasses}
+                    className={`${imageClasses} custom-image-component`}
                     style={imageStyles}
                     preview={previewConfig}
                     {...restProps}

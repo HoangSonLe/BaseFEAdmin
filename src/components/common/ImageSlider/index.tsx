@@ -269,6 +269,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                                             alt={image.alt}
                                             preview={false}
                                             className="image-slider-thumbnail-image"
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                objectFit: "cover",
+                                                display: "block",
+                                            }}
                                         />
                                     </div>
                                 </div>

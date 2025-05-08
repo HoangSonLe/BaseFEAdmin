@@ -31,6 +31,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
     const getOpenKeys = () => {
         if (currentPath.startsWith("/users/")) return ["users-submenu"];
         if (currentPath.startsWith("/products/")) return ["products-submenu"];
+        if (currentPath.startsWith("/components/")) return ["components-submenu"];
         return [];
     };
 
@@ -45,6 +46,12 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         if (currentPath === "/products/inventory") return "3-2";
         if (currentPath === "/simple-table") return "6";
         if (currentPath === "/components") return "7";
+        if (currentPath === "/components/tables") return "7-1";
+        if (currentPath === "/components/forms") return "7-2";
+        if (currentPath === "/components/filters") return "7-3";
+        if (currentPath === "/components/ui") return "7-4";
+        if (currentPath === "/components/images") return "7-5";
+        if (currentPath === "/components/image-sliders") return "7-6";
         if (currentPath === "/status-example") return "8";
         if (currentPath === "/settings") return "4";
         return "";
@@ -111,9 +118,39 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
                     label: <Link to="/simple-table">Simple Table</Link>,
                 },
                 {
-                    key: "7",
+                    key: "components-submenu",
                     icon: <AppstoreOutlined />,
-                    label: <Link to="/components">Component Library</Link>,
+                    label: "Component Library",
+                    children: [
+                        {
+                            key: "7",
+                            label: <Link to="/components">Overview</Link>,
+                        },
+                        {
+                            key: "7-1",
+                            label: <Link to="/components/tables">Tables</Link>,
+                        },
+                        {
+                            key: "7-2",
+                            label: <Link to="/components/forms">Form Components</Link>,
+                        },
+                        {
+                            key: "7-3",
+                            label: <Link to="/components/filters">Filter Components</Link>,
+                        },
+                        {
+                            key: "7-4",
+                            label: <Link to="/components/ui">UI Components</Link>,
+                        },
+                        {
+                            key: "7-5",
+                            label: <Link to="/components/images">Images</Link>,
+                        },
+                        {
+                            key: "7-6",
+                            label: <Link to="/components/image-sliders">Image Sliders</Link>,
+                        },
+                    ],
                 },
                 {
                     key: "8",

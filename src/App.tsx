@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 
 // Providers
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -18,6 +18,14 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import ErrorPage from "./pages/ErrorPage";
 import ComponentLibrary from "./pages/ComponentLibrary";
+
+// Lazy-loaded Component Library pages
+const TableComponents = lazy(() => import("./pages/ComponentLibrary/TableComponents"));
+const FormComponents = lazy(() => import("./pages/ComponentLibrary/FormComponents"));
+const FilterComponents = lazy(() => import("./pages/ComponentLibrary/FilterComponents"));
+const UIComponents = lazy(() => import("./pages/ComponentLibrary/UIComponents"));
+const ImageComponents = lazy(() => import("./pages/ComponentLibrary/ImageComponents"));
+const ImageSliderComponents = lazy(() => import("./pages/ComponentLibrary/ImageSliderComponents"));
 
 // User Pages
 import UserRoles from "./pages/users/UserRoles";
@@ -63,8 +71,56 @@ function App() {
                             <Route path="products/inventory" element={<ProductInventory />} />
                             <Route path="simple-table" element={<SimpleTable />} />
 
-                            {/* Component Library route */}
+                            {/* Component Library routes */}
                             <Route path="components" element={<ComponentLibrary />} />
+                            <Route
+                                path="components/tables"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <TableComponents />
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path="components/forms"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <FormComponents />
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path="components/filters"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <FilterComponents />
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path="components/ui"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <UIComponents />
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path="components/images"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <ImageComponents />
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path="components/image-sliders"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <ImageSliderComponents />
+                                    </Suspense>
+                                }
+                            />
 
                             {/* Settings route */}
                             <Route path="settings" element={<Settings />} />
