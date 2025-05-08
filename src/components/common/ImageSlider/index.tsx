@@ -208,8 +208,24 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     };
 
     return (
-        <div className={`image-slider-container ${className}`} style={containerStyle}>
-            <div className="image-slider-wrapper" style={{ height }}>
+        <div
+            className={`image-slider-container ${className}`}
+            style={{
+                ...containerStyle,
+                // Add inline style to ensure proper stacking context
+                position: "relative",
+                zIndex: 1,
+            }}
+        >
+            <div
+                className="image-slider-wrapper"
+                style={{
+                    height,
+                    // Add inline style to ensure proper stacking context
+                    position: "relative",
+                    zIndex: 1,
+                }}
+            >
                 {/* Main carousel */}
                 <div className="image-slider-carousel">
                     <Carousel ref={carouselRef} {...carouselSettings}>
@@ -239,11 +255,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                             className="image-slider-arrow image-slider-arrow-left"
                             icon={<LeftOutlined />}
                             onClick={prevSlide}
+                            style={{ zIndex: 1000 }} // Ensure high z-index
                         />
                         <Button
                             className="image-slider-arrow image-slider-arrow-right"
                             icon={<RightOutlined />}
                             onClick={nextSlide}
+                            style={{ zIndex: 1000 }} // Ensure high z-index
                         />
                     </>
                 )}

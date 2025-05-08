@@ -5,6 +5,8 @@
     border-radius: 8px;
     background-color: var(--bg-primary);
     box-shadow: 0 2px 8px var(--shadow-color);
+    /* Create a new stacking context to ensure children with high z-index appear above other elements */
+    z-index: 1;
 }
 
 .image-slider-wrapper {
@@ -14,6 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Ensure the wrapper also participates in the stacking context */
+    z-index: 1;
 }
 
 /* Carousel styles */
@@ -58,7 +62,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    z-index: 1000; /* Increased z-index to ensure it appears above header */
     width: 40px;
     height: 40px;
     display: flex;
@@ -95,7 +99,7 @@
     transform: translateX(-50%);
     display: flex;
     gap: 8px;
-    z-index: 10;
+    z-index: 1000; /* Increased z-index to match the arrows */
     padding: 6px 12px;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.2);
@@ -207,7 +211,7 @@
 .image-slider-thumbnails .slick-next {
     width: 24px;
     height: 24px;
-    z-index: 10;
+    z-index: 1000; /* Increased z-index to match other navigation elements */
 }
 
 .image-slider-thumbnails .slick-prev {
@@ -234,6 +238,16 @@
 
 .dark .image-slider-dot:hover {
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure navigation elements appear above header and other fixed elements */
+.image-slider-arrow,
+.image-slider-dots,
+.image-slider-thumbnails .slick-prev,
+.image-slider-thumbnails .slick-next {
+    position: absolute;
+    /* Use a very high z-index to ensure these elements appear above everything else */
+    z-index: 1000 !important;
 }
 
 /* Responsive adjustments */
