@@ -4,6 +4,8 @@
 :root {
     /* Brand colors - same in both themes */
     --primary-color: #1677ff;
+    --primary-rgb: 22, 119, 255;
+    --primary-color-hover: #0958d9;
     --secondary-color: #5b5fc7;
 
     /* Status colors - same in both themes */

@@ -14,7 +14,6 @@ import MainLayout from "./layouts/MainLayout";
 import ComponentLibrary from "./pages/ComponentLibrary";
 import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
-import NotFound from "./pages/NotFound";
 import Products from "./pages/Products";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
@@ -189,7 +188,7 @@ function App() {
 
                                     {/* Pages routes */}
                                     <Route path="pages">
-                                        <Route path="404" element={<NotFound />} />
+                                        <Route path="404" element={<ErrorPage code="404" />} />
                                         <Route
                                             path="500"
                                             element={
@@ -219,7 +218,7 @@ function App() {
                                     </Route>
 
                                     {/* 404 route */}
-                                    <Route path="*" element={<NotFound />} />
+                                    <Route path="*" element={<ErrorPage code="404" />} />
                                 </Route>
                             </Route>
                         </Routes>

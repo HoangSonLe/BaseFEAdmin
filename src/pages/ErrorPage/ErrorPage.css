@@ -5,24 +5,56 @@
     min-height: 500px;
     width: 100%;
     padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-secondary);
+}
+
+.error-page-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 10% 20%, var(--bg-tertiary) 0%, transparent 80%);
+    opacity: 0.6;
+    z-index: 0;
 }
 
 .error-page-content {
-    max-width: 400px;
+    max-width: 450px;
     width: 100%;
     text-align: center;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
     padding: 2rem;
     animation: fadeIn 0.3s ease-in-out;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .error-page-illustration {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    position: relative;
+}
+
+.error-page-illustration::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 10px;
+    background: radial-gradient(ellipse at center, var(--shadow-color) 0%, transparent 80%);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: -1;
 }
 
 .error-page-illustration img {
@@ -31,19 +63,49 @@
     object-fit: contain;
     animation: float 4s ease-in-out infinite;
     transform-origin: center;
+    filter: drop-shadow(0 5px 15px var(--shadow-color));
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .error-title {
     font-size: 1.5rem !important;
     margin-bottom: 0.5rem !important;
-    color: #1677ff !important;
+    color: var(--primary-color) !important;
     font-weight: 500 !important;
     margin-top: -20px !important;
 }
 
 .error-subtitle {
     font-size: 0.875rem;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     display: block;
 }
@@ -56,18 +118,61 @@
 }
 
 .error-button {
-    height: 32px !important;
+    height: 36px !important;
     font-size: 14px !important;
-    border-radius: 2px !important;
-    padding: 0 15px !important;
+    border-radius: 4px !important;
+    padding: 0 16px !important;
+    min-width: 90px !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02) !important;
+}
+
+.error-button:hover {
+    transform: translateY(-1px) !important;
 }
 
 .back-button {
-    background-color: #f0f0f0 !important;
-    border-color: #d9d9d9 !important;
-    color: rgba(0, 0, 0, 0.65) !important;
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-secondary) !important;
+}
+
+.back-button:hover {
+    background-color: var(--hover-bg) !important;
+    border-color: var(--border-color) !important;
 }
 
 .home-button {
-    background-color: #1677ff !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.home-button:hover {
+    background-color: var(--primary-color-hover, #0958d9) !important;
+    border-color: var(--primary-color-hover, #0958d9) !important;
+}
+
+.error-contact-link {
+    color: var(--primary-color);
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1.5rem 0 0.5rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    background-color: rgba(var(--primary-rgb, 22, 119, 255), 0.05);
+}
+
+.error-contact-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(var(--primary-rgb, 22, 119, 255), 0.1);
+    text-decoration: underline;
+}
+
+.error-help-text {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 0.75rem;
+    opacity: 0.8;
 }
