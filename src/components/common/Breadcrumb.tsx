@@ -66,24 +66,33 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         return null;
     }
 
+    // Convert our BreadcrumbItems to Ant Design's ItemType format
+    const antdBreadcrumbItems = breadcrumbItems.map((item, index) => {
+        const title =
+            index < breadcrumbItems.length - 1 ? (
+                <Link to={item.path}>
+                    {item.icon && <span className="breadcrumb-icon">{item.icon}</span>}
+                    {item.label}
+                </Link>
+            ) : (
+                <>
+                    {item.icon && <span className="breadcrumb-icon">{item.icon}</span>}
+                    {item.label}
+                </>
+            );
+
+        return {
+            key: item.path,
+            title,
+        };
+    });
+
     return (
-        <AntBreadcrumb className={`app-breadcrumb ${className}`} style={style}>
-            {breadcrumbItems.map((item, index) => (
-                <AntBreadcrumb.Item key={item.path}>
-                    {index < breadcrumbItems.length - 1 ? (
-                        <Link to={item.path}>
-                            {item.icon && <span className="breadcrumb-icon">{item.icon}</span>}
-                            {item.label}
-                        </Link>
-                    ) : (
-                        <>
-                            {item.icon && <span className="breadcrumb-icon">{item.icon}</span>}
-                            {item.label}
-                        </>
-                    )}
-                </AntBreadcrumb.Item>
-            ))}
-        </AntBreadcrumb>
+        <AntBreadcrumb
+            className={`app-breadcrumb ${className}`}
+            style={style}
+            items={antdBreadcrumbItems}
+        />
     );
 };
 

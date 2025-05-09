@@ -35,6 +35,7 @@ const UIComponents = lazy(() => import("./pages/ComponentLibrary/UIComponents"))
 const ImageComponents = lazy(() => import("./pages/ComponentLibrary/ImageComponents"));
 const ImageSliderComponents = lazy(() => import("./pages/ComponentLibrary/ImageSliderComponents"));
 const EditorComponents = lazy(() => import("./pages/ComponentLibrary/EditorComponents"));
+const SvgIconDemo = lazy(() => import("./pages/ComponentLibrary/SvgIconDemo"));
 
 // User Pages
 import UserPermissions from "./pages/users/UserPermissions";
@@ -156,6 +157,14 @@ function App() {
                                         element={
                                             <Suspense fallback={<div>Loading...</div>}>
                                                 <EditorComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/svg-icons"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <SvgIconDemo />
                                             </Suspense>
                                         }
                                     />

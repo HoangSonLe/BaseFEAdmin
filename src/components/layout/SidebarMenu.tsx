@@ -148,6 +148,12 @@ const menuItems: MenuItem[] = [
                 label: <Link to="/components/simple-table">Simple Table</Link>,
                 path: "/components/simple-table",
             },
+            {
+                key: "7-10",
+                icon: <AppstoreOutlined />,
+                label: <Link to="/components/svg-icons">SVG Icons</Link>,
+                path: "/components/svg-icons",
+            },
         ],
     },
 

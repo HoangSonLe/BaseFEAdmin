@@ -10,6 +10,8 @@ export { default as ThemeToggle } from "./ThemeToggle";
 export { default as TopProgressBar } from "./TopProgressBar";
 export { default as Breadcrumb } from "./Breadcrumb";
 
+export { default as BasicIcon } from "./BasicIcon";
+
 // For backward compatibility
 export { default as ApiDropdown } from "./Dropdown";
 
@@ -22,3 +24,5 @@ export type { ImageProps } from "./Image";
 export type { ImageSliderProps, ImageItem } from "./ImageSlider";
 export type { TopProgressBarProps } from "./TopProgressBar";
 export type { BreadcrumbItem, BreadcrumbProps } from "./Breadcrumb";
+
+export type { BasicIconProps } from "./BasicIcon";
