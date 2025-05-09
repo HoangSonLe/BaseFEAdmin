@@ -121,6 +121,15 @@ const EditorComponents: React.FC = () => {
 
                         <Space className="mb-4">
                             <Button onClick={handleReset}>Reset Content</Button>
+                            <Button
+                                onClick={() => {
+                                    if (editorRef.current) {
+                                        editorRef.current.setContent("");
+                                    }
+                                }}
+                            >
+                                Clear Content
+                            </Button>
                         </Space>
 
                         <div className="mb-4">
@@ -176,6 +185,22 @@ const EditorComponents: React.FC = () => {
                         <Text strong>ClientSideCustomEditor</Text> - A wrapper that uses React.lazy
                         for dynamic loading
                     </li>
+                </ul>
+
+                <Title level={5}>Usage Instructions</Title>
+                <Paragraph>
+                    The Richtext Editor provides a user-friendly interface for creating formatted
+                    content:
+                </Paragraph>
+                <ul className="list-disc pl-6 mb-4">
+                    <li>
+                        Use the toolbar buttons to format text, create lists, insert tables, etc.
+                    </li>
+                    <li>
+                        Insert images by clicking the image button and uploading from your device
+                    </li>
+                    <li>Create tables with customizable rows and columns</li>
+                    <li>Use the fullscreen mode for a larger editing area</li>
                 </ul>
 
                 <Title level={5}>Props</Title>

@@ -1,8 +1,10 @@
 import React from "react";
-import { Tag, Space, Button, Tooltip } from "antd";
+import { Tag, Space, Button, Tooltip, Typography, Card, Divider } from "antd";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { CommonTable } from "../../components/common";
 import type { ColumnType } from "antd/es/table";
+
+const { Title, Paragraph } = Typography;
 
 // Define the Product interface
 interface Product extends Record<string, unknown> {
@@ -17,7 +19,7 @@ interface Product extends Record<string, unknown> {
     createdAt: string;
 }
 
-const SimpleTable: React.FC = () => {
+const SimpleTableComponent: React.FC = () => {
     // Sample product data
     const productData: Product[] = [
         {
@@ -144,22 +146,51 @@ const SimpleTable: React.FC = () => {
     ];
 
     return (
-        <div>
-            <div className="mb-4">
-                <h1 className="text-2xl font-bold">Simple Table Example</h1>
-                <p className="text-gray-500">This table has no toolbar or search functionality</p>
-            </div>
+        <div className="component-library">
+            <Title level={2}>Simple Table Component</Title>
+            <Paragraph>
+                A basic table implementation without advanced features like search, filtering, or toolbar.
+            </Paragraph>
 
-            <CommonTable<Product>
-                title="Products"
-                description="A simple product table without toolbar"
-                dataSource={productData}
-                columns={columns}
-                rowKey="id"
-                className="mb-6"
-            />
+            <Divider orientation="left">Basic Table</Divider>
+            <Card variant="outlined" className="mb-8">
+                <Title level={4}>Simple Table Example</Title>
+                <Paragraph>
+                    This table demonstrates a basic implementation of the CommonTable component with minimal configuration.
+                </Paragraph>
+
+                <CommonTable<Product>
+                    title="Products"
+                    description="A simple product table without toolbar"
+                    dataSource={productData}
+                    columns={columns}
+                    rowKey="id"
+                    className="mb-6"
+                />
+            </Card>
+
+            <Card variant="outlined" className="mb-8">
+                <Title level={4}>Implementation</Title>
+                <Paragraph>
+                    To use this component in your own pages:
+                </Paragraph>
+                <div className="p-4 bg-gray-100 rounded">
+                    <pre className="text-xs">
+{`import { CommonTable } from "../components/common";
+
+<CommonTable<YourDataType>
+    title="Your Title"
+    description="Your description"
+    dataSource={yourData}
+    columns={yourColumns}
+    rowKey="id"
+/>
+`}
+                    </pre>
+                </div>
+            </Card>
         </div>
     );
 };
 
-export default SimpleTable;
+export default SimpleTableComponent;

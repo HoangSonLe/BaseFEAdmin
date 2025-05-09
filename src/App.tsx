@@ -16,9 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
 import NotFound from "./pages/NotFound";
 import Products from "./pages/Products";
-import Richtext from "./pages/Richtext";
 import Settings from "./pages/Settings";
-import SimpleTable from "./pages/SimpleTable";
 import Users from "./pages/Users";
 
 // Auth Pages
@@ -31,6 +29,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 // Lazy-loaded Component Library pages
 const TableComponents = lazy(() => import("./pages/ComponentLibrary/TableComponents"));
+const SimpleTableComponent = lazy(() => import("./pages/ComponentLibrary/SimpleTableComponent"));
 const FormComponents = lazy(() => import("./pages/ComponentLibrary/FormComponents"));
 const FilterComponents = lazy(() => import("./pages/ComponentLibrary/FilterComponents"));
 const UIComponents = lazy(() => import("./pages/ComponentLibrary/UIComponents"));
@@ -94,8 +93,14 @@ function App() {
                                         path="products/inventory"
                                         element={<ProductInventory />}
                                     />
-                                    <Route path="simple-table" element={<SimpleTable />} />
-                                    <Route path="richtext" element={<Richtext />} />
+                                    <Route
+                                        path="components/simple-table"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <SimpleTableComponent />
+                                            </Suspense>
+                                        }
+                                    />
 
                                     {/* Component Library routes */}
                                     <Route path="components" element={<ComponentLibrary />} />
