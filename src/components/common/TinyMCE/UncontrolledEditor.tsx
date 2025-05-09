@@ -154,17 +154,10 @@ const UncontrolledEditor = forwardRef<UncontrolledEditorRef, UncontrolledEditorP
                     inline: false,
                     z_index: 999999,
                     setup: (editor) => {
-                        let originalParent: HTMLElement | null = null;
-                        let contentBeforeFullscreen: string = "";
-
                         editor.on("FullscreenStateChanged", () => {
                             if (debounceTimeout) clearTimeout(debounceTimeout);
 
-                            const isFullscreen = editor.plugins.fullscreen.isFullscreen();
-
-                            if (isFullscreen) {
-                                contentBeforeFullscreen = editor.getContent();
-                            }
+                            // const isFullscreen = editor.plugins.fullscreen.isFullscreen();
 
                             // debounceTimeout = setTimeout(() => {
                             //     debugger;

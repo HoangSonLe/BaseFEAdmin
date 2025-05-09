@@ -43,7 +43,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         });
 
         // Add path segments
-        pathSnippets.forEach((segment, index) => {
+        pathSnippets.forEach((segment) => {
             url += `/${segment}`;
             const label = segment
                 .split("-")
