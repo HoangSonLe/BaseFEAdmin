@@ -78,7 +78,7 @@ const MainLayout: React.FC = () => {
     const SidebarContent = () => (
         <>
             <SidebarLogo collapsed={isMobile ? false : collapsed} />
-            <SidebarMenu collapsed={isMobile ? false : collapsed} />
+            <SidebarMenu collapsed={isMobile ? false : collapsed} accordion={true} />
         </>
     );
 

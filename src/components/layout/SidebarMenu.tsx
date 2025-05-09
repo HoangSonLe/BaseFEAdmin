@@ -16,7 +16,6 @@ import {
     SafetyCertificateOutlined,
     TableOutlined,
     AppstoreOutlined,
-    TagOutlined,
     WarningOutlined,
     FileExclamationOutlined,
     LoginOutlined,
@@ -27,6 +26,7 @@ import {
 
 interface SidebarMenuProps {
     collapsed?: boolean;
+    accordion?: boolean; // When true, only one submenu can be expanded at a time
 }
 
 // Define menu item interface
@@ -150,12 +150,7 @@ const menuItems: MenuItem[] = [
             },
         ],
     },
-    {
-        key: "8",
-        icon: <TagOutlined />,
-        label: <Link to="/status-example">Status Component</Link>,
-        path: "/status-example",
-    },
+
     {
         key: "pages-submenu",
         icon: <FileExclamationOutlined />,
@@ -213,10 +208,36 @@ const menuItems: MenuItem[] = [
     },
 ];
 
-const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
+const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed, accordion = false }) => {
     const location = useLocation();
     const currentPath = location.pathname;
     const { theme } = useTheme();
+    const [openKeys, setOpenKeys] = React.useState<string[]>([]);
+
+    // Handle open keys change
+    const handleOpenChange = (keys: string[]) => {
+        if (accordion) {
+            // If accordion mode is enabled, only keep the last opened submenu
+            const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+            if (latestOpenKey) {
+                setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+            } else {
+                setOpenKeys([]);
+            }
+        } else {
+            // Normal mode - allow multiple submenus to be open
+            setOpenKeys(keys);
+        }
+    };
+
+    // Initialize open keys based on current path
+    React.useEffect(() => {
+        if (!collapsed) {
+            const keys = getOpenKeys();
+            setOpenKeys(accordion ? keys.slice(0, 1) : keys);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPath, collapsed, accordion]);
 
     // Find parent key for a given path
     const findParentKey = (items: MenuItem[], path: string): string | null => {
@@ -325,7 +346,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         <Menu
             mode="inline"
             theme={theme}
-            defaultOpenKeys={getOpenKeys()}
+            openKeys={collapsed ? [] : openKeys}
+            onOpenChange={handleOpenChange}
             selectedKeys={[getSelectedKey()]}
             className={`sidebar-menu ${collapsed ? "menu-collapsed" : ""}`}
             items={menuItems}
