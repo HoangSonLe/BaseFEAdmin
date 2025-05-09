@@ -8,6 +8,7 @@ export { default as Image } from "./Image";
 export { default as ImageSlider } from "./ImageSlider";
 export { default as ThemeToggle } from "./ThemeToggle";
 export { default as TopProgressBar } from "./TopProgressBar";
+export { default as Breadcrumb } from "./Breadcrumb";
 
 // For backward compatibility
 export { default as ApiDropdown } from "./Dropdown";
@@ -20,3 +21,4 @@ export type { FilterPanelProps } from "./FilterPanel";
 export type { ImageProps } from "./Image";
 export type { ImageSliderProps, ImageItem } from "./ImageSlider";
 export type { TopProgressBarProps } from "./TopProgressBar";
+export type { BreadcrumbItem, BreadcrumbProps } from "./Breadcrumb";

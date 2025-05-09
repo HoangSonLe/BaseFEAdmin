@@ -141,7 +141,7 @@ const MainLayout: React.FC = () => {
                     />
                     <UserDropdown />
                 </Header>
-                <MainContent />
+                <MainContent showBreadcrumb={true} />
             </Layout>
         </Layout>
     );
