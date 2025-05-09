@@ -8,6 +8,7 @@ import {
     AppstoreOutlined,
     PictureOutlined,
     PlayCircleOutlined,
+    EditOutlined,
 } from "@ant-design/icons";
 
 const { Title, Paragraph } = Typography;
@@ -50,6 +51,12 @@ const ComponentLibrary: React.FC = () => {
             icon: <PlayCircleOutlined />,
             description: "Image slider components with various display options.",
             path: "/components/image-sliders",
+        },
+        {
+            title: "Rich Text Editors",
+            icon: <EditOutlined />,
+            description: "Rich text editor components for content editing.",
+            path: "/components/editors",
         },
     ];
 

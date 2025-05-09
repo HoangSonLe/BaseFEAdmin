@@ -21,6 +21,7 @@ import {
     LoginOutlined,
     KeyOutlined,
     LockOutlined,
+    EditOutlined,
 } from "@ant-design/icons";
 
 interface SidebarMenuProps {
@@ -51,6 +52,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         if (currentPath === "/products/categories") return "3-1";
         if (currentPath === "/products/inventory") return "3-2";
         if (currentPath === "/simple-table") return "6";
+        if (currentPath === "/richtext") return "richtext";
         if (currentPath === "/components") return "7";
         if (currentPath === "/components/tables") return "7-1";
         if (currentPath === "/components/forms") return "7-2";
@@ -58,6 +60,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
         if (currentPath === "/components/ui") return "7-4";
         if (currentPath === "/components/images") return "7-5";
         if (currentPath === "/components/image-sliders") return "7-6";
+        if (currentPath === "/components/editors") return "7-7";
         if (currentPath === "/status-example") return "8";
         if (currentPath === "/settings") return "4";
 
@@ -133,6 +136,11 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
                     label: <Link to="/simple-table">Simple Table</Link>,
                 },
                 {
+                    key: "richtext",
+                    icon: <EditOutlined />,
+                    label: <Link to="/richtext">Richtext Editor</Link>,
+                },
+                {
                     key: "components-submenu",
                     icon: <AppstoreOutlined />,
                     label: "Component Library",
@@ -164,6 +172,11 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ collapsed }) => {
                         {
                             key: "7-6",
                             label: <Link to="/components/image-sliders">Image Sliders</Link>,
+                        },
+                        {
+                            key: "7-7",
+                            icon: <EditOutlined />,
+                            label: <Link to="/components/editors">Richtext Editor</Link>,
                         },
                     ],
                 },

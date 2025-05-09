@@ -16,6 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
 import NotFound from "./pages/NotFound";
 import Products from "./pages/Products";
+import Richtext from "./pages/Richtext";
 import Settings from "./pages/Settings";
 import SimpleTable from "./pages/SimpleTable";
 import Users from "./pages/Users";
@@ -35,6 +36,7 @@ const FilterComponents = lazy(() => import("./pages/ComponentLibrary/FilterCompo
 const UIComponents = lazy(() => import("./pages/ComponentLibrary/UIComponents"));
 const ImageComponents = lazy(() => import("./pages/ComponentLibrary/ImageComponents"));
 const ImageSliderComponents = lazy(() => import("./pages/ComponentLibrary/ImageSliderComponents"));
+const EditorComponents = lazy(() => import("./pages/ComponentLibrary/EditorComponents"));
 
 // User Pages
 import UserPermissions from "./pages/users/UserPermissions";
@@ -93,6 +95,7 @@ function App() {
                                         element={<ProductInventory />}
                                     />
                                     <Route path="simple-table" element={<SimpleTable />} />
+                                    <Route path="richtext" element={<Richtext />} />
 
                                     {/* Component Library routes */}
                                     <Route path="components" element={<ComponentLibrary />} />
@@ -141,6 +144,14 @@ function App() {
                                         element={
                                             <Suspense fallback={<div>Loading...</div>}>
                                                 <ImageSliderComponents />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/editors"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <EditorComponents />
                                             </Suspense>
                                         }
                                     />
