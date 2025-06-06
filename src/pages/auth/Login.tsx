@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Card, Typography, Checkbox, Divider } from "antd";
+import { Form, Input, Button, Card, Typography, Checkbox, Divider, Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import ThemeToggle from "../../components/common/ThemeToggle";
+import MockUserInfo from "../../components/auth/MockUserInfo";
 import "./Auth.css";
 
 const { Title, Text } = Typography;
@@ -22,7 +23,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (values: { email: string; password: string }) => {
     const { email, password } = values;
-    await login(email, password);
+    await login({ email, password, rememberMe });
   };
 
   return (
@@ -31,10 +32,12 @@ const Login: React.FC = () => {
         <ThemeToggle showLabel />
       </div>
       <div className="auth-content">
-        <Card 
-          className="auth-card" 
-          bordered={false}
-        >
+        <Row gutter={[24, 24]} justify="center" align="top">
+          <Col xs={24} sm={24} md={12} lg={10} xl={8}>
+            <Card
+              className="auth-card"
+              variant="outlined"
+            >
           <div className="auth-header">
             <img 
               src="/logo.png" 
@@ -120,6 +123,11 @@ const Login: React.FC = () => {
             </Button>
           </div>
         </Card>
+          </Col>
+          <Col xs={24} sm={24} md={12} lg={14} xl={16}>
+            <MockUserInfo />
+          </Col>
+        </Row>
       </div>
     </div>
   );

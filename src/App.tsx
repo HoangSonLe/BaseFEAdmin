@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
+import { ConfigProvider, App as AntApp } from "antd";
 
 // Providers
 import { setLoadingController } from "./apis/axios";
@@ -17,6 +18,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Products from "./pages/Products";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
+import UserSettings from "./pages/UserSettings";
 
 // Auth Pages
 import ForgotPassword from "./pages/auth/ForgotPassword";
@@ -36,6 +38,9 @@ const ImageComponents = lazy(() => import("./pages/ComponentLibrary/ImageCompone
 const ImageSliderComponents = lazy(() => import("./pages/ComponentLibrary/ImageSliderComponents"));
 const EditorComponents = lazy(() => import("./pages/ComponentLibrary/EditorComponents"));
 const SvgIconDemo = lazy(() => import("./pages/ComponentLibrary/SvgIconDemo"));
+const PermissionExample = lazy(() => import("./components/examples/PermissionExample"));
+const ConfirmDialogDemo = lazy(() => import("./components/examples/ConfirmDialogDemo"));
+
 
 // User Pages
 import UserPermissions from "./pages/users/UserPermissions";
@@ -62,11 +67,13 @@ const LoadingInitializer = () => {
 
 function App() {
     return (
-        <ThemeProvider>
-            <LoadingProvider>
-                <LoadingInitializer />
-                <Router>
-                    <AuthProvider>
+        <ConfigProvider>
+            <AntApp>
+                <ThemeProvider>
+                    <LoadingProvider>
+                        <LoadingInitializer />
+                        <Router>
+                            <AuthProvider>
                         <Routes>
                             {/* Auth routes (public) */}
                             <Route path="/login" element={<Login />} />
@@ -168,9 +175,29 @@ function App() {
                                             </Suspense>
                                         }
                                     />
+                                    <Route
+                                        path="components/permissions"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <PermissionExample />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/confirm-dialogs"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <ConfirmDialogDemo />
+                                            </Suspense>
+                                        }
+                                    />
+
 
                                     {/* Settings route */}
                                     <Route path="settings" element={<Settings />} />
+
+                                    {/* User Settings route */}
+                                    <Route path="user-settings" element={<UserSettings />} />
 
                                     {/* Error routes */}
                                     <Route path="error" element={<ErrorPage />} />
@@ -231,10 +258,12 @@ function App() {
                                 </Route>
                             </Route>
                         </Routes>
-                    </AuthProvider>
-                </Router>
-            </LoadingProvider>
-        </ThemeProvider>
+                            </AuthProvider>
+                        </Router>
+                    </LoadingProvider>
+                </ThemeProvider>
+            </AntApp>
+        </ConfigProvider>
     );
 }
 

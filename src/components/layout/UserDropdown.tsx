@@ -1,40 +1,62 @@
 import React, { useState } from "react";
 import { Avatar, Dropdown } from "antd";
-import { DownOutlined, LogoutOutlined, SettingOutlined } from "@ant-design/icons";
+import { DownOutlined, LogoutOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 import ThemeToggle from "../common/ThemeToggle";
 import { useAuth } from "../../contexts/AuthContext";
+import { useConfirm } from "../../hooks/useConfirm";
 
 import "./UserDropdown.css";
 
 const UserDropdown: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const { user, logout } = useAuth();
+    const { confirmLogout, ConfirmDialog } = useConfirm();
+
+    const handleLogout = () => {
+        confirmLogout(() => {
+            logout();
+        });
+    };
 
     return (
-        <Dropdown
-            menu={{
-                items: [
-                    {
-                        key: "1",
-                        label: (
-                            <div className="user-profile-container">
-                                <div className="user-profile-content">
-                                    <Avatar size={36} className="user-avatar">
-                                        AU
-                                    </Avatar>
-                                    <div className="user-info">
-                                        <div className="username">
-                                            {user?.name || "Default User"}
-                                        </div>
-                                        <div className="user-handle">
-                                            {user?.email || "@uxuidesigner"}
+        <>
+            <Dropdown
+                menu={{
+                    items: [
+                        {
+                            key: "1",
+                            label: (
+                                <div className="user-profile-container">
+                                    <div className="user-profile-content">
+                                        {user?.avatar ? (
+                                            <Avatar
+                                                size={36}
+                                                className="user-avatar"
+                                                src={user.avatar}
+                                            />
+                                        ) : (
+                                            <Avatar
+                                                size={36}
+                                                className="user-avatar"
+                                                icon={<UserOutlined />}
+                                            >
+                                                {user?.firstName?.[0] || 'A'}
+                                            </Avatar>
+                                        )}
+                                        <div className="user-info">
+                                            <div className="username">
+                                                {user?.displayName || user?.firstName + ' ' + user?.lastName || "Default User"}
+                                            </div>
+                                            <div className="user-handle">
+                                                {user?.email || "@uxuidesigner"}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ),
-                        className: "user-profile-item",
-                    },
+                            ),
+                            className: "user-profile-item",
+                        },
                     {
                         type: "divider",
                     },
@@ -60,6 +82,24 @@ const UserDropdown: React.FC = () => {
                     {
                         key: "3",
                         label: (
+                            <Link to="/user-settings" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                <div className="settings-container">
+                                    <div className="settings-item">
+                                        <span className="settings-icon">
+                                            <UserOutlined />
+                                        </span>
+                                        <span className="settings-text">Account Settings</span>
+                                    </div>
+                                </div>
+                            </Link>
+                        ),
+                    },
+                    {
+                        type: "divider",
+                    },
+                    {
+                        key: "4",
+                        label: (
                             <div className="logout-container">
                                 <div className="logout-item">
                                     <span className="logout-icon">
@@ -69,7 +109,7 @@ const UserDropdown: React.FC = () => {
                                 </div>
                             </div>
                         ),
-                        onClick: () => logout(),
+                        onClick: handleLogout,
                     },
                 ],
             }}
@@ -81,15 +121,29 @@ const UserDropdown: React.FC = () => {
             open={dropdownOpen}
         >
             <div className="cursor-pointer header-user-dropdown">
-                <Avatar size={28} className="header-avatar">
-                    AU
-                </Avatar>
-                <span className="header-user-text">{user?.name || "Admin User"}</span>
+                {user?.avatar ? (
+                    <Avatar
+                        size={28}
+                        className="header-avatar"
+                        src={user.avatar}
+                    />
+                ) : (
+                    <Avatar
+                        size={28}
+                        className="header-avatar"
+                        icon={<UserOutlined />}
+                    >
+                        {user?.firstName?.[0] || 'A'}
+                    </Avatar>
+                )}
+                <span className="header-user-text">{user?.displayName || user?.firstName + ' ' + user?.lastName || "Admin User"}</span>
                 <DownOutlined
                     className={`dropdown-arrow ${dropdownOpen ? "dropdown-arrow-open" : ""}`}
                 />
             </div>
-        </Dropdown>
+            </Dropdown>
+            <ConfirmDialog />
+        </>
     );
 };
 

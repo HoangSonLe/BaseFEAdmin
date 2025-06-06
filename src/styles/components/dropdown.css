@@ -1,0 +1,113 @@
+/* Dropdown component styles */
+
+/* Override Ant Design dropdown menu styles */
+.ant-dropdown {
+    z-index: 1050 !important;
+}
+
+.ant-dropdown-menu {
+    background-color: var(--bg-primary) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 6px 16px var(--shadow-color) !important;
+    border: 1px solid var(--border-light) !important;
+    padding: 0 !important;
+}
+
+.ant-dropdown-menu-item {
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+}
+
+.ant-dropdown-menu-item:hover {
+    background-color: transparent !important;
+}
+
+.ant-dropdown-menu-item-divider {
+    background-color: var(--border-light) !important;
+    margin: 0 !important;
+    height: 1px !important;
+}
+
+/* User dropdown specific styles */
+.user-dropdown-menu .ant-dropdown-menu {
+    min-width: 240px !important;
+}
+
+.user-dropdown-menu .ant-dropdown-menu-item {
+    line-height: normal !important;
+    height: auto !important;
+}
+
+.user-dropdown-menu .ant-dropdown-menu-item-divider {
+    margin: 0 !important;
+}
+
+/* Profile item - no hover effect */
+.user-dropdown-menu .ant-dropdown-menu-item.user-profile-item {
+    cursor: default !important;
+}
+
+.user-dropdown-menu .ant-dropdown-menu-item.user-profile-item:hover {
+    background-color: transparent !important;
+}
+
+/* Dark mode dropdown styles */
+.dark .ant-dropdown-menu {
+    background-color: var(--dark-bg-primary) !important;
+    border-color: var(--dark-border-color) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .ant-dropdown-menu-item-divider {
+    background-color: var(--dark-border-color) !important;
+}
+
+/* Smooth transitions */
+.ant-dropdown-menu,
+.ant-dropdown-menu-item {
+    transition: all 0.2s ease !important;
+}
+
+/* Fix for dropdown positioning */
+.ant-dropdown-placement-bottomRight {
+    transform-origin: right top !important;
+}
+
+/* Custom scrollbar for long dropdown menus */
+.ant-dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.ant-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ant-dropdown-menu::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+}
+
+.ant-dropdown-menu::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.ant-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Dark mode scrollbar */
+.dark .ant-dropdown-menu::-webkit-scrollbar-track {
+    background: var(--dark-bg-secondary);
+}
+
+.dark .ant-dropdown-menu::-webkit-scrollbar-thumb {
+    background: var(--dark-border-color);
+}
+
+.dark .ant-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-text-secondary);
+}

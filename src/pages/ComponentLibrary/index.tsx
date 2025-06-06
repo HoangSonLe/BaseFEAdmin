@@ -9,6 +9,8 @@ import {
     PictureOutlined,
     PlayCircleOutlined,
     EditOutlined,
+    SecurityScanOutlined,
+    ExclamationCircleOutlined,
 } from "@ant-design/icons";
 
 const { Title, Paragraph } = Typography;
@@ -57,6 +59,18 @@ const ComponentLibrary: React.FC = () => {
             icon: <EditOutlined />,
             description: "Rich text editor components for content editing.",
             path: "/components/editors",
+        },
+        {
+            title: "Permission System",
+            icon: <SecurityScanOutlined />,
+            description: "Role-based and permission-based access control components and examples.",
+            path: "/components/permissions",
+        },
+        {
+            title: "Confirm Dialogs",
+            icon: <ExclamationCircleOutlined />,
+            description: "Confirmation dialogs for delete actions and important operations.",
+            path: "/components/confirm-dialogs",
         },
     ];
 

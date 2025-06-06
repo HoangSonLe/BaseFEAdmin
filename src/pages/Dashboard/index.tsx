@@ -8,6 +8,7 @@ import {
     DollarOutlined,
     RightOutlined,
 } from "@ant-design/icons";
+import UserInfoCard from "../../components/dashboard/UserInfoCard";
 import "./Dashboard.css";
 
 const { Title, Text } = Typography;
@@ -172,7 +173,7 @@ const Dashboard: React.FC = () => {
             </Row>
 
             <Row gutter={[24, 24]}>
-                <Col xs={24}>
+                <Col xs={24} lg={16}>
                     <Card className="activities-card" variant="borderless">
                         <div className="activities-header">
                             <h3 className="activities-title">Recent Activities</h3>
@@ -188,6 +189,9 @@ const Dashboard: React.FC = () => {
                             rowKey="key"
                         />
                     </Card>
+                </Col>
+                <Col xs={24} lg={8}>
+                    <UserInfoCard />
                 </Col>
             </Row>
         </div>
