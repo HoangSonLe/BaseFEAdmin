@@ -6,7 +6,6 @@ import {
     Button,
     Avatar,
     Upload,
-    message,
     Row,
     Col,
     Divider,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button, Typography, Space } from 'antd';
 import { ExclamationCircleOutlined, DeleteOutlined, WarningOutlined } from '@ant-design/icons';
 
-const { Text, Title } = Typography;
+const { Title } = Typography;
 
 interface ConfirmDialogProps {
     open: boolean;

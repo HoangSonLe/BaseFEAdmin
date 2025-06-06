@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Space, Typography, Divider, Row, Col, message, Popconfirm, Switch, Table } from 'antd';
+import { Card, Button, Space, Typography, Row, Col, message, Popconfirm, Switch, Table } from 'antd';
 import { DeleteOutlined, InfoCircleOutlined, WarningOutlined } from '@ant-design/icons';
 import { useConfirm } from '../../hooks/useConfirm';
 
@@ -73,7 +73,7 @@ const DeleteConfirmDemo: React.FC = () => {
         {
             title: 'Actions',
             key: 'actions',
-            render: (_, record: DemoItem) => (
+            render: (_: any, record: DemoItem) => (
                 <Space>
                     {usePopconfirm ? (
                         <Popconfirm

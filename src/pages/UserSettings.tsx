@@ -16,7 +16,6 @@ import {
 } from 'antd';
 import {
     UserOutlined,
-    SettingOutlined,
     SecurityScanOutlined,
     BellOutlined,
     KeyOutlined,
@@ -72,7 +71,7 @@ const UserSettings: React.FC = () => {
     };
 
     // Handle session revocation
-    const handleRevokeSession = (sessionId: string, deviceName: string) => {
+    const handleRevokeSession = (_sessionId: string, deviceName: string) => {
         confirmRevokeSession(deviceName, () => {
             message.success(`Đã thu hồi phiên đăng nhập trên ${deviceName}`);
         });

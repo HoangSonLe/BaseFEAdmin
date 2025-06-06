@@ -157,7 +157,7 @@ export const authApi = {
     },
 
     // Refresh access token
-    refreshToken: async (refreshToken: string): Promise<ApiResponse<LoginResponse>> => {
+    refreshToken: async (_refreshToken: string): Promise<ApiResponse<LoginResponse>> => {
         await delay();
         
         if (!currentUser) {
@@ -177,7 +177,7 @@ export const authApi = {
     },
 
     // Verify email
-    verifyEmail: async (token: string): Promise<ApiResponse<void>> => {
+    verifyEmail: async (_token: string): Promise<ApiResponse<void>> => {
         await delay();
         return {
             success: true,
@@ -186,7 +186,7 @@ export const authApi = {
     },
 
     // Resend verification email
-    resendVerification: async (email: string): Promise<ApiResponse<void>> => {
+    resendVerification: async (_email: string): Promise<ApiResponse<void>> => {
         await delay();
         return {
             success: true,
@@ -536,7 +536,7 @@ export const userApi = {
     },
 
     // Revoke session
-    revokeSession: async (sessionId: string): Promise<ApiResponse<void>> => {
+    revokeSession: async (_sessionId: string): Promise<ApiResponse<void>> => {
         await delay();
         
         return {
@@ -582,7 +582,7 @@ export const userApi = {
     },
 
     // Mark notification as read
-    markNotificationRead: async (notificationId: string): Promise<ApiResponse<void>> => {
+    markNotificationRead: async (_notificationId: string): Promise<ApiResponse<void>> => {
         await delay();
         
         return {
@@ -602,7 +602,7 @@ export const userApi = {
     },
 
     // Delete notification
-    deleteNotification: async (notificationId: string): Promise<ApiResponse<void>> => {
+    deleteNotification: async (_notificationId: string): Promise<ApiResponse<void>> => {
         await delay();
         
         return {
@@ -670,7 +670,7 @@ export const userApi = {
     },
 
     // Disable two-factor authentication
-    disableTwoFactor: async (code: string): Promise<ApiResponse<void>> => {
+    disableTwoFactor: async (_code: string): Promise<ApiResponse<void>> => {
         await delay();
         
         return {
@@ -683,7 +683,7 @@ export const userApi = {
     getBackupCodes: async (): Promise<ApiResponse<string[]>> => {
         await delay();
         
-        const backupCodes = Array.from({ length: 10 }, (_, i) => 
+        const backupCodes = Array.from({ length: 10 }, () =>
             `${Math.random().toString(36).substr(2, 4)}-${Math.random().toString(36).substr(2, 4)}`.toUpperCase()
         );
 
@@ -698,7 +698,7 @@ export const userApi = {
     regenerateBackupCodes: async (): Promise<ApiResponse<string[]>> => {
         await delay();
         
-        const backupCodes = Array.from({ length: 10 }, (_, i) => 
+        const backupCodes = Array.from({ length: 10 }, () =>
             `${Math.random().toString(36).substr(2, 4)}-${Math.random().toString(36).substr(2, 4)}`.toUpperCase()
         );
 
@@ -911,7 +911,7 @@ export const adminUserApi = {
     },
 
     // Revoke user session (admin)
-    revokeUserSession: async (userId: string, sessionId: string): Promise<ApiResponse<void>> => {
+    revokeUserSession: async (_userId: string, _sessionId: string): Promise<ApiResponse<void>> => {
         await delay();
         
         return {

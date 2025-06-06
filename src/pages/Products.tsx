@@ -281,9 +281,9 @@ const Products: React.FC = () => {
             title: "Product Name",
             dataIndex: "name",
             key: "name",
-            render: (text: string, record: Product) => (
+            render: (_text: string, record: Product) => (
                 <div>
-                    <div style={{ fontWeight: 500, marginBottom: 4 }}>{text}</div>
+                    <div style={{ fontWeight: 500, marginBottom: 4 }}>{_text}</div>
                     <div style={{ fontSize: '12px', color: '#666' }}>ID: {record.id}</div>
                 </div>
             ),
