@@ -1,7 +1,8 @@
 /* Button component styles */
 
-/* Base button styles */
-.ant-btn {
+/* Base button styles - Use specific classes instead of global override */
+.custom-btn,
+.ant-btn:not(.ant-popconfirm .ant-btn) {
     border-radius: 6px;
     transition: all 0.3s ease;
     display: flex;
@@ -12,7 +13,8 @@
     font-weight: 500;
 }
 
-.ant-btn:hover {
+.custom-btn:hover,
+.ant-btn:not(.ant-popconfirm .ant-btn):hover {
     transform: translateY(-1px);
     box-shadow: 0 2px 8px var(--shadow-color);
 }
@@ -180,6 +182,8 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 6px var(--shadow-color);
 }
+
+/* Popconfirm buttons now use Ant Design defaults - no override needed */
 
 /* Dark mode adjustments */
 .dark .ant-btn-default,

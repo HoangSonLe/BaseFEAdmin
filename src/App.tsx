@@ -40,6 +40,7 @@ const EditorComponents = lazy(() => import("./pages/ComponentLibrary/EditorCompo
 const SvgIconDemo = lazy(() => import("./pages/ComponentLibrary/SvgIconDemo"));
 const PermissionExample = lazy(() => import("./components/examples/PermissionExample"));
 const ConfirmDialogDemo = lazy(() => import("./components/examples/ConfirmDialogDemo"));
+const DeleteConfirmDemo = lazy(() => import("./components/examples/DeleteConfirmDemo"));
 
 
 // User Pages
@@ -188,6 +189,14 @@ function App() {
                                         element={
                                             <Suspense fallback={<div>Loading...</div>}>
                                                 <ConfirmDialogDemo />
+                                            </Suspense>
+                                        }
+                                    />
+                                    <Route
+                                        path="components/delete-confirm"
+                                        element={
+                                            <Suspense fallback={<div>Loading...</div>}>
+                                                <DeleteConfirmDemo />
                                             </Suspense>
                                         }
                                     />

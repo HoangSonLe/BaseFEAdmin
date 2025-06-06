@@ -1,5 +1,5 @@
 import React from "react";
-import { Tag, Space, Button, Tooltip, Typography, Card, Divider } from "antd";
+import { Tag, Space, Button, Tooltip, Typography, Card, Divider, Image } from "antd";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { CommonTable } from "../../components/common";
 import type { ColumnType } from "antd/es/table";
@@ -30,7 +30,7 @@ const SimpleTableComponent: React.FC = () => {
             stock: 45,
             status: "In Stock",
             rating: 4.5,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-04-15",
         },
         {
@@ -41,7 +41,7 @@ const SimpleTableComponent: React.FC = () => {
             stock: 12,
             status: "Low Stock",
             rating: 4.8,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-04-10",
         },
         {
@@ -52,7 +52,7 @@ const SimpleTableComponent: React.FC = () => {
             stock: 30,
             status: "In Stock",
             rating: 4.2,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-04-05",
         },
         {
@@ -63,7 +63,7 @@ const SimpleTableComponent: React.FC = () => {
             stock: 0,
             status: "Out of Stock",
             rating: 3.9,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-28",
         },
         {
@@ -74,7 +74,7 @@ const SimpleTableComponent: React.FC = () => {
             stock: 25,
             status: "In Stock",
             rating: 4.0,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-20",
         },
     ];
@@ -82,10 +82,50 @@ const SimpleTableComponent: React.FC = () => {
     // Table columns configuration
     const columns: ColumnType<Product>[] = [
         {
-            title: "Product",
+            title: "Image",
+            dataIndex: "image",
+            key: "image",
+            width: 80,
+            render: (image: string, record: Product) => (
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Image
+                        src={image}
+                        alt={record.name}
+                        width={50}
+                        height={50}
+                        style={{
+                            borderRadius: '6px',
+                            objectFit: 'cover'
+                        }}
+                        preview={{
+                            mask: (
+                                <div style={{
+                                    background: 'rgba(0,0,0,0.6)',
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '100%'
+                                }}>
+                                    <EyeOutlined />
+                                </div>
+                            )
+                        }}
+                    />
+                </div>
+            ),
+        },
+        {
+            title: "Product Name",
             dataIndex: "name",
             key: "name",
-            render: (text: string) => <span>{text}</span>,
+            render: (text: string, record: Product) => (
+                <div>
+                    <div style={{ fontWeight: 500, marginBottom: 4 }}>{text}</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>ID: {record.id}</div>
+                </div>
+            ),
         },
         {
             title: "Category",

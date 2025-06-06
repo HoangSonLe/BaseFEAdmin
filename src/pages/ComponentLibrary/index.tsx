@@ -11,6 +11,7 @@ import {
     EditOutlined,
     SecurityScanOutlined,
     ExclamationCircleOutlined,
+    DeleteOutlined,
 } from "@ant-design/icons";
 
 const { Title, Paragraph } = Typography;
@@ -71,6 +72,12 @@ const ComponentLibrary: React.FC = () => {
             icon: <ExclamationCircleOutlined />,
             description: "Confirmation dialogs for delete actions and important operations.",
             path: "/components/confirm-dialogs",
+        },
+        {
+            title: "Delete Confirmations",
+            icon: <DeleteOutlined />,
+            description: "Comparison between Modal Dialog and Popconfirm for delete operations.",
+            path: "/components/delete-confirm",
         },
     ];
 

@@ -9,7 +9,7 @@ import {
     UploadOutlined,
     ReloadOutlined,
 } from "@ant-design/icons";
-import { Button, Image, Space, Tag, Tooltip, Input, message } from "antd";
+import { Button, Image, Space, Tag, Tooltip, Input, message, Popconfirm, Switch } from "antd";
 import type { ColumnType } from "antd/es/table";
 
 import React, { useState } from "react";
@@ -28,6 +28,7 @@ import {
     UpdateProductModal,
     type Product as ProductType,
 } from "../components/products";
+import { useConfirm } from "../hooks/useConfirm";
 
 // Extend Product to satisfy Record<string, unknown>
 interface Product extends ProductType, Record<string, unknown> {}
@@ -37,6 +38,12 @@ const Products: React.FC = () => {
     const [createModalVisible, setCreateModalVisible] = useState(false);
     const [updateModalVisible, setUpdateModalVisible] = useState(false);
     const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+
+    // Confirm dialog hook
+    const { confirmDelete, ConfirmDialog } = useConfirm();
+
+    // State for delete confirmation type
+    const [usePopconfirm, setUsePopconfirm] = useState(false);
 
     // Handle showing create modal
     const showCreateModal = () => {
@@ -77,6 +84,25 @@ const Products: React.FC = () => {
         setEditingProduct(null);
     };
 
+    // Handle delete product with confirmation
+    const handleDeleteProduct = (product: Product) => {
+        confirmDelete(
+            product.name,
+            () => {
+                console.log("Deleting product:", product.id);
+                message.success(`Product "${product.name}" has been deleted successfully!`);
+                // Here you would typically delete the product from your backend
+            }
+        );
+    };
+
+    // Handle delete product with Popconfirm
+    const handleDeleteProductPopconfirm = (product: Product) => {
+        console.log("Deleting product:", product.id);
+        message.success(`Product "${product.name}" has been deleted successfully!`);
+        // Here you would typically delete the product from your backend
+    };
+
     // Sample product data
     const productData: Product[] = [
         {
@@ -87,7 +113,7 @@ const Products: React.FC = () => {
             stock: 45,
             status: "In Stock",
             rating: 4.5,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-04-15",
         },
         {
@@ -98,7 +124,7 @@ const Products: React.FC = () => {
             stock: 12,
             status: "Low Stock",
             rating: 4.8,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-04-10",
         },
         {
@@ -109,7 +135,7 @@ const Products: React.FC = () => {
             stock: 30,
             status: "In Stock",
             rating: 4.2,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-04-05",
         },
         {
@@ -120,7 +146,7 @@ const Products: React.FC = () => {
             stock: 0,
             status: "Out of Stock",
             rating: 3.9,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-28",
         },
         {
@@ -131,7 +157,7 @@ const Products: React.FC = () => {
             stock: 25,
             status: "In Stock",
             rating: 4.0,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-20",
         },
         {
@@ -142,7 +168,7 @@ const Products: React.FC = () => {
             stock: 8,
             status: "Low Stock",
             rating: 4.7,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-15",
         },
         {
@@ -153,7 +179,7 @@ const Products: React.FC = () => {
             stock: 18,
             status: "In Stock",
             rating: 4.3,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-10",
         },
         {
@@ -164,7 +190,7 @@ const Products: React.FC = () => {
             stock: 40,
             status: "In Stock",
             rating: 3.8,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-03-05",
         },
         {
@@ -175,7 +201,7 @@ const Products: React.FC = () => {
             stock: 5,
             status: "Low Stock",
             rating: 4.6,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-02-28",
         },
         {
@@ -186,7 +212,7 @@ const Products: React.FC = () => {
             stock: 0,
             status: "Out of Stock",
             rating: 4.1,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-02-20",
         },
         {
@@ -197,7 +223,7 @@ const Products: React.FC = () => {
             stock: 22,
             status: "In Stock",
             rating: 4.4,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-02-15",
         },
         {
@@ -208,7 +234,7 @@ const Products: React.FC = () => {
             stock: 7,
             status: "Low Stock",
             rating: 4.2,
-            image: "https://placehold.co/60x60",
+            image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop&crop=center",
             createdAt: "2025-02-10",
         },
     ];
@@ -216,23 +242,49 @@ const Products: React.FC = () => {
     // Table columns configuration
     const columns: ColumnType<Product>[] = [
         {
-            title: "Product",
+            title: "Image",
+            dataIndex: "image",
+            key: "image",
+            width: 80,
+            render: (image: string, record: Product) => (
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Image
+                        src={image}
+                        alt={record.name}
+                        width={50}
+                        height={50}
+                        style={{
+                            borderRadius: '6px',
+                            objectFit: 'cover'
+                        }}
+                        preview={{
+                            mask: (
+                                <div style={{
+                                    background: 'rgba(0,0,0,0.6)',
+                                    color: 'white',
+                                    fontSize: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '100%'
+                                }}>
+                                    <EyeOutlined />
+                                </div>
+                            )
+                        }}
+                        fallback="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADDCAYAAADQvc6UAAABRWlDQ1BJQ0MgUHJvZmlsZQAAKJFjYGASSSwoyGFhYGDIzSspCnJ3UoiIjFJgf8LAwSDCIMogwMCcmFxc4BgQ4ANUwgCjUcG3awyMIPqyLsis7PPOq3QdDFcvjV3jOD1boQVTPQrgSkktTgbSf4A4LbmgqISBgTEFyFYuLykAsTuAbJEioKOA7DkgdjqEvQHEToKwj4DVhAQ5A9k3gGyB5IxEoBmML4BsnSQk8XQkNtReEOBxcfXxUQg1Mjc0dyHgXNJBSWpFCYh2zi+oLMpMzyhRcASGUqqCZ16yno6CkYGRAQMDKMwhqj/fAIcloxgHQqxAjIHBEugw5sUIsSQpBobtQPdLciLEVJYzMPBHMDBsayhILEqEO4DxG0txmrERhM29nYGBddr//5/DGRjYNRkY/l7////39v///y4Dmn+LgeHANwDrkl1AuO+pmgAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAwqADAAQAAAABAAAAwwAAAAD9b/HnAAAHlklEQVR4Ae3dP3Ik1RnG4W+FgYxN"
+                    />
+                </div>
+            ),
+        },
+        {
+            title: "Product Name",
             dataIndex: "name",
             key: "name",
             render: (text: string, record: Product) => (
-                <div className="flex items-center">
-                    <Image
-                        src={record.image}
-                        alt={text}
-                        width={40}
-                        height={40}
-                        className="mr-3 rounded"
-                        preview={false}
-                    />
-                    <div>
-                        <div className="font-medium">{text}</div>
-                        <div className="text-xs text-gray-500">ID: {record.id}</div>
-                    </div>
+                <div>
+                    <div style={{ fontWeight: 500, marginBottom: 4 }}>{text}</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>ID: {record.id}</div>
                 </div>
             ),
             sorter: (a: Product, b: Product) => a.name.localeCompare(b.name),
@@ -308,13 +360,40 @@ const Products: React.FC = () => {
                         />
                     </Tooltip>
                     <Tooltip title="Delete">
-                        <Button
-                            type="text"
-                            danger
-                            icon={<DeleteOutlined />}
-                            onClick={() => console.log("Delete product:", record.id)}
-                            className="table-action-button danger"
-                        />
+                        {usePopconfirm ? (
+                            <Popconfirm
+                                title="Delete Product"
+                                description={
+                                    <div>
+                                        <p>Are you sure you want to delete <strong>{record.name}</strong>?</p>
+                                        <p style={{ color: '#ff4d4f', fontSize: '12px', margin: '4px 0 0 0' }}>
+                                            This action cannot be undone.
+                                        </p>
+                                    </div>
+                                }
+                                onConfirm={() => handleDeleteProductPopconfirm(record)}
+                                okText="Delete"
+                                cancelText="Cancel"
+                                okType="danger"
+                                placement="topRight"
+                                icon={<DeleteOutlined style={{ color: '#ff4d4f' }} />}
+                            >
+                                <Button
+                                    type="text"
+                                    danger
+                                    icon={<DeleteOutlined />}
+                                    className="table-action-button danger"
+                                />
+                            </Popconfirm>
+                        ) : (
+                            <Button
+                                type="text"
+                                danger
+                                icon={<DeleteOutlined />}
+                                onClick={() => handleDeleteProduct(record)}
+                                className="table-action-button danger"
+                            />
+                        )}
                     </Tooltip>
                 </Space>
             ),
@@ -613,7 +692,7 @@ const Products: React.FC = () => {
 
     return (
         <div>
-            <div className="mb-4 flex items-center gap-4">
+            <div className="mb-4 flex items-center gap-4 flex-wrap">
                 <Button
                     onClick={() => setUseApiMode(!useApiMode)}
                     type={useApiMode ? "primary" : "default"}
@@ -636,6 +715,20 @@ const Products: React.FC = () => {
                 <span className="text-gray-500">
                     (Click to test the top progress bar with multiple API calls)
                 </span>
+
+                <div className="flex items-center gap-2 ml-4 p-2 border rounded-md bg-gray-50">
+                    <span className="text-sm font-medium">Delete Confirmation:</span>
+                    <Switch
+                        checked={usePopconfirm}
+                        onChange={setUsePopconfirm}
+                        checkedChildren="Popconfirm"
+                        unCheckedChildren="Dialog"
+                        size="small"
+                    />
+                    <span className="text-xs text-gray-500">
+                        {usePopconfirm ? "Using Popconfirm" : "Using Modal Dialog"}
+                    </span>
+                </div>
             </div>
 
             <CommonTable<Product>
@@ -674,6 +767,8 @@ const Products: React.FC = () => {
                     onSubmit={handleUpdateSubmit}
                 />
             )}
+
+            <ConfirmDialog />
         </div>
     );
 };
